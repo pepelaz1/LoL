@@ -36,10 +36,10 @@ namespace LoL
 
       
 
-        private void tbSummorerName_GotMouseCapture(object sender, MouseEventArgs e)
+        private void tbSummonerName_GotMouseCapture(object sender, MouseEventArgs e)
         {
-            if (_vm.SummorerName == "Summorer Name...")
-                _vm.SummorerName = "";        
+            if (_vm.SummonerName == "Summoner Name...")
+                _vm.SummonerName = "";        
         }
        
     }

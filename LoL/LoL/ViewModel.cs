@@ -17,17 +17,17 @@ namespace LoL
         }
 
 
-        private String _summorer_name = "Summorer Name...";
-        public String SummorerName
+        private String _summoner_name = "Summoner Name...";
+        public String SummonerName
         {
             get
             {
-                return _summorer_name;
+                return _summoner_name;
             }
             set
             {
-                _summorer_name = value;
-                OnPropertyChanged("SummorerName");
+                _summoner_name = value;
+                OnPropertyChanged("SummonerName");
             }
         }
 

@@ -9,26 +9,25 @@
             <TabItem Header="Home" FontSize="14" Padding="10,0,10,0">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-                        <Label FontSize="18">Please enter a summorer name</Label>
+                        <Label FontSize="18">Please enter a summoner name</Label>
                         <Label FontSize="16">The following stats will show:</Label>
                         <Label FontSize="14">• Rank</Label>
                         <Label FontSize="14">• Ranked Stats</Label>
-                        <Label FontSize="14">• Summorer Statistics</Label>
+                        <Label FontSize="14">• Summoner Statistics</Label>
                         <Label FontSize="14">• Top five champs</Label>
                         <Label></Label>
-                        <TextBox x:Name="tbSummorerName" FontSize="16" Text="{Binding Path=SummorerName, Mode=TwoWay}" GotMouseCapture="tbSummorerName_GotMouseCapture" ></TextBox>
+                        <TextBox x:Name="tbSummonerName" FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" ></TextBox>
                         <Label></Label>
                         <Button Width="50" FontSize="16" Click="Button_Click" >Go</Button>
                     </StackPanel>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Summorer Lookup" FontSize="14"  Padding="10,0,10,0">
+            <TabItem Header="Summoner Lookup" FontSize="14"  Padding="10,0,10,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
-                        <RowDefinition Height="30"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
@@ -68,42 +67,67 @@
                             <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
                         </StackPanel>
                     </Grid>
-                    <Label Grid.Row="2">Ranked Ratings</Label>
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champion I</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
+                        <Label Grid.Row="0">Ranked Ratings</Label>
+                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <Label  FontSize="18" HorizontalAlignment="Center">Team 3v3</Label>
+                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champion II</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <Label  FontSize="18" HorizontalAlignment="Center">Solo 5v5</Label>
+                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champion III</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
+                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <Label  FontSize="18" HorizontalAlignment="Center">Team 5v5</Label>
+                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champion IV</Label>
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <Label Margin="10 0 0 0"  Height="30" Grid.Column="4">Statistics</Label>
+                        <Grid Grid.Row="1" Grid.Column="3" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">Ranked 5v5</TextBlock>
+                            <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
+                            <StackPanel  Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top" Margin="10 0 0 0">
+                                <TextBlock FontSize="16">Kills:</TextBlock>
+                                <TextBlock FontSize="16">Deaths:</TextBlock>
+                                <TextBlock FontSize="16">Double:</TextBlock>
+                                <TextBlock FontSize="16">Triple:</TextBlock>
+                                <TextBlock FontSize="16">Quadra:</TextBlock>
+                                <TextBlock FontSize="16">Penta:</TextBlock>
+                            </StackPanel>
+                            <TextBlock Grid.Row="2" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">Normal 5v5</TextBlock>
+                            <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <StackPanel  Grid.Row="4" Orientation="Vertical" VerticalAlignment="Top" Margin="10 0 0 0">
+                                <TextBlock FontSize="16">Kills:</TextBlock>
+                                <TextBlock FontSize="16">Deaths:</TextBlock>
+                                <TextBlock FontSize="16">Assists:</TextBlock>
+                             </StackPanel>
+                        </Grid>
+                        <!--<StackPanel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            
                             <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
-                        </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champion V</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Averages</Label>
-                        </StackPanel>
+                        </StackPanel> -->
                     </Grid>
-                    <Label Grid.Row="4">Recent Champs</Label>
+                    <Label Grid.Row="3">Recent Champs</Label>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -136,7 +160,26 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Career Averages" FontSize="14"  Padding="10,0,10,0">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-79"/>
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-79">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                        <TextBlock FontSize="16">Please enter a summoner name</TextBlock>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center">for career stats:</TextBlock>
+                        <Label></Label>
+                        <TextBox FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" ></TextBox>
+                        <Label></Label>
+                        <Button Width="50" FontSize="16" Click="Button_Click" >Go</Button>
+                    </StackPanel>
+
+                </Grid>    
             </TabItem>
         </TabControl>
         <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="Logo.png"/>
