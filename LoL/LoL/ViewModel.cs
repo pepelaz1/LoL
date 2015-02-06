@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CreepScoreAPI;
+using CreepScoreAPI.Constants;
 using LoL.Model;
 
 
@@ -148,7 +149,18 @@ namespace LoL
             _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
             if (_summoner == null)
                 throw new Exception("Summoner not found");
-           // _summoner = _api.GetSummonerAsync(Region.euw, SummonerName);
+
+
+         //   List<Champion> champs = await _api.RetrieveChampions(SelectedRegion.Code);
+
+
+       //     var a =  await _api.RetrieveChampion(SelectedRegion.Code,(int) champs[0].id);
+           
+           // ChampionListStatic lst = await _api.RetrieveChampionsData(SelectedRegion.Code, StaticDataConstants.ChampData.All);
+            //var a = await _api.RetrieveSummonerSpellData(SelectedRegion.Code, (int)_summoner.id, StaticDataConstants.SpellData.All);
+            var a = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
+          
+            //_api.RetrieveChampionsData()
             SummonerName = "Summoner Name...";
             OnPropertyChanged("SummonerInfoVisibility");
             OnPropertyChanged("SummonerTitle");

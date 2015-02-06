@@ -36,6 +36,7 @@ namespace LoL
             Cursor = Cursors.Wait;
             try {
                await _vm.QuerySummoner();
+               tcMain.SelectedIndex = 1;
             } 
             catch(Exception ex)
             {

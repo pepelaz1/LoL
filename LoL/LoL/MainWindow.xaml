@@ -8,7 +8,7 @@
         <TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,97,0,10" VerticalAlignment="Stretch" >
             <TabItem Header="Home" FontSize="14" Padding="10,0,10,0">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
+                   <!-- <Grid.RowDefinitions>
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -31,22 +31,20 @@
                             <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" Margin="0 0 10 0" >Level:</TextBlock>
                             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Foreground="Blue" Text="{Binding SummonerLevel}"></TextBlock>
                         </Grid>
+                    </StackPanel> -->
+                       <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock FontSize="18" Margin="0 0 0 10">Please enter a summoner name</TextBlock>
+                        <TextBlock FontSize="16" Margin="0 0 0 10">The following stats will show:</TextBlock>
+                        <TextBlock FontSize="14" Margin="0 0 0 10">• Rank</TextBlock>
+                        <TextBlock FontSize="14" Margin="0 0 0 10">• Ranked Stats</TextBlock>
+                        <TextBlock FontSize="14" Margin="0 0 0 10">• Summoner Statistics</TextBlock>
+                        <TextBlock FontSize="14" Margin="0 0 0 20">• Top five champs</TextBlock>
+                        <TextBox x:Name="tbSummonerName"  FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0 0 0 10"></TextBox>
+                        <ComboBox ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding Path=SelectedRegion, Mode=TwoWay}" Margin="0 0 0 10"></ComboBox>
+                        <Button Width="50" FontSize="14" Click="Button_Click">Go</Button>
+               
                     </StackPanel>
-                    <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 10 10 0">
-                        <!--<TextBlock FontSize="18" Margin="0,0,0,10">Please enter a summoner name</TextBlock>
-                         <Label FontSize="16">The following stats will show:</Label>
-                        <Label FontSize="14">• Rank</Label>
-                        <Label FontSize="14">• Ranked Stats</Label>
-                        <Label FontSize="14">• Summoner Statistics</Label>
-                        <Label FontSize="14">• Top five champs</Label>
-                        <Label></Label> -->
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBox x:Name="tbSummonerName" Width="200" FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0,0,10,0"></TextBox>
-                            <ComboBox Margin="0,0,10,0"  ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding Path=SelectedRegion, Mode=TwoWay}"></ComboBox>
-                            <Button Width="50" FontSize="14" Click="Button_Click">Go</Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
+                </Grid>  
             </TabItem>
             <TabItem Header="Summoner Lookup" FontSize="14"  Padding="10,0,10,0">
                 <Grid Background="#FFE5E5E5">
