@@ -5,23 +5,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using RiotSharp;
-using RiotSharp.SummonerEndpoint;
+using CreepScoreAPI;
+using LoL.Model;
+
 
 namespace LoL
 {
     public class ViewModel : INotifyPropertyChanged
     {
         // RiotApi C# Wrapper 
-        private RiotApi _api;
+       // private RiotApi _api;
+
+        // Creep.Score api wrapper
+        private CreepScore _api;
 
         // Riot api key generated at https://developer.riotgames.com/ (user - pepelaz1) and it's limits
-        private const String _apiKey = "1502847e-8f39-4fe7-a338-1c0895692085";
+       
+        // My key
+        //private const String _apiKey = "1502847e-8f39-4fe7-a338-1c0895692085";
+        
+        // Pat's key
+        private const String _apiKey = "84185186-2f61-402e-a832-126172fd0234";
         private const int _limit_per_10s = 10;
         private const int _limit_per_10m = 500;
 
         // Current summoner
         private Summoner _summoner = null;
+
+        // List of regions
+        private List<Region> _regions = null;
+        public List<Region> Regions
+        {
+            get
+            {
+                if (_regions == null)
+                {
+                    // Populate list of regions
+                    _regions = new List<Region>();
+                    Region r = new Region() { Name = "North America", Code = CreepScore.Region.NA };
+                    _selectedRegion = r;
+                    _regions.Add(r);
+                    _regions.Add(new Region() { Name = "Europe West", Code = CreepScore.Region.EUW });
+                    _regions.Add(new Region() { Name = "Europe Nordic & East", Code = CreepScore.Region.EUNE });
+                    _regions.Add(new Region() { Name = "Brazil", Code = CreepScore.Region.BR });
+                    _regions.Add(new Region() { Name = "Turkey", Code = CreepScore.Region.TR });
+                    _regions.Add(new Region() { Name = "Russia", Code = CreepScore.Region.RU });
+                    _regions.Add(new Region() { Name = "Latin Ameria North", Code = CreepScore.Region.LAN });
+                    _regions.Add(new Region() { Name = "Latin Ameria South", Code = CreepScore.Region.LAS });
+                    _regions.Add(new Region() { Name = "Oceania", Code = CreepScore.Region.OCE });
+                    OnPropertyChanged("SelectedRegion");
+
+                }
+                return _regions;
+            }
+        }
+
+        // Currently selected region
+        private Region _selectedRegion;
+        public Region SelectedRegion 
+        {
+            get
+            {
+                return _selectedRegion;
+            }
+            set
+            {
+                _selectedRegion = value;
+            }
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,7 +113,7 @@ namespace LoL
         {
             get
             {
-                return (_summoner == null) ? "" : _summoner.Name;
+                return (_summoner == null) ? "" : _summoner.name;
             }
         }
 
@@ -71,7 +122,7 @@ namespace LoL
         {
             get
             {
-                return (_summoner == null) ? "" : _summoner.Level.ToString();
+                return (_summoner == null) ? "" : _summoner.summonerLevel.ToString();
             }
         }
 
@@ -81,12 +132,24 @@ namespace LoL
         public ViewModel()
         {
             // Create api instance based on api key
-            _api = RiotApi.GetInstance(_apiKey, _limit_per_10s, _limit_per_10m);
+            //_api = RiotApi.GetInstance(_apiKey, _limit_per_10s, _limit_per_10m);
+            //_api = RiotApi.GetInstance(_apiKey);
+//            _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
+             _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
+
+           // CreepScore creepScore = new CreepScore("YOUR-API-KEY-GOES-HERE", 10, 500);
+           // Summoner golf1052 = creepScore.RetrieveSummoner(CreepScore.Region.NA, "golf1052");
         }
 
-        public void QuerySummoner()
+        public async Task QuerySummoner()
         {
-            _summoner = _api.GetSummoner(Region.euw, SummonerName);
+           // _summoner = _api.GetSummoner(Region.na, SummonerName);
+            _summoner = null;
+            _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
+            if (_summoner == null)
+                throw new Exception("Summoner not found");
+           // _summoner = _api.GetSummonerAsync(Region.euw, SummonerName);
+            SummonerName = "Summoner Name...";
             OnPropertyChanged("SummonerInfoVisibility");
             OnPropertyChanged("SummonerTitle");
             OnPropertyChanged("SummonerLevel");

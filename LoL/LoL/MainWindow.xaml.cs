@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RiotSharp;
+
 
 namespace LoL
 {
@@ -26,15 +26,16 @@ namespace LoL
 
         public MainWindow()
         {
-            InitializeComponent();
             DataContext = _vm;
+
+            InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             Cursor = Cursors.Wait;
             try {
-                _vm.QuerySummoner();
+               await _vm.QuerySummoner();
             } 
             catch(Exception ex)
             {
