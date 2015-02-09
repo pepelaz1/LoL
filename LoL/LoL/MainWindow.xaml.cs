@@ -29,29 +29,47 @@ namespace LoL
             DataContext = _vm;
 
             InitializeComponent();
+
+            btnSearch.Focus();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            QuerySummoner();
+        }
+
+      
+        private async void QuerySummoner()
+        {
             Cursor = Cursors.Wait;
-            try {
-               await _vm.QuerySummoner();
-               tcMain.SelectedIndex = 1;
-            } 
-            catch(Exception ex)
+            try
+            {
+                await _vm.QuerySummoner();
+                tcMain.SelectedIndex = 1;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             Cursor = Cursors.Arrow;
         }
 
-      
 
         private void tbSummonerName_GotMouseCapture(object sender, MouseEventArgs e)
         {
             if (_vm.SummonerName == "Summoner Name...")
                 _vm.SummonerName = "";        
         }
+
+        private void Button_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                QuerySummoner();
+            }
+        }
+
+       
        
     }
 }

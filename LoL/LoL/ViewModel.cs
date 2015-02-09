@@ -33,6 +33,7 @@ namespace LoL
         // Current summoner
         private Summoner _summoner = null;
 
+   
         // List of regions
         private List<Region> _regions = null;
         public List<Region> Regions
@@ -127,6 +128,128 @@ namespace LoL
             }
         }
 
+        public bool TabPagesEnabled 
+        {
+            get {
+                
+                return _summoner != null;
+                //return true;
+            }
+        }
+
+        
+        ///
+        /// Champions data
+        ///
+        // Current summoner ranked stats
+        private RankedStats _rankedStats = null;
+
+        // Current summoner's champion data
+        private List<ChampData> _champData = new List<ChampData>();
+
+        // Top 5 champs names
+        public String Champ1Name 
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Static.name : ""; }
+        }
+
+        public String Champ2Name
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Static.name : ""; }
+        }
+
+        public String Champ3Name
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Static.name : ""; }
+        }
+
+        public String Champ4Name
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Static.name : ""; }
+        }
+
+        public String Champ5Name
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Static.name : ""; }
+        }
+
+        // Top 5 champs total games count
+        public String Champ1Games
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        public String Champ2Games
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        public String Champ3Games
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        public String Champ4Games
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        public String Champ5Games
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        // Top 5 champs total wins count
+        public String Champ1Wins
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+        }
+
+        public String Champ2Wins
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Stats.stats.totalSessionsWon.ToString() : ""; }
+        }
+
+        public String Champ3Wins
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Stats.stats.totalSessionsWon.ToString() : ""; }
+        }
+
+        public String Champ4Wins
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Stats.stats.totalSessionsWon.ToString() : ""; }
+        }
+
+        public String Champ5Wins
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Stats.stats.totalSessionsWon.ToString() : ""; }
+        }
+
+        // Top 5 champs total looses count
+        public String Champ1Looses
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Stats.stats.totalSessionsLost.ToString() : ""; }
+        }
+
+        public String Champ2Looses
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Stats.stats.totalSessionsLost.ToString() : ""; }
+        }
+
+        public String Champ3Looses
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Stats.stats.totalSessionsLost.ToString() : ""; }
+        }
+
+        public String Champ4Looses
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Stats.stats.totalSessionsLost.ToString() : ""; }
+        }
+
+        public String Champ5Looses
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Stats.stats.totalSessionsLost.ToString() : ""; }
+        }
             /// <summary>
         /// View model constructor
         /// </summary>
@@ -144,27 +267,54 @@ namespace LoL
 
         public async Task QuerySummoner()
         {
-           // _summoner = _api.GetSummoner(Region.na, SummonerName);
             _summoner = null;
             _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
             if (_summoner == null)
                 throw new Exception("Summoner not found");
 
+            _rankedStats = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
+            _champData.Clear();
+            foreach (var o in (from x in _rankedStats.champions
+                               where x.id != 0
+                               orderby x.stats.totalSessionsWon descending, x.stats.totalSessionsPlayed descending
+                               select x).Take(5))
+            {
+                var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
+                ChampData cd = new ChampData() { Static = static1, Stats = o };
+                _champData.Add(cd);
+            }
+            
 
-         //   List<Champion> champs = await _api.RetrieveChampions(SelectedRegion.Code);
-
-
-       //     var a =  await _api.RetrieveChampion(SelectedRegion.Code,(int) champs[0].id);
-           
-           // ChampionListStatic lst = await _api.RetrieveChampionsData(SelectedRegion.Code, StaticDataConstants.ChampData.All);
-            //var a = await _api.RetrieveSummonerSpellData(SelectedRegion.Code, (int)_summoner.id, StaticDataConstants.SpellData.All);
-            var a = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
-          
-            //_api.RetrieveChampionsData()
             SummonerName = "Summoner Name...";
+
             OnPropertyChanged("SummonerInfoVisibility");
             OnPropertyChanged("SummonerTitle");
             OnPropertyChanged("SummonerLevel");
+            OnPropertyChanged("TabPagesEnabled");
+            
+            OnPropertyChanged("Champ1Name");
+            OnPropertyChanged("Champ2Name");
+            OnPropertyChanged("Champ3Name");
+            OnPropertyChanged("Champ4Name");
+            OnPropertyChanged("Champ5Name");
+
+            OnPropertyChanged("Champ1Games");
+            OnPropertyChanged("Champ2Games");
+            OnPropertyChanged("Champ3Games");
+            OnPropertyChanged("Champ4Games");
+            OnPropertyChanged("Champ5Games");
+
+            OnPropertyChanged("Champ1Wins");
+            OnPropertyChanged("Champ2Wins");
+            OnPropertyChanged("Champ3Wins");
+            OnPropertyChanged("Champ4Wins");
+            OnPropertyChanged("Champ5Wins");
+
+            OnPropertyChanged("Champ1Looses");
+            OnPropertyChanged("Champ2Looses");
+            OnPropertyChanged("Champ3Looses");
+            OnPropertyChanged("Champ4Looses");
+            OnPropertyChanged("Champ5Looses");
         }
 
     }
