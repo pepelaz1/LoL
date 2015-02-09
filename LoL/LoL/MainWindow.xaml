@@ -85,7 +85,7 @@
                                 <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ1Games}" Foreground="Blue"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ1Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Looses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ1Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
@@ -106,7 +106,7 @@
                                 <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ2Games}" Foreground="Blue"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ2Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Looses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ2Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
@@ -127,7 +127,7 @@
                                 <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ3Games}" Foreground="Blue"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ3Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Looses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ3Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
@@ -148,7 +148,7 @@
                                 <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ4Games}" Foreground="Blue"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ4Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Looses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ4Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
@@ -169,7 +169,7 @@
                                 <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ5Games}" Foreground="Blue"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ5Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Looses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ5Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>

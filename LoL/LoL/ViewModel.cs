@@ -202,7 +202,7 @@ namespace LoL
         // Top 5 champs total wins count
         public String Champ1Wins
         {
-            get { return _champData.Count() > 0 ? _champData[0].Stats.stats.totalSessionsPlayed.ToString() : ""; }
+            get { return _champData.Count() > 0 ? _champData[0].Stats.stats.totalSessionsWon.ToString() : ""; }
         }
 
         public String Champ2Wins
@@ -261,6 +261,7 @@ namespace LoL
 //            _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
              _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
 
+     
            // CreepScore creepScore = new CreepScore("YOUR-API-KEY-GOES-HERE", 10, 500);
            // Summoner golf1052 = creepScore.RetrieveSummoner(CreepScore.Region.NA, "golf1052");
         }
@@ -280,6 +281,19 @@ namespace LoL
                                select x).Take(5))
             {
                 var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
+
+
+
+
+                
+                //var rg = await _api.RetrieveSummonerSpellData(SelectedRegion.Code, (int)_summoner.id, StaticDataConstants.SpellData.All);
+             /*   var ss = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
+                
+                List<int> champs = new List<int>();
+                champs.Add(o.id);
+                var lst = await _summoner.RetrieveMatchHistory(SelectedRegion.Code, champs);*/
+                
+                
                 ChampData cd = new ChampData() { Static = static1, Stats = o };
                 _champData.Add(cd);
             }
