@@ -250,24 +250,113 @@ namespace LoL
         {
             get { return _champData.Count() > 4 ? _champData[4].Stats.stats.totalSessionsLost.ToString() : ""; }
         }
+
+
+        ///
+        /// Summoner data
+        /// 
+        private SummonerData _summonerData = new SummonerData();
+
+        // Ranked 5v5 stat
+        public String Kills
+        {
+            get { return _summonerData.Ranked.stats.totalChampionKills.ToString(); }
+        }
+
+        public String Deaths
+        {
+            get { return _summonerData.Ranked.stats.totalDeathsPerSession.ToString(); }
+        }
+
+        public String DoubleKills
+        {
+            get { return _summonerData.Ranked.stats.totalDoubleKills.ToString(); }
+        }
+
+        public String TripleKills
+        {
+            get { return _summonerData.Ranked.stats.totalTripleKills.ToString(); }
+        }
+
+        public String QuadraKills
+        {
+            get { return _summonerData.Ranked.stats.totalQuadraKills.ToString(); }
+        }
+
+        public String PentaKills
+        {
+            get { return _summonerData.Ranked.stats.totalPentaKills.ToString(); }
+        }
+
+        public String WinsRanked
+        {
+            get { return _summonerData.Ranked.stats.totalSessionsWon.ToString(); }
+        }
+
+        public String LossesRanked
+        {
+            get { return _summonerData.Ranked.stats.totalSessionsLost.ToString(); }
+        }
+
+        public String AssistsRanked
+        {
+            get { return _summonerData.Ranked.stats.totalAssists.ToString(); }
+        }
+
+        // Normal 5v5 stat
+        public String WinsNormal
+        {
+            get { return _summonerData.Normal.wins.ToString(); }
+        }
+
+        public String LossesNormal
+        {
+            get { return _summonerData.Normal.losses.ToString(); }
+        }
+
+        public String AssistsNormal
+        {
+            get { return _summonerData.Normal.aggregatedStats.totalAssists.ToString(); }
+        }
+
+        ///
+        /// Career averages
+        /// 
+
+        public String AverageKills
+        {
+            get { return (_summonerData.Ranked.stats.totalChampionKills / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+        }
+
+        public String AverageDeaths
+        {
+            get { return (_summonerData.Ranked.stats.totalDeathsPerSession / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+        }
+
+        public String AverageGold
+        {
+            get { return (_summonerData.Ranked.stats.totalGoldEarned / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+        }
+
+        public String AverageFarm
+        {
+            get { return (_summonerData.Ranked.stats.totalMinionKills / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+        }
+        public String TotalGames
+        {
+            get { return _summonerData.Ranked.stats.totalSessionsPlayed.ToString(); }
+        }
+
             /// <summary>
         /// View model constructor
         /// </summary>
         public ViewModel()
         {
-            // Create api instance based on api key
-            //_api = RiotApi.GetInstance(_apiKey, _limit_per_10s, _limit_per_10m);
-            //_api = RiotApi.GetInstance(_apiKey);
-//            _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
              _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
-
-     
-           // CreepScore creepScore = new CreepScore("YOUR-API-KEY-GOES-HERE", 10, 500);
-           // Summoner golf1052 = creepScore.RetrieveSummoner(CreepScore.Region.NA, "golf1052");
         }
 
-        public async Task QuerySummoner()
-        {
+        public async Task QueryData()
+        {                  
             _summoner = null;
             _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
             if (_summoner == null)
@@ -275,6 +364,8 @@ namespace LoL
 
             _rankedStats = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
             _champData.Clear();
+            
+     
             foreach (var o in (from x in _rankedStats.champions
                                where x.id != 0
                                orderby x.stats.totalSessionsWon descending, x.stats.totalSessionsPlayed descending
@@ -282,22 +373,56 @@ namespace LoL
             {
                 var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
 
+                //var matches = await _summoner.RetrieveMatchHistory(SelectedRegion.Code);
+                /* var summs = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
 
-
-
+                 var teams = await _summoner.RetrieveTeams();
+                 var team = teams.First().Value.First();*/
                 
+
+                /*   var league = await _summoner.RetrieveLeague();
+
+                   var leagueEntry = await _summoner.RetrieveLeagueEntry();
+                
+                   var l = league.First();
+                   var y = league.First().Value.First().entries;
+
+                   var t = (from x in y
+                           where x.wins == 6
+                           select x).ToList();*/
+                
+                //var games = await _summoner.RetrieveRecentGames();
+
+
                 //var rg = await _api.RetrieveSummonerSpellData(SelectedRegion.Code, (int)_summoner.id, StaticDataConstants.SpellData.All);
-             /*   var ss = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
+                /*   var ss = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
                 
-                List<int> champs = new List<int>();
-                champs.Add(o.id);
-                var lst = await _summoner.RetrieveMatchHistory(SelectedRegion.Code, champs);*/
-                
-                
+                   List<int> champs = new List<int>();
+                   champs.Add(o.id);
+                   var lst = await _summoner.RetrieveMatchHistory(SelectedRegion.Code, champs);*/
+
+
                 ChampData cd = new ChampData() { Static = static1, Stats = o };
                 _champData.Add(cd);
             }
-            
+
+            _summonerData = new SummonerData();         
+            foreach (var o in (from x in _rankedStats.champions
+                               where x.id == 0
+                               select x))
+            {
+                _summonerData.Ranked = o;
+            }
+
+            var a = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
+            foreach (var o in (from x in a.playerStatSummaries
+                               where x.playerStatSummaryTypeString == "RankedSolo5x5"
+                               select x))
+            {
+                _summonerData.Normal = o;
+            }
+           // ss.playerStatSummaries.First().
+           
 
             SummonerName = "Summoner Name...";
 
@@ -329,7 +454,28 @@ namespace LoL
             OnPropertyChanged("Champ3Looses");
             OnPropertyChanged("Champ4Looses");
             OnPropertyChanged("Champ5Looses");
-        }
 
+            OnPropertyChanged("Kills");
+            OnPropertyChanged("Deaths");
+            OnPropertyChanged("DoubleKills");
+            OnPropertyChanged("TripleKills");
+            OnPropertyChanged("QuadraKills");
+            OnPropertyChanged("PentaKills");
+
+            OnPropertyChanged("WinsRanked");
+            OnPropertyChanged("LossesRanked");
+            OnPropertyChanged("AssistsRanked");
+
+            OnPropertyChanged("WinsNormal");
+            OnPropertyChanged("LossesNormal");
+            OnPropertyChanged("AssistsNormal");
+
+            OnPropertyChanged("AverageKills");
+            OnPropertyChanged("AverageDeaths");
+            OnPropertyChanged("AverageGold");
+            OnPropertyChanged("AverageFarm");
+            OnPropertyChanged("TotalGames");
+
+        }
     }
 }

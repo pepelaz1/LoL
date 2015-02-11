@@ -35,16 +35,16 @@ namespace LoL
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            QuerySummoner();
+            QueryData();
         }
 
       
-        private async void QuerySummoner()
+        private async void QueryData()
         {
             Cursor = Cursors.Wait;
             try
             {
-                await _vm.QuerySummoner();
+                await _vm.QueryData();
                 tcMain.SelectedIndex = 1;
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace LoL
         {
             if (e.Key == Key.Enter)
             {
-                QuerySummoner();
+                QueryData();
             }
         }
 
