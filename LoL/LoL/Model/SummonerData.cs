@@ -12,5 +12,8 @@ namespace LoL.Model
         public PlayerStatsSummary Normal { get; set; } 
 
         public ChampionStats Ranked { get; set; }
+
+        public String TotalTimePlayed { get; set; }// in hours
+
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CreepScoreAPI;
 using CreepScoreAPI.Constants;
+using HtmlAgilityPack;
 using LoL.Model;
 
 
@@ -258,14 +261,19 @@ namespace LoL
         private SummonerData _summonerData = new SummonerData();
 
         // Ranked 5v5 stat
-        public String Kills
+        public String KillsRanked
         {
             get { return _summonerData.Ranked.stats.totalChampionKills.ToString(); }
         }
 
-        public String Deaths
+        public String DeathsRanked
         {
             get { return _summonerData.Ranked.stats.totalDeathsPerSession.ToString(); }
+        }
+
+        public String AssistsRanked
+        {
+            get { return _summonerData.Ranked.stats.totalAssists.ToString(); }
         }
 
         public String DoubleKills
@@ -298,12 +306,27 @@ namespace LoL
             get { return _summonerData.Ranked.stats.totalSessionsLost.ToString(); }
         }
 
-        public String AssistsRanked
+
+        public String WLRanked
         {
-            get { return _summonerData.Ranked.stats.totalAssists.ToString(); }
+            get { return WinsRanked + "/" + LossesRanked; }
         }
+    
 
         // Normal 5v5 stat
+        public String KillsNormal
+        {
+            get { return _summonerData.Normal.aggregatedStats.totalChampionKills.ToString(); }
+        }
+        public String DeathsNormal
+        {
+            get { return _summonerData.Normal.aggregatedStats.totalDeathsPerSession.ToString(); }
+        }
+        public String AssistsNormal
+        {
+            get { return _summonerData.Normal.aggregatedStats.totalAssists.ToString(); }
+        }
+
         public String WinsNormal
         {
             get { return _summonerData.Normal.wins.ToString(); }
@@ -314,15 +337,16 @@ namespace LoL
             get { return _summonerData.Normal.losses.ToString(); }
         }
 
-        public String AssistsNormal
+  
+        public String WLNormal
         {
-            get { return _summonerData.Normal.aggregatedStats.totalAssists.ToString(); }
+            get { return WinsNormal + "/" + LossesNormal; }
         }
-
         ///
         /// Career averages
         /// 
 
+                
         public String AverageKills
         {
             get { return (_summonerData.Ranked.stats.totalChampionKills / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
@@ -333,9 +357,19 @@ namespace LoL
             get { return (_summonerData.Ranked.stats.totalDeathsPerSession / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
         }
 
+        public String AverageAssist
+        {
+            get { return (_summonerData.Ranked.stats.totalAssists / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+        }
+
+        public string AverageKDA
+        {
+            get { return AverageKills + "/" + AverageDeaths + "/" + AverageAssist; }
+        }
+
         public String AverageGold
         {
-            get { return (_summonerData.Ranked.stats.totalGoldEarned / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+            get { return ((int)(_summonerData.Ranked.stats.totalGoldEarned / _summonerData.Ranked.stats.totalSessionsPlayed)).ToString("N0"); }
         }
 
         public String AverageFarm
@@ -347,6 +381,12 @@ namespace LoL
             get { return _summonerData.Ranked.stats.totalSessionsPlayed.ToString(); }
         }
 
+        public String TotalTimePlayed
+        {
+            get { return _summonerData.TotalTimePlayed; }
+        }
+
+
             /// <summary>
         /// View model constructor
         /// </summary>
@@ -354,6 +394,30 @@ namespace LoL
         {
              _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
         }
+
+        private void QueryTotalTime()
+        {
+            try
+            {
+                // Query total time information from the wastedonlol website
+                String url = "https://wastedonlol.com/" + SelectedRegion.Code.ToString() + "-" + _summoner.name + "/";
+                var web = new HtmlWeb();
+                var doc = web.Load(url);
+                foreach (var node in doc.DocumentNode.SelectNodes("//span[@class='result_pseudo']"))
+                {
+                    _summonerData.TotalTimePlayed = (node.ChildNodes[2].InnerText).Replace('.',',');
+                }               
+            }
+            catch(Exception ex)
+            {
+                _summonerData.TotalTimePlayed = "N/A";
+            }
+        }
+
+        private void QueryWardScore()
+        {
+        }
+
 
         public async Task QueryData()
         {                  
@@ -421,7 +485,10 @@ namespace LoL
             {
                 _summonerData.Normal = o;
             }
-           // ss.playerStatSummaries.First().
+           
+
+            QueryTotalTime();
+            QueryWardScore();
            
 
             SummonerName = "Summoner Name...";
@@ -455,27 +522,34 @@ namespace LoL
             OnPropertyChanged("Champ4Looses");
             OnPropertyChanged("Champ5Looses");
 
-            OnPropertyChanged("Kills");
-            OnPropertyChanged("Deaths");
+            OnPropertyChanged("KillsRanked");
+            OnPropertyChanged("DeathsRanked");
+            OnPropertyChanged("AssistsRanked");
             OnPropertyChanged("DoubleKills");
             OnPropertyChanged("TripleKills");
             OnPropertyChanged("QuadraKills");
             OnPropertyChanged("PentaKills");
-
             OnPropertyChanged("WinsRanked");
             OnPropertyChanged("LossesRanked");
-            OnPropertyChanged("AssistsRanked");
+            OnPropertyChanged("WLRanked");
 
+
+            OnPropertyChanged("KillsNormal");
+            OnPropertyChanged("DeathsNormal");
+            OnPropertyChanged("AssistsNormal");
             OnPropertyChanged("WinsNormal");
             OnPropertyChanged("LossesNormal");
-            OnPropertyChanged("AssistsNormal");
+            OnPropertyChanged("WLNormal");
 
             OnPropertyChanged("AverageKills");
             OnPropertyChanged("AverageDeaths");
             OnPropertyChanged("AverageGold");
             OnPropertyChanged("AverageFarm");
+            OnPropertyChanged("AverageKDA");
             OnPropertyChanged("TotalGames");
-
+            OnPropertyChanged("TotalTimePlayed");
         }
     }
+
+
 }
