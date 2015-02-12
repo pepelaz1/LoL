@@ -253,8 +253,8 @@
                                         <TextBlock Grid.Row="7" Grid.Column="1"  FontSize="14" Text="{Binding PentaKills}" Foreground="Green"/>
                                         <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5">W/L:</TextBlock>
                                         <TextBlock Grid.Row="8" Grid.Column="1"  FontSize="14" Text="{Binding WLRanked}" Foreground="Green"/>
-                                 
-                                 
+
+
                                         <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Normal 5v5:</TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Kills:</TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="3"  FontSize="14" Text="{Binding KillsNormal}" Foreground="Green"/>
@@ -264,20 +264,20 @@
                                         <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding AssistsNormal}" Foreground="Green"/>
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">W/L:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding WLNormal}" Foreground="Green"/>
-                                        
+
                                         <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6" FontSize="16" Margin="10 5 10 5">Ranked Averages:</TextBlock>
                                         <TextBlock Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Average KDA:</TextBlock>
-                                        <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding AverageKDA}" Foreground="Green"/> 
-                                       <!-- <TextBlock Grid.Row="1" Grid.Column="3" FontSize="14" Text="{Binding AverageKills}" Foreground="Green"/> -->
+                                        <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding AverageKDA}" Foreground="Green"/>
+                                        <!-- <TextBlock Grid.Row="1" Grid.Column="3" FontSize="14" Text="{Binding AverageKills}" Foreground="Green"/> -->
                                         <TextBlock Grid.Row="12" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Average Gold:</TextBlock>
-                                        <TextBlock Grid.Row="12" Grid.Column="1" FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/> 
+                                        <TextBlock Grid.Row="12" Grid.Column="1" FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/>
                                         <TextBlock Grid.Row="13" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Average Farm:</TextBlock>
                                         <TextBlock Grid.Row="13" Grid.Column="1"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Green"/>
                                         <!--  <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/> 
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Farms:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Green"/>-->
                                         <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0 0 50 0">Total time played:</TextBlock>
-                                        <TextBlock Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalTimePlayed}" Margin="50,0,0,0" Foreground="Green"/> 
+                                        <TextBlock Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalTimePlayed}" Margin="50,0,0,0" Foreground="Green"/>
                                         <TextBlock Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,50,0" >Total games:</TextBlock>
                                         <TextBlock Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalGames}" Margin="50,0,0,0" Foreground="Green"/>
                                         <!--<TextBlock Grid.Row="7" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
@@ -384,7 +384,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Image HorizontalAlignment="Left" Height="150" Margin="0,-53,0,0" VerticalAlignment="Top" Width="266" Source="Logo.png" Stretch="UniformToFill"/>
+        <Image HorizontalAlignment="Left" Margin="0,-49,0,0" VerticalAlignment="Top"   Source="Logo.png" Height="217" Width="256"  />
 
     </Grid>
 </Window>
