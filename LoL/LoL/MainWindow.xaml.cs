@@ -31,6 +31,17 @@ namespace LoL
             InitializeComponent();
 
             btnSearch.Focus();
+
+            try
+            {
+                ImageBrush myBrush = new ImageBrush();
+                myBrush.ImageSource = new BitmapImage
+                (new Uri(@"pack://application:,,,/LoL;component/HomeBackground.png"));
+                gridMain.Background = myBrush;
+            }
+            catch (Exception )
+            {
+            }
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

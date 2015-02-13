@@ -11,6 +11,7 @@ using CreepScoreAPI;
 using CreepScoreAPI.Constants;
 using HtmlAgilityPack;
 using LoL.Model;
+using Newtonsoft.Json.Linq;
 
 
 namespace LoL
@@ -381,11 +382,46 @@ namespace LoL
             get { return _summonerData.Ranked.stats.totalSessionsPlayed.ToString(); }
         }
 
-        public String TotalTimePlayed
+        public String TotalHoursPlayed
         {
-            get { return _summonerData.TotalTimePlayed; }
+            get { return _summonerData.TotalHoursPlayed; }
         }
 
+        public String TotalDaysPlayed
+        {
+            get { return _summonerData.TotalDaysPlayed; }
+        }
+
+        public String WardScore
+        {
+            get { return _summonerData.WardScore; }
+        }
+
+        public String WardMage
+        {
+            get { return _summonerData.WardMage; }
+        }
+        public String WardAssasin
+        {
+            get { return _summonerData.WardAssasin; }
+        }
+        public String WardMarksman
+        {
+            get { return _summonerData.WardMarksman; }
+        }
+        public String WardFighter
+        {
+            get { return _summonerData.WardFighter; }
+        }
+        public String WardTank
+        {
+            get { return _summonerData.WardTank; }
+        }
+
+        public String WardSupport
+        {
+            get { return _summonerData.WardSupport; }
+        }
 
             /// <summary>
         /// View model constructor
@@ -405,17 +441,44 @@ namespace LoL
                 var doc = web.Load(url);
                 foreach (var node in doc.DocumentNode.SelectNodes("//span[@class='result_pseudo']"))
                 {
-                    _summonerData.TotalTimePlayed = (node.ChildNodes[2].InnerText).Replace('.',',');
+                    _summonerData.TotalHoursPlayed = (node.ChildNodes[2].InnerText).Replace('.',',');
+                    _summonerData.TotalDaysPlayed = (node.ChildNodes[4].InnerText).Replace('.', ',');
                 }               
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                _summonerData.TotalTimePlayed = "N/A";
+                _summonerData.TotalHoursPlayed = "N/A";
+                _summonerData.TotalDaysPlayed = "N/A";
             }
         }
 
         private void QueryWardScore()
         {
+            try
+            {
+                String url = "http://wardscore.loltools.net/wards_core.php?name=" + _summoner.name + "&region=" + SelectedRegion.Code.ToString().ToLower();
+                var json = new WebClient().DownloadString(url);
+                JObject o = JObject.Parse(json);
+
+                _summonerData.WardScore = (String)o["score"];
+                _summonerData.WardMage = ((String)o["wpg"]["wpg_mage"]).Replace(" wpg", "");
+                _summonerData.WardAssasin = ((String)o["wpg"]["wpg_assasin"]).Replace(" wpg", "");
+                _summonerData.WardMarksman = ((String)o["wpg"]["wpg_marksman"]).Replace(" wpg", "");
+                _summonerData.WardFighter = ((String)o["wpg"]["wpg_fighter"]).Replace(" wpg", "");
+                _summonerData.WardTank = ((String)o["wpg"]["wpg_tank"]).Replace(" wpg", "");
+                _summonerData.WardSupport = ((String)o["wpg"]["wpg_support"]).Replace(" wpg", ""); 
+
+            }
+            catch (Exception)
+            {
+                _summonerData.WardScore = "N/A";
+                _summonerData.WardMage = "N/A";
+                _summonerData.WardAssasin = "N/A";
+                _summonerData.WardMarksman = "N/A";
+                _summonerData.WardFighter = "N/A";
+                _summonerData.WardTank = "N/A";
+                _summonerData.WardSupport = "N/A";
+            }
         }
 
 
@@ -480,7 +543,7 @@ namespace LoL
 
             var a = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
             foreach (var o in (from x in a.playerStatSummaries
-                               where x.playerStatSummaryTypeString == "RankedSolo5x5"
+                               where x.playerStatSummaryTypeString == "Unranked"
                                select x))
             {
                 _summonerData.Normal = o;
@@ -547,8 +610,17 @@ namespace LoL
             OnPropertyChanged("AverageFarm");
             OnPropertyChanged("AverageKDA");
             OnPropertyChanged("TotalGames");
-            OnPropertyChanged("TotalTimePlayed");
-        }
+            OnPropertyChanged("TotalHoursPlayed");
+            OnPropertyChanged("TotalDaysPlayed");
+
+            OnPropertyChanged("WardScore");
+            OnPropertyChanged("WardMage");
+            OnPropertyChanged("WardAssasin");
+            OnPropertyChanged("WardMarksman");
+            OnPropertyChanged("WardFighter");
+            OnPropertyChanged("WardTank");
+            OnPropertyChanged("WardSupport");
+       }
     }
 
 
