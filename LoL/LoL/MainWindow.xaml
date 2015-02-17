@@ -4,9 +4,34 @@
         Title="League Scanner" Height="768" Width="1024" WindowStartupLocation="CenterScreen"
         MinWidth="800"
         MinHeight="600">
-    <Grid Background="DarkBlue">
+    <Grid Background="#8AD3F3">
         <TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,97,0,10" VerticalAlignment="Stretch" >
-            <TabItem Header="Home" FontSize="14" Padding="10,0,10,0">
+            <TabItem Header="Home" FontSize="16" Padding="10,0,10,0" >
+                <TabItem.Style>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Grid>
+                                        <Border  Name="Border" Margin="0 0 0 0" BorderThickness="0 0 0 0" >
+                                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2" RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="Blue" /> 
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter TargetName="Border" Property="BorderThickness" Value="0 0 0 0" /> 
+                                        </Trigger> 
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabItem.Style>
                 <Grid x:Name="gridMain" Background="Gray" >
                     <!-- <Grid.RowDefinitions>
                         <RowDefinition Height="120"/>
@@ -35,10 +60,9 @@
                     <TextBlock FontSize="60" Margin="0 100 0 0" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontFamily="DengXian">LOL Scanner</TextBlock>
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding Path=SelectedRegion, Mode=TwoWay}" Margin="0 0 10 0" Height="30" Width="170" VerticalAlignment="Center" VerticalContentAlignment="Center"  Background="White">
-         
+                            <ComboBox ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding Path=SelectedRegion, Mode=TwoWay}" Margin="0 0 10 0" Height="30" Width="170" VerticalAlignment="Center" VerticalContentAlignment="Center"  Background="#8AD3F3">
                             </ComboBox>
-                            <TextBox x:Name="tbSummonerName"  FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0 0 10 0" Height="30" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                            <TextBox Background="#8AD3F3" x:Name="tbSummonerName"  FontSize="16" Text="{Binding Path=SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0 0 10 0" Height="30" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                             <Button x:Name="btnSearch"  FontSize="16" Click="Button_Click" KeyDown="Button_KeyDown" Foreground="White" Height="30" Width="60" VerticalAlignment="Center" Content="Search">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
@@ -67,8 +91,33 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Summoner Lookup" FontSize="14"  Padding="10,0,10,0" IsEnabled="{Binding TabPagesEnabled}">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Summoner Lookup" FontSize="16"  Padding="10,0,10,0" IsEnabled="{Binding TabPagesEnabled}">
+                <TabItem.Style>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Grid>
+                                        <Border  Name="Border" Margin="0 0 0 0" BorderThickness="0 0 0 0" >
+                                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2" RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="Blue" />
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter TargetName="Border" Property="BorderThickness" Value="0 0 0 0" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabItem.Style>
+                <Grid Background="Black" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="496*"/>
@@ -80,7 +129,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.ColumnSpan="2">Top five champions</Label>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10 0 0 0">Top five champions</TextBlock>
                     <Grid Grid.Row="1" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -90,9 +139,10 @@
                             <ColumnDefinition Width="*"/>
 
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock  FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ1Name}"></TextBlock>
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ1Name}"></TextBlock>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -103,17 +153,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Games:</TextBlock>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ1Games}" Foreground="Blue"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Games:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ1Games}" Foreground="LightBlue"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ1Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0" >Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ1Looses}" Foreground="Red"/>
                             </Grid>
-                        </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        </StackPanel> 
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding Champ2Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock  FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ2Name}"></TextBlock>
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ2Name}"></TextBlock>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -124,17 +175,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Games:</TextBlock>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ2Games}" Foreground="Blue"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Games:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ2Games}" Foreground="LightBlue"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ2Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0" >Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ2Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1" Source="{Binding Champ3Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock  FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ3Name}"></TextBlock>
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ3Name}"></TextBlock>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -145,17 +197,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Games:</TextBlock>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ3Games}" Foreground="Blue"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Games:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ3Games}" Foreground="LightBlue"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ3Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0" >Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ3Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ4Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock  FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ4Name}"></TextBlock>
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ4Name}"></TextBlock>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -166,17 +219,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Games:</TextBlock>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ4Games}" Foreground="Blue"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Games:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ4Games}" Foreground="LightBlue"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ4Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0" >Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ4Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ5Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock  FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ5Name}"></TextBlock>
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding Champ5Name}"></TextBlock>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -188,10 +242,10 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Games:</TextBlock>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ5Games}" Foreground="Blue"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Champ5Games}" Foreground="LightBlue"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="0 0 10 0" >Wins:</TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Champ5Wins}" Foreground="Green"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0"  FontSize="14" Margin="0 0 10 0" >Losses:</TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="1"  FontSize="14" Text="{Binding Champ5Looses}" Foreground="Red"/>
                             </Grid>
                         </StackPanel>
@@ -207,25 +261,28 @@
                             <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0">Ranked Ratings</Label>
-                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Team 3v3</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
+                        <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="0">Ranked Ratings</TextBlock>
+                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                            <TextBlock Margin="0 10 0 0" FontSize="18" HorizontalAlignment="Center">Team 3v3</TextBlock>
+                            <Image  Margin="1 1 1 20" Source="{Binding Team3v3Image}"/>
+                            <!--<TextBlock  FontSize="18" HorizontalAlignment="Center">Stats</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Solo 5v5</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                            <TextBlock  Margin="0 10 0 0"  FontSize="18" HorizontalAlignment="Center">Solo 5v5</TextBlock>
+                            <Image Margin="1 1 1 20" Source="{Binding Solo5v5Image}"/>
+                            <!--<TextBlock  FontSize="18" HorizontalAlignment="Center">Stats</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
-                        <StackPanel Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Team 5v5</Label>
-                            <Label  FontSize="18" HorizontalAlignment="Center">Stats</Label>
+                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <StackPanel Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                            <TextBlock Margin="0 10 0 0"  FontSize="18" HorizontalAlignment="Center">Team 5v5</TextBlock>
+                            <Image  Margin="1 1 1 20" Source="{Binding Team5v5Image}"/>
+                            <!--<TextBlock  FontSize="18" HorizontalAlignment="Center">Stats</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
-                        <Label Margin="10 0 0 0"  Height="30" Grid.Column="4">Statistics</Label>
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="1" Grid.Column="3" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <TextBlock Margin="10 0 0 0"   Grid.Column="4" VerticalAlignment="Center">Statistics</TextBlock>
                         <Grid Grid.Row="1" Grid.Column="3" >
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -250,34 +307,34 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="60*"/>
+                                            <ColumnDefinition Width="55*"/>
                                             <ColumnDefinition Width="40*"/>
-                                            <ColumnDefinition Width="60*"/>
+                                            <ColumnDefinition Width="55*"/>
                                             <ColumnDefinition Width="40*"/>
-                                            <ColumnDefinition Width="60*"/>
+                                            <ColumnDefinition Width="70*"/>
                                             <ColumnDefinition Width="40*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center">Ranked 5v5:</TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Kills:</TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" >Ranked 5v5:</TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="5 0 10 0" >Kills:</TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding KillsRanked}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Deaths:</TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="14" Margin="5 0 10 0" >Deaths:</TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14" Text="{Binding DeathsRanked}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Assists:</TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" >Assists:</TextBlock>
                                         <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="14" Text="{Binding AssistsRanked}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="4" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Double kills:</TextBlock>
+                                        <TextBlock Grid.Row="4" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" >Double kills:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="1"  FontSize="14" Text="{Binding DoubleKills}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="5" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Triple kills:</TextBlock>
+                                        <TextBlock Grid.Row="5" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" >Triple kills:</TextBlock>
                                         <TextBlock Grid.Row="5" Grid.Column="1"  FontSize="14" Text="{Binding TripleKills}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="6" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Quadra kills:</TextBlock>
+                                        <TextBlock Grid.Row="6" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" >Quadra kills:</TextBlock>
                                         <TextBlock Grid.Row="6" Grid.Column="1"  FontSize="14" Text="{Binding QuadraKills}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="7" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Penta kills:</TextBlock>
+                                        <TextBlock Grid.Row="7" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" >Penta kills:</TextBlock>
                                         <TextBlock Grid.Row="7" Grid.Column="1"  FontSize="14" Text="{Binding PentaKills}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5">W/L:</TextBlock>
+                                        <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5" >W/L:</TextBlock>
                                         <TextBlock Grid.Row="8" Grid.Column="1"  FontSize="14" Text="{Binding WLRanked}" Foreground="Green"/>
 
 
-                                        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Normal 5v5:</TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Kills:</TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" >Normal 5v5:</TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" >Kills:</TextBlock>
                                         <TextBlock Grid.Row="1" Grid.Column="3"  FontSize="14" Text="{Binding KillsNormal}" Foreground="Green"/>
                                        <!-- <TextBlock Grid.Row="2" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Deaths:</TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="3"  FontSize="14" Text="{Binding DeathsNormal}" Foreground="Green"/>
@@ -285,144 +342,101 @@
                                         <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding AssistsNormal}" Foreground="Green"/>
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Wins:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="Green"/> -->
-                                        <TextBlock Grid.Row="2" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Assists:</TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" >Assists:</TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="3"  FontSize="14" Text="{Binding AssistsNormal}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Wins:</TextBlock>
-                                        <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="Green"/> 
+                                        <TextBlock Grid.Row="3" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" >Wins:</TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="Green"/>
 
-                                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6" FontSize="16" Margin="10 5 10 5">Ranked Averages:</TextBlock>
-                                        <TextBlock Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Average KDA:</TextBlock>
+                                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6" FontSize="16" Margin="10 5 10 5" >Ranked Averages:</TextBlock>
+                                        <TextBlock Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 10 0" >Average KDA:</TextBlock>
                                         <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding AverageKDA}" Foreground="Green"/>
                                         <!-- <TextBlock Grid.Row="1" Grid.Column="3" FontSize="14" Text="{Binding AverageKills}" Foreground="Green"/> -->
-                                        <TextBlock Grid.Row="12" Grid.Column="0" FontSize="14" Margin="5 0 10 0">Average Gold:</TextBlock>
+                                        <TextBlock Grid.Row="12" Grid.Column="0" FontSize="14" Margin="5 0 0 0" >Average Gold:</TextBlock>
                                         <TextBlock Grid.Row="12" Grid.Column="1" FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="13" Grid.Column="0"  FontSize="14" Margin="5 0 10 0">Average Farm:</TextBlock>
+                                        <TextBlock Grid.Row="13" Grid.Column="0"  FontSize="14" Margin="5 0 0 0" >Average Farm:</TextBlock>
                                         <TextBlock Grid.Row="13" Grid.Column="1"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Green"/>
                                         <!--  <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/> 
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Farms:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Green"/>-->
-                                        <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0 0 50 0">Total time played:</TextBlock>
+                                        <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0 0 50 0" >Total time played:</TextBlock>
 
                                         <StackPanel Grid.Row="11" Grid.Column="3" Margin="20,0,0,0" Grid.ColumnSpan="2" Orientation="Horizontal">
                                             <TextBlock  FontSize="14" Text="{Binding TotalHoursPlayed}"  Foreground="Green"/>
-                                            <TextBlock  FontSize="14" Text="hours (" Margin="5,0,0,0" />
+                                            <TextBlock  FontSize="14" Text="hours (" Margin="5,0,0,0"  />
                                             <TextBlock  FontSize="14" Text="{Binding TotalDaysPlayed}"  Foreground="Green"/>
-                                            <TextBlock  FontSize="14" Text="days)" Margin="5,0,0,0" />
+                                            <TextBlock  FontSize="14" Text="days)" Margin="5,0,0,0"  />
                                         </StackPanel>
 
                                         <TextBlock Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,50,0" >Total:</TextBlock>
                                         <TextBlock Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalGames}" Margin="20,0,0,0" Foreground="Green"/>
                                         <!--<TextBlock Grid.Row="7" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
                                         <TextBlock Grid.Row="8" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock> -->
-                                        <TextBlock Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center" >Ward score:</TextBlock>
-                                        <TextBlock Grid.Row="1" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="14" Margin="5 0 10 0">Your ward score is:</TextBlock>
-                                        <TextBlock Grid.Row="2" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Score:</TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center"  >Ward score:</TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="14" Margin="5 0 60 0" >Your ward score is:</TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="5"  FontSize="14" Text="{Binding Warding}" Margin="10 0 0 0" Foreground="Green"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" >Score:</TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="5"  FontSize="14" Text="{Binding WardScore}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Mage:</TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" >Mage:</TextBlock>
                                         <TextBlock Grid.Row="3" Grid.Column="5"  FontSize="14" Text="{Binding WardMage}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="4" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Assasin:</TextBlock>
+                                        <TextBlock Grid.Row="4" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" >Assasin:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="5"  FontSize="14" Text="{Binding WardAssasin}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="5" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Marskman:</TextBlock>
+                                        <TextBlock Grid.Row="5" Grid.Column="4"  FontSize="14" Margin="5 0 10 0"  >Marskman:</TextBlock>
                                         <TextBlock Grid.Row="5" Grid.Column="5"  FontSize="14" Text="{Binding WardMarksman}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="6" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Fighter:</TextBlock>
+                                        <TextBlock Grid.Row="6" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" >Fighter:</TextBlock>
                                         <TextBlock Grid.Row="6" Grid.Column="5"  FontSize="14" Text="{Binding WardFighter}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="7" Grid.Column="4"  FontSize="14" Margin="5 0 10 0">Tank:</TextBlock>
+                                        <TextBlock Grid.Row="7" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" >Tank:</TextBlock>
                                         <TextBlock Grid.Row="7" Grid.Column="5"  FontSize="14" Text="{Binding WardTank}" Foreground="Green"/>
-                                        <TextBlock Grid.Row="8" Grid.Column="4"  FontSize="14" Margin="5 0 10 5">Support:</TextBlock>
+                                        <TextBlock Grid.Row="8" Grid.Column="4"  FontSize="14" Margin="5 0 10 5" >Support:</TextBlock>
                                         <TextBlock Grid.Row="8" Grid.Column="5"  FontSize="14" Text="{Binding WardSupport}" Foreground="Green"/>
 
-                                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                                        <Border Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
-                                        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="9"  BorderBrush="Black" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
-                                        <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="9"  BorderBrush="Black" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
+                                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
+                                        <Border Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                                        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
+                                        <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
                                     </Grid>
                                 </StackPanel>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Label Grid.Row="3" Grid.ColumnSpan="2">Recent Champs</Label>
+                    <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2">Recent Champs</TextBlock>
                     <Grid Grid.Row="4" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                          <!--  <ColumnDefinition Width="*"/> -->
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp1Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champ I</Label>
+                            <!--<TextBlock  FontSize="18" HorizontalAlignment="Center">Champ I</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp2Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champ II</Label>
+                           <!-- <TextBlock  FontSize="18" HorizontalAlignment="Center">Champ II</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp3Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champ III</Label>
+                           <!-- <TextBlock  FontSize="18" HorizontalAlignment="Center">Champ III</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                        <Image Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp4Image}" Opacity="0.7"/>
                         <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champ IV</Label>
+                            <!--<TextBlock  FontSize="18" HorizontalAlignment="Center">Champ IV</TextBlock> -->
                         </StackPanel>
-                        <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                        <!-- <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
                         <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Label  FontSize="18" HorizontalAlignment="Center">Champ V</Label>
-                        </StackPanel>
+                            <TextBlock  FontSize="18" HorizontalAlignment="Center">Champ V</TextBlock>
+                        </StackPanel> -->
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Career Averages" FontSize="14" Padding="10,0,10,0" IsEnabled="{Binding TabPagesEnabled}" Visibility="Hidden">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="10*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="16*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="171*"/>
-                        <ColumnDefinition Width="404*"/>
-                        <ColumnDefinition Width="404*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.RowSpan="10" Grid.Column="3" Grid.Row="0" BorderBrush="Black" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
-                    <Border Grid.RowSpan="10" Grid.Column="4" Grid.Row="0" BorderBrush="Black" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
-                    <Border Grid.Row="0" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="0" Grid.Column="3" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="152,18,151,18">RANKED 5v5</TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="23,19,54,19">Average Kills:</TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19" Foreground="Green" Text="{Binding AverageKills}"></TextBlock>
-                    <Border Grid.Row="1" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="2" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="13,19,43,19">Average Deaths:</TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19" Foreground="Green" Text="{Binding AverageDeaths}"></TextBlock>
-                    <Border Grid.Row="2" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="3" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,51,19">Average Gold:</TextBlock>
-                    <TextBlock Grid.Row="3" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19" Foreground="Green" Text="{Binding AverageGold}"></TextBlock>
-                    <Border Grid.Row="3" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="4" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19,19,49,19">Average Farm:</TextBlock>
-                    <TextBlock Grid.Row="4" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19" Foreground="Green" Text="{Binding AverageFarms}"></TextBlock>
-                    <Border Grid.Row="4" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="5" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="27,20,58,19">Ward Score:</TextBlock>
-                    <Border Grid.Row="5" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="6" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19">Total:</TextBlock>
-                    <TextBlock Grid.Row="6" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,19,55,19" Foreground="Green" Text="{Binding TotalGames}"></TextBlock>
-                    <Border Grid.Row="6" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="7" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="14,20,29,19">Average Game time:</TextBlock>
-                    <Border Grid.Row="7" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="8" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="51,19,81,19">Wins:</TextBlock>
-                    <Border Grid.Row="8" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                    <TextBlock Grid.Row="9" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="45,20,76,19">Losses:</TextBlock>
-                    <Border Grid.Row="9" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
+      
+        
+            </TabControl>
         <Image HorizontalAlignment="Left" Margin="0,-49,0,0" VerticalAlignment="Top"   Source="Logo.png" Height="146" Width="256" Stretch="UniformToFill" />
 
     </Grid>

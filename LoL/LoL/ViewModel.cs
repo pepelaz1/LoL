@@ -5,8 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using CreepScoreAPI;
 using CreepScoreAPI.Constants;
 using HtmlAgilityPack;
@@ -33,6 +37,23 @@ namespace LoL
         private const String _apiKey = "84185186-2f61-402e-a832-126172fd0234";
         private const int _limit_per_10s = 10;
         private const int _limit_per_10m = 500;
+
+        // Error string
+        private String _last_error;
+        public String LastError
+        {
+            get {
+                switch (_last_error)
+                {
+                    case "503":
+                        return "Service unavailable";
+                    case "404":
+                        return "Summoner not found";
+                    default:
+                        return _last_error;
+                }
+            }
+        }
 
         // Current summoner
         private Summoner _summoner = null;
@@ -136,8 +157,8 @@ namespace LoL
         {
             get {
                 
-                return _summoner != null;
-                //return true;
+                //return _summoner != null;
+                return true;
             }
         }
 
@@ -148,8 +169,18 @@ namespace LoL
         // Current summoner ranked stats
         private RankedStats _rankedStats = null;
 
-        // Current summoner's champion data
+        // Current summoner's top 5champion data
         private List<ChampData> _champData = new List<ChampData>();
+        public List<ChampData> ChampData
+        {
+            get { return _champData; }
+        }
+
+        private List<ChampData> _rchampData = new List<ChampData>();
+        public List<ChampData> RChampData
+        {
+            get { return _rchampData; }
+        }
 
         // Top 5 champs names
         public String Champ1Name 
@@ -175,6 +206,46 @@ namespace LoL
         public String Champ5Name
         {
             get { return _champData.Count() > 4 ? _champData[4].Static.name : ""; }
+        }
+
+        // Top 5 champs images
+        public ImageSource Champ1Image
+        {
+            get
+            {
+                return _champData.Count() > 0 ? _champData[0].Picture : null;
+            }
+        }
+
+        public ImageSource Champ2Image
+        {
+            get {
+                return _champData.Count() > 1 ? _champData[1].Picture : null; 
+            }
+        }
+
+        public ImageSource Champ3Image
+        {
+            get
+            {
+                return _champData.Count() > 2 ? _champData[2].Picture : null;
+            }
+        }
+
+        public ImageSource Champ4Image
+        {
+            get
+            {
+                return _champData.Count() > 3 ? _champData[3].Picture : null;
+            }
+        }
+
+        public ImageSource Champ5Image
+        {
+            get
+            {
+                return _champData.Count() > 4 ? _champData[4].Picture : null;
+            }
         }
 
         // Top 5 champs total games count
@@ -392,6 +463,11 @@ namespace LoL
             get { return _summonerData.TotalDaysPlayed; }
         }
 
+        public String Warding
+        {
+            get { return _summonerData.Warding; }
+        }
+
         public String WardScore
         {
             get { return _summonerData.WardScore; }
@@ -423,7 +499,44 @@ namespace LoL
             get { return _summonerData.WardSupport; }
         }
 
-            /// <summary>
+
+        ///
+        /// Recent champs
+        /// 
+        public ImageSource RChamp1Image
+        {
+            get { return _rchampData.Count() > 0 ? _rchampData[0].Picture : null; }
+        }
+
+        public ImageSource RChamp2Image
+        {
+            get { return _rchampData.Count() > 1 ? _rchampData[1].Picture : null;  }
+        }
+
+        public ImageSource RChamp3Image
+        {
+            get { return _rchampData.Count() > 2 ? _rchampData[2].Picture : null; }
+        }
+
+        public ImageSource RChamp4Image
+        {
+            get { return _rchampData.Count() > 3 ? _rchampData[3].Picture : null; }
+        }
+
+        // Personal Ratings
+        public ImageSource Team3v3Image
+        {
+            get {return _summonerData.Team3v3Image ;}
+        }
+        public ImageSource Solo5v5Image
+        {
+            get { return _summonerData.Solo5v5Image; }
+        }
+        public ImageSource Team5v5Image 
+        {
+            get { return _summonerData.Team5v5Image; }
+        }
+        /// <summary>
         /// View model constructor
         /// </summary>
         public ViewModel()
@@ -460,6 +573,7 @@ namespace LoL
                 var json = new WebClient().DownloadString(url);
                 JObject o = JObject.Parse(json);
 
+                _summonerData.Warding = (String)o["yourwarding"];
                 _summonerData.WardScore = (String)o["score"];
                 _summonerData.WardMage = ((String)o["wpg"]["wpg_mage"]).Replace(" wpg", "");
                 _summonerData.WardAssasin = ((String)o["wpg"]["wpg_assasin"]).Replace(" wpg", "");
@@ -481,13 +595,125 @@ namespace LoL
             }
         }
 
+   
+        public void QueryChampionImages()
+        {
+            try
+            {
+                var web = new HtmlWeb();
+                var doc = web.Load("http://leagueoflegends.wikia.com/wiki/Category:Champion_squares");
+                for (int i = 0; i < _champData.Count();i++ )
+                {
+                    String href = "/wiki/File:" + _champData[i].Static.name + "Square.png";
+
+                    foreach (var img in (from x in doc.DocumentNode.SelectNodes("//a[@href][@class='image']")
+                                         where x.Attributes["href"].Value == href 
+                                         select x.ChildNodes[0]))
+                    {
+
+                        _champData[i].Picture = LoadImageFromURL(img.Attributes[6].Value);
+                    }
+                }
+             
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public void QueryLolking()
+        {
+            try
+            {
+                // Query total time information from the lolking website
+                // Recent champs images
+                String url = "http://www.lolking.net/summoner/" + SelectedRegion.Code.ToString().ToLower() + "/" + _summoner.id + "";
+                var web = new HtmlWeb();
+                var doc = web.Load(url);
+                Regex regex = new Regex(@"//([-\w\.]+)+(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)?");
+
+                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
+                {
+                    String s = node.Attributes["style"].Value;
+                    Match match = regex.Match(s);
+                    if (match.Success)
+                    {
+
+                        String val = "http:" + match.Value;
+                        ChampData cd = new ChampData();
+                        cd.Picture = LoadImageFromURL(val); 
+                        _rchampData.Add(cd);
+                    }
+                }
+
+                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='personal_ratings_heading']"))
+                {
+                    if (node.InnerText == "Team 3v3")
+                    {
+                        Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
+                        if (match.Success)
+                             _summonerData.Team3v3Image = LoadImageFromURL("http:" + match.Value);
+                    }
+                    else if (node.InnerText == "Solo 5v5")
+                    {
+                        Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
+                        if (match.Success)
+                            _summonerData.Solo5v5Image = LoadImageFromURL("http:" + match.Value);
+                    }
+                    else if (node.InnerText == "Team 5v5")
+                    {
+                        Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
+                        if (match.Success)
+                            _summonerData.Team5v5Image = LoadImageFromURL("http:" + match.Value);
+                    } 
+
+                }
+                // Personal ratings
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public BitmapImage LoadImageFromURL(String url)
+        {
+            var image = new BitmapImage();
+            int BytesToRead = 100;
+
+            WebRequest request = WebRequest.Create(new Uri(url, UriKind.Absolute));
+            request.Timeout = -1;
+            WebResponse response = request.GetResponse();
+            Stream responseStream = response.GetResponseStream();
+            BinaryReader reader = new BinaryReader(responseStream);
+            MemoryStream memoryStream = new MemoryStream();
+
+            byte[] bytebuffer = new byte[BytesToRead];
+            int bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
+
+            while (bytesRead > 0)
+            {
+                memoryStream.Write(bytebuffer, 0, bytesRead);
+                bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
+            }
+
+            image.BeginInit();
+            memoryStream.Seek(0, SeekOrigin.Begin);
+
+            image.StreamSource = memoryStream;
+            image.EndInit();
+            return image;
+        }
 
         public async Task QueryData()
         {                  
             _summoner = null;
             _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
             if (_summoner == null)
-                throw new Exception("Summoner not found");
+            {
+                _last_error = _api.ErrorString;
+                throw new Exception("");
+            }
 
             _rankedStats = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
             _champData.Clear();
@@ -499,6 +725,9 @@ namespace LoL
                                select x).Take(5))
             {
                 var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
+
+                
+              
 
                 //var matches = await _summoner.RetrieveMatchHistory(SelectedRegion.Code);
                 /* var summs = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
@@ -552,6 +781,8 @@ namespace LoL
 
             QueryTotalTime();
             QueryWardScore();
+            QueryChampionImages();
+            QueryLolking();
            
 
             SummonerName = "Summoner Name...";
@@ -566,6 +797,12 @@ namespace LoL
             OnPropertyChanged("Champ3Name");
             OnPropertyChanged("Champ4Name");
             OnPropertyChanged("Champ5Name");
+
+            OnPropertyChanged("Champ1Image");
+            OnPropertyChanged("Champ2Image");
+            OnPropertyChanged("Champ3Image");
+            OnPropertyChanged("Champ4Image");
+            OnPropertyChanged("Champ5Image");
 
             OnPropertyChanged("Champ1Games");
             OnPropertyChanged("Champ2Games");
@@ -613,6 +850,7 @@ namespace LoL
             OnPropertyChanged("TotalHoursPlayed");
             OnPropertyChanged("TotalDaysPlayed");
 
+            OnPropertyChanged("Warding");
             OnPropertyChanged("WardScore");
             OnPropertyChanged("WardMage");
             OnPropertyChanged("WardAssasin");
@@ -620,6 +858,15 @@ namespace LoL
             OnPropertyChanged("WardFighter");
             OnPropertyChanged("WardTank");
             OnPropertyChanged("WardSupport");
+
+            OnPropertyChanged("RChamp1Image");
+            OnPropertyChanged("RChamp2Image");
+            OnPropertyChanged("RChamp3Image");
+            OnPropertyChanged("RChamp4Image");
+
+            OnPropertyChanged("Team3v3Image");
+            OnPropertyChanged("Solo5v5Image");
+            OnPropertyChanged("Team5v5Image");
        }
     }
 
