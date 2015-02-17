@@ -725,39 +725,6 @@ namespace LoL
                                select x).Take(5))
             {
                 var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
-
-                
-              
-
-                //var matches = await _summoner.RetrieveMatchHistory(SelectedRegion.Code);
-                /* var summs = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
-
-                 var teams = await _summoner.RetrieveTeams();
-                 var team = teams.First().Value.First();*/
-                
-
-                /*   var league = await _summoner.RetrieveLeague();
-
-                   var leagueEntry = await _summoner.RetrieveLeagueEntry();
-                
-                   var l = league.First();
-                   var y = league.First().Value.First().entries;
-
-                   var t = (from x in y
-                           where x.wins == 6
-                           select x).ToList();*/
-                
-                //var games = await _summoner.RetrieveRecentGames();
-
-
-                //var rg = await _api.RetrieveSummonerSpellData(SelectedRegion.Code, (int)_summoner.id, StaticDataConstants.SpellData.All);
-                /*   var ss = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
-                
-                   List<int> champs = new List<int>();
-                   champs.Add(o.id);
-                   var lst = await _summoner.RetrieveMatchHistory(SelectedRegion.Code, champs);*/
-
-
                 ChampData cd = new ChampData() { Static = static1, Stats = o };
                 _champData.Add(cd);
             }

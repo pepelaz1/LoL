@@ -40,6 +40,8 @@ namespace LoL
                 myBrush.ImageSource = new BitmapImage
                 (new Uri(@"pack://application:,,,/LoL;component/HomeBackground.png"));
                 gridMain.Background = myBrush;
+
+                cmbLookups.Background = Brushes.Blue;
             }
             catch (Exception )
             {
