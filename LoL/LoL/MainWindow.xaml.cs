@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LoL.Model;
 
 
 namespace LoL
@@ -41,7 +43,8 @@ namespace LoL
                 (new Uri(@"pack://application:,,,/LoL;component/HomeBackground.png"));
                 gridMain.Background = myBrush;
 
-                cmbLookups.Background = Brushes.Blue;
+                //cmbLookups.Background = Brushes.Blue;
+                btnMinimize.Content = (char)0x25A1;
             }
             catch (Exception )
             {
@@ -84,8 +87,42 @@ namespace LoL
                 QueryData();
             }
         }
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
 
+        private void Form_Close(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Form_Min(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
        
+        private void Form_max_restore(object sender, RoutedEventArgs e)
+        {
+            WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButton b = e.Source as ToggleButton;
+            if (b.IsChecked == true)
+                lbRegions.Visibility = Visibility.Visible;
+            else
+                lbRegions.Visibility = Visibility.Collapsed;
+        }
+
+        private void lbRegions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbRegions.Visibility = Visibility.Collapsed;
+            btnRegions.IsChecked = false;
+            tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
+        }
+
        
     }
 }
