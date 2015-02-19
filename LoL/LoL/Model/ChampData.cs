@@ -12,6 +12,12 @@ namespace LoL.Model
     {
         public ChampionStatic Static {get;set;}
         public ChampionStats Stats { get; set; }
+        public String Name { get; set; }
         public BitmapImage Picture { get; set; }
+        public String Kills { get; set; }
+        public String Deaths { get; set; }
+        public String Assists { get; set; }
+        public String Wins { get; set; }
+        public String Looses { get; set; }        
     }
 }

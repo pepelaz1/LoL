@@ -10,9 +10,13 @@ namespace LoL.Model
 {
     public class SummonerData
     {
-        public PlayerStatsSummary Normal { get; set; } 
+     //   public PlayerStatsSummary Normal { get; set; } 
 
         public ChampionStats Ranked { get; set; }
+
+        public String KillsNormal { get; set; }
+        public String AssistsNormal { get; set; }
+        public String WinsNormal { get; set; }
 
         public String TotalHoursPlayed { get; set; }// in hours
 
@@ -26,8 +30,24 @@ namespace LoL.Model
         public String WardFighter { get; set; }
         public String WardTank { get; set; }
         public String WardSupport { get; set; }
+
         public ImageSource Team3v3Image { get; set; }
+        public String Team3v3Rating { get; set; }
+        public String Team3v3LeaguePoints { get; set; }
+        public String Team3v3Wins { get; set; }
+        public String Team3v3Looses { get; set; }
+
         public ImageSource Solo5v5Image { get; set; }
+        public String Solo5v5Rating { get; set; }
+        public String Solo5v5LeaguePoints { get; set; }
+        public String Solo5v5Wins { get; set; }
+        public String Solo5v5Looses { get; set; }
+
         public ImageSource Team5v5Image { get; set; }
+        public String Team5v5Rating { get; set; }
+        public String Team5v5LeaguePoints { get; set; }
+        public String Team5v5Wins { get; set; }
+        public String Team5v5Looses { get; set; }
+
     }
 }

@@ -28,7 +28,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -140,9 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="summonerbutton1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="header.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bg.png" />

@@ -43,8 +43,8 @@ namespace LoL
                 (new Uri(@"pack://application:,,,/LoL;component/HomeBackground.png"));
                 gridMain.Background = myBrush;
 
-                //cmbLookups.Background = Brushes.Blue;
                 btnMinimize.Content = (char)0x25A1;
+                _vm.SelectedRegion = lbRegions.SelectedItem as Region;
             }
             catch (Exception )
             {
@@ -56,7 +56,6 @@ namespace LoL
         {
             QueryData();
         }
-
       
         private async void QueryData()
         {
