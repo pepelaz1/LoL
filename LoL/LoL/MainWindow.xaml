@@ -16,7 +16,7 @@
     </Window.Resources>
 
     <Border BorderThickness="4" Background="{StaticResource ContentBack}" BorderBrush="#000066">
-        <Grid Background="#000066" >
+        <Grid Background="#323232" >
             <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Margin="5" Foreground="White" FontWeight="Bold"></TextBlock>
 
             <Button Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top"  Foreground="#000066" Width="20" Margin="2,2,5,2" Click="Form_Close">x</Button>
@@ -141,6 +141,7 @@
                             <RowDefinition Height="100*"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Fill="#0f0f0f" Margin="1 1 1 1"/>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10 0 0 0"><Run Text="Top five champions"/></TextBlock>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
@@ -152,8 +153,13 @@
 
                             </Grid.ColumnDefinitions>
                             <Border Grid.Row="0" Grid.Column="0"  BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <Rectangle Grid.Row="0" Grid.Column="0"  Fill="#1b1b1b" Margin="1 1 1 1"/>
+                            <Rectangle Grid.Row="0" Grid.Column="1"  Fill="#1b1b1b" Margin="1 1 1 1"/>
+                            <Rectangle Grid.Row="0" Grid.Column="2"  Fill="#1b1b1b" Margin="1 1 1 1"/>
+                            <Rectangle Grid.Row="0" Grid.Column="3"  Fill="#1b1b1b" Margin="1 1 1 1"/>
+                            <Rectangle Grid.Row="0" Grid.Column="4"  Fill="#1b1b1b" Margin="1 1 1 1"/>
                             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>
-                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ1Name}"/>
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -166,14 +172,17 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ1Kills}" Foreground="Yellow"/>
+                                    <!--<TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ1Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ1Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ1Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ1Assists}" Foreground="Yellow"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ1WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ1Assists}" Foreground="White"/>-->
+                                     
+                                    <TextBlock Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="1"  FontSize="12" Text="{Binding Champ1KDA}" Foreground="White"/>                                    
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="1"  FontSize="12" Text="{Binding Champ1WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -192,13 +201,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ2Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ2Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ2Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ2Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ2Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ2Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ2WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ2WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -217,13 +226,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ3Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ3Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ3Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ3Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ3Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ3Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ3WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ3WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -242,13 +251,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ4Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ4Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ4Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ4Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ4Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ4Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ4WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ4WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -267,13 +276,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ5Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Champ5Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ5Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding Champ5Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ5Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding Champ5Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ5WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding Champ5WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -288,78 +297,85 @@
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
+                            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Fill="#0f0f0f" Margin="1 1 1 1"/>
+                            <Rectangle Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="3" Fill="#121212" Margin="1 1 1 1"/>
                             <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="3" BorderThickness="0.3 0 0 0" SnapsToDevicePixels="True"/>
                             <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="0"><Run Text="Ranked Ratings"/></TextBlock>
                             <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                            <Rectangle Grid.Row="3" Grid.Column="0"  Fill="#1b1b1b" Margin="1 1 1 1"/>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock Margin="0 5 0 0" FontSize="18" HorizontalAlignment="Center"><Run Text="Team 3v3"/></TextBlock>
                                 <Image  Margin="0 0 0 0" Source="{Binding Team3v3Image}"/>
                                 <TextBlock Margin="0 0 0 0" FontSize="20" HorizontalAlignment="Center" Text="{Binding Team3v3Rating}"/>
                                 <TextBlock Margin="0 0 0 10" FontSize="12" Foreground="Silver" HorizontalAlignment="Center" Text="{Binding Team3v3LeaguePoints}"/>
                                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock  FontSize="16" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Team3v3Wins}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Wins"/>
+                                    <TextBlock  FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Team3v3Wins}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Wins"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock  FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Team3v3Looses}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Looses"/>
+                                    <TextBlock  FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Team3v3Looses}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
                             <Border Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <Rectangle Grid.Row="3" Grid.Column="1"  Fill="#1b1b1b" Margin="1 1 1 1"/>
                             <StackPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock  Margin="0 5 0 0"  FontSize="18" HorizontalAlignment="Center"><Run Text="Solo 5v5"/></TextBlock>
                                 <Image Margin="0 0 0 0" Source="{Binding Solo5v5Image}"/>
                                 <TextBlock Margin="0 0 0 0" FontSize="20" HorizontalAlignment="Center" Text="{Binding Solo5v5Rating}"/>
                                 <TextBlock Margin="0 0 0 10" FontSize="12" Foreground="Silver" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Solo5v5LeaguePoints}"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 5 5 0">
-                                    <TextBlock  FontSize="16" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Solo5v5Wins}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Wins"/>
+                                    <TextBlock  FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Solo5v5Wins}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Wins"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0">
-                                    <TextBlock  FontSize="18" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Solo5v5Looses}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Looses"/>
+                                    <TextBlock  FontSize="18" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Solo5v5Looses}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
                             <Border Grid.Row="1" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                            <Rectangle Grid.Row="3" Grid.Column="2"  Fill="#1b1b1b" Margin="1 1 1 1"/>
                             <StackPanel Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock Margin="0 5 0 0"  FontSize="18" HorizontalAlignment="Center"><Run Text="Team 5v5"/></TextBlock>
                                 <Image  Margin="0 0 0 0" Source="{Binding Team5v5Image}"/>
                                 <TextBlock Margin="0 0 0 0" FontSize="20" HorizontalAlignment="Center" Text="{Binding Team5v5Rating}"/>
                                 <TextBlock Margin="0 0 0 10" FontSize="12" Foreground="Silver" HorizontalAlignment="Center" Text="{Binding Team5v5LeaguePoints}"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0">
-                                    <TextBlock  FontSize="16" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Team5v5Wins}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Wins"/>
+                                    <TextBlock  FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Team5v5Wins}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Wins"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0">
-                                    <TextBlock  FontSize="18" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Team5v5Looses}"/>
-                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Looses"/>
+                                    <TextBlock  FontSize="18" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Team5v5Looses}" Margin="0 0 5 0"/>
+                                    <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
                             <Border Grid.Row="1" Grid.Column="3" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <Border Grid.Row="0" Grid.Column="5" BorderBrush="White"  Grid.ColumnSpan="3" BorderThickness="0.3 0 0.3 0" SnapsToDevicePixels="True"/>
                             <TextBlock Margin="10 0 0 0"   Grid.Column="4" VerticalAlignment="Center"><Run Text="Statistics"/></TextBlock>
-                            <Grid Grid.Row="1" Grid.Column="3" >
-                                <Grid>
+
+                            <Grid Grid.Row="1" Grid.Column="3" VerticalAlignment="Stretch" >
+                                <Grid VerticalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel  Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" >
-                                        <Grid>
+                                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" >
+                                        <Grid >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
+                                                <RowDefinition Height="24"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="24"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="22"/>
+                                                <RowDefinition Height="100*"/>
+                                                
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="55*"/>
@@ -369,28 +385,32 @@
                                                 <ColumnDefinition Width="70*"/>
                                                 <ColumnDefinition Width="40*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Ranked 5v5:"/></TextBlock>
+                                            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#0f0f0f" Margin="1 1 1 1"/>
+                                            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Fill="#1b1b1b" Margin="1 1 1 1"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Ranked 5v5:"/></TextBlock>                                            
                                             <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding KillsRanked}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding KillsRanked}" Foreground="White"/>
                                             <TextBlock Grid.Row="2" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14" Text="{Binding DeathsRanked}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14" Text="{Binding DeathsRanked}" Foreground="White"/>
                                             <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                            <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="14" Text="{Binding AssistsRanked}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="14" Text="{Binding AssistsRanked}" Foreground="White"/>
                                             <TextBlock Grid.Row="4" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Double kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="4" Grid.Column="1"  FontSize="14" Text="{Binding DoubleKills}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="1"  FontSize="14" Text="{Binding DoubleKills}" Foreground="White"/>
                                             <TextBlock Grid.Row="5" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Triple kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="5" Grid.Column="1"  FontSize="14" Text="{Binding TripleKills}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="5" Grid.Column="1"  FontSize="14" Text="{Binding TripleKills}" Foreground="White"/>
                                             <TextBlock Grid.Row="6" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Quadra kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="6" Grid.Column="1"  FontSize="14" Text="{Binding QuadraKills}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="6" Grid.Column="1"  FontSize="14" Text="{Binding QuadraKills}" Foreground="White"/>
                                             <TextBlock Grid.Row="7" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Penta kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="7" Grid.Column="1"  FontSize="14" Text="{Binding PentaKills}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="7" Grid.Column="1"  FontSize="14" Text="{Binding PentaKills}" Foreground="White"/>
                                             <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5" ><Run Text="W/L:"/></TextBlock>
-                                            <TextBlock Grid.Row="8" Grid.Column="1"  FontSize="14" Text="{Binding WLRanked}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="8" Grid.Column="1"  FontSize="14" Text="{Binding WLRanked}" Foreground="White"/>
 
 
+                                            <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Fill="#0f0f0f" Margin="1 1 1 1"/>
+                                            <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="8" Fill="#1b1b1b" Margin="1 1 1 1"/>
                                             <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Normal 5v5:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                            <TextBlock Grid.Row="1" Grid.Column="3"  FontSize="14" Text="{Binding KillsNormal}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="3"  FontSize="14" Text="{Binding KillsNormal}" Foreground="White"/>
                                             <!-- <TextBlock Grid.Row="2" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Deaths:</TextBlock>
                                         <TextBlock Grid.Row="2" Grid.Column="3"  FontSize="14" Text="{Binding DeathsNormal}" Foreground="Green"/>
                                         <TextBlock Grid.Row="3" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Assists:</TextBlock>
@@ -398,62 +418,74 @@
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="5 0 10 0">Wins:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="Green"/> -->
                                             <TextBlock Grid.Row="2" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                            <TextBlock Grid.Row="2" Grid.Column="3"  FontSize="14" Text="{Binding AssistsNormal}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="3"  FontSize="14" Text="{Binding AssistsNormal}" Foreground="White"/>
                                             <TextBlock Grid.Row="3" Grid.Column="2"  FontSize="14" Margin="5 0 10 0" ><Run Text="Wins:"/></TextBlock>
-                                            <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding WinsNormal}" Foreground="White"/>
 
-                                            <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6" FontSize="16" Margin="10 5 10 5" ><Run Text="Ranked Averages:"/></TextBlock>
-                                            <TextBlock Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Average KDA:"/></TextBlock>
-                                            <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding AverageKDA}" Foreground="Yellow"/>
+                                            <Rectangle Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Fill="#0f0f0f" Margin="1 1 1 1"/>
+                                            <Rectangle Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="8" Fill="#1b1b1b" Margin="1 1 1 1"/>
+
+                                            <Rectangle Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Fill="#0f0f0f" Margin="1 1 1 1"/>
+                                            <Rectangle Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="4" Fill="#1b1b1b" Margin="1 1 1 1"/>
+                                            <Rectangle Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="6" Fill="#1b1b1b" Margin="1 1 1 1" Height="1000"/>
+                                            
+                                            
+                                            <TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" FontSize="16" Margin="10 0 10 0" ><Run Text="Ranked Averages:"/></TextBlock>
+                                            <TextBlock Grid.Row="10" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Average KDA:"/></TextBlock>
+                                            <TextBlock Grid.Row="10" Grid.Column="1" FontSize="14" Text="{Binding AverageKDA}" Foreground="White"/>
                                             <!-- <TextBlock Grid.Row="1" Grid.Column="3" FontSize="14" Text="{Binding AverageKills}" Foreground="Green"/> -->
-                                            <TextBlock Grid.Row="12" Grid.Column="0" FontSize="14" Margin="5 0 0 0" ><Run Text="Average Gold:"/></TextBlock>
-                                            <TextBlock Grid.Row="12" Grid.Column="1" FontSize="14" Text="{Binding AverageGold}" Foreground="Yellow"/>
-                                            <TextBlock Grid.Row="13" Grid.Column="0"  FontSize="14" Margin="5 0 0 0" ><Run Text="Average Farm:"/></TextBlock>
-                                            <TextBlock Grid.Row="13" Grid.Column="1"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 0 0" ><Run Text="Average Gold:"/></TextBlock>
+                                            <TextBlock Grid.Row="11" Grid.Column="1" FontSize="14" Text="{Binding AverageGold}" Foreground="White"/>
+                                            <TextBlock Grid.Row="12" Grid.Column="0"  FontSize="14" Margin="5 0 0 0" ><Run Text="Average Farm:"/></TextBlock>
+                                            <TextBlock Grid.Row="12" Grid.Column="1"  FontSize="14" Text="{Binding AverageFarm}" Foreground="White"/>
                                             <!--  <TextBlock Grid.Row="3" Grid.Column="3"  FontSize="14" Text="{Binding AverageGold}" Foreground="Green"/> 
                                         <TextBlock Grid.Row="4" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Farms:</TextBlock>
                                         <TextBlock Grid.Row="4" Grid.Column="3"  FontSize="14" Text="{Binding AverageFarm}" Foreground="Green"/>-->
-                                            <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0 0 50 0" ><Run Text="Total time played:"/></TextBlock>
-
-                                            <StackPanel Grid.Row="11" Grid.Column="3" Margin="20,0,0,0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                                <TextBlock  FontSize="14" Text="{Binding TotalHoursPlayed}"  Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0 0 50 0" ><Run Text="Total time played:"/></TextBlock>
+                                            <StackPanel Grid.Row="10" Grid.Column="3" Margin="20,0,0,0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                                <TextBlock  FontSize="14" Text="{Binding TotalHoursPlayed}"  Foreground="White"/>
                                                 <TextBlock  FontSize="14" Text="hours (" Margin="5,0,0,0"  />
-                                                <TextBlock  FontSize="14" Text="{Binding TotalDaysPlayed}"  Foreground="Yellow"/>
+                                                <TextBlock  FontSize="14" Text="{Binding TotalDaysPlayed}"  Foreground="White"/>
                                                 <TextBlock  FontSize="14" Text="days)" Margin="5,0,0,0"  />
                                             </StackPanel>
+                                            <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,50,0" ><Run Text="Total:"/></TextBlock>
+                                            <TextBlock Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalGames}" Margin="20,0,0,0" Foreground="White"/>
+                                         
 
-                                            <TextBlock Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,50,0" ><Run Text="Total:"/></TextBlock>
-                                            <TextBlock Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalGames}" Margin="20,0,0,0" Foreground="Yellow"/>
+
+
                                             <!--<TextBlock Grid.Row="7" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Wins:</TextBlock>
-                                        <TextBlock Grid.Row="8" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock> -->
+                                             <TextBlock Grid.Row="8" Grid.Column="2"  FontSize="14" Margin="0 0 10 0">Losses:</TextBlock> -->
                                             <TextBlock Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center"  ><Run Text="Ward score:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="14" Margin="5 0 60 0" ><Run Text="Your ward score is:"/></TextBlock>
-                                            <TextBlock Grid.Row="1" Grid.Column="5"  FontSize="14" Text="{Binding Warding}" Margin="10 0 0 0" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="5"  FontSize="14" Text="{Binding Warding}" Margin="10 0 0 0" Foreground="White"/>
                                             <TextBlock Grid.Row="2" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Score:"/></TextBlock>
-                                            <TextBlock Grid.Row="2" Grid.Column="5"  FontSize="14" Text="{Binding WardScore}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="5"  FontSize="14" Text="{Binding WardScore}" Foreground="White"/>
                                             <TextBlock Grid.Row="3" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Mage:"/></TextBlock>
-                                            <TextBlock Grid.Row="3" Grid.Column="5"  FontSize="14" Text="{Binding WardMage}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="5"  FontSize="14" Text="{Binding WardMage}" Foreground="White"/>
                                             <TextBlock Grid.Row="4" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Assasin:"/></TextBlock>
-                                            <TextBlock Grid.Row="4" Grid.Column="5"  FontSize="14" Text="{Binding WardAssasin}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="5"  FontSize="14" Text="{Binding WardAssasin}" Foreground="White"/>
                                             <TextBlock Grid.Row="5" Grid.Column="4"  FontSize="14" Margin="5 0 10 0"  ><Run Text="Marskman:"/></TextBlock>
-                                            <TextBlock Grid.Row="5" Grid.Column="5"  FontSize="14" Text="{Binding WardMarksman}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="5" Grid.Column="5"  FontSize="14" Text="{Binding WardMarksman}" Foreground="White"/>
                                             <TextBlock Grid.Row="6" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Fighter:"/></TextBlock>
-                                            <TextBlock Grid.Row="6" Grid.Column="5"  FontSize="14" Text="{Binding WardFighter}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="6" Grid.Column="5"  FontSize="14" Text="{Binding WardFighter}" Foreground="White"/>
                                             <TextBlock Grid.Row="7" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Tank:"/></TextBlock>
-                                            <TextBlock Grid.Row="7" Grid.Column="5"  FontSize="14" Text="{Binding WardTank}" Foreground="Yellow"/>
+                                            <TextBlock Grid.Row="7" Grid.Column="5"  FontSize="14" Text="{Binding WardTank}" Foreground="White"/>
                                             <TextBlock Grid.Row="8" Grid.Column="4"  FontSize="14" Margin="5 0 10 5" ><Run Text="Support:"/></TextBlock>
-                                            <TextBlock Grid.Row="8" Grid.Column="5"  FontSize="14" Text="{Binding WardSupport}" Foreground="Yellow"/>
-
+                                            <TextBlock Grid.Row="8" Grid.Column="5"  FontSize="14" Text="{Binding WardSupport}" Foreground="White"/>
+                                            
                                             <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
-                                            <Border Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0.3 0.03 0.3" SnapsToDevicePixels="True"/>
+                                            <Border Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0.3 0.03 0.3" SnapsToDevicePixels="True"/>
                                             <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
                                             <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
                             </Grid>
+
                         </Grid>
                         <Border Grid.Row="3" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0 0.3 0" SnapsToDevicePixels="True"/>
+                        <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Fill="#0f0f0f" Margin="1 1 1 1"/>
                         <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2"><Run Text="Recent Champs"/></TextBlock>
                         <Grid Grid.Row="4" Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
@@ -479,13 +511,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp1Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp1WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp1WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -504,13 +536,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp2Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp2WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp2WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -529,13 +561,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp3Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp3WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp3WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
@@ -554,13 +586,13 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Kills:"/></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Kills}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Kills}" Foreground="White"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Deaths:"/></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Deaths}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Deaths}" Foreground="White"/>
                                     <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Margin="0 0 10 0" ><Run Text="Assists:"/></TextBlock>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Assists}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="12" Text="{Binding RChamp4Assists}" Foreground="White"/>
                                     <TextBlock Grid.Row="3" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
-                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp4WL}" Foreground="Yellow"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"  FontSize="12" Text="{Binding RChamp4WL}" Foreground="White"/>
                                 </Grid>
                             </StackPanel>
                           

@@ -26,7 +26,7 @@ namespace LoL
        // private RiotApi _api;
 
         // Creep.Score api wrapper
-        private CreepScore _api;
+       // private CreepScore _api;
 
         // Riot api key generated at https://developer.riotgames.com/ (user - pepelaz1) and it's limits
        
@@ -145,13 +145,13 @@ namespace LoL
         }
 
         /// Property returning received summoner level
-        public String SummonerLevel
-        {
-            get
-            {
-                return (_summoner == null) ? "" : _summoner.summonerLevel.ToString();
-            }
-        }
+        //public String SummonerLevel
+        //{
+        //    get
+        //    {
+        //        return (_summoner == null) ? "" : _summoner.summonerLevel.ToString();
+        //    }
+        //}
 
         public bool TabPagesEnabled 
         {
@@ -323,6 +323,13 @@ namespace LoL
             get { return _champData.Count() > 4 ? _champData[4].Assists : ""; }
         }
 
+
+        public String Champ1KDA
+        {
+            get { return Champ1Kills +"/"+Champ1Deaths+"/"+ Champ1Assists; }
+        }
+
+
         public String Champ1WL
         {
             get { return _champData.Count() > 0 ? _champData[0].Wins + "/" + _champData[0].Looses : ""; }
@@ -483,50 +490,49 @@ namespace LoL
         // Ranked 5v5 stat
         public String KillsRanked
         {
-            get { return _summonerData.Ranked.stats.totalChampionKills.ToString(); }
+            get { return _summonerData.KillsRanked; }
         }
 
         public String DeathsRanked
         {
-            get { return _summonerData.Ranked.stats.totalDeathsPerSession.ToString(); }
+            get { return _summonerData.DeathsRanked; }
         }
 
         public String AssistsRanked
         {
-            get { return _summonerData.Ranked.stats.totalAssists.ToString(); }
+            get { return _summonerData.AssistsRanked; }
         }
 
         public String DoubleKills
         {
-            get { return _summonerData.Ranked.stats.totalDoubleKills.ToString(); }
+            get { return _summonerData.DoubleKills; }
         }
 
         public String TripleKills
         {
-            get { return _summonerData.Ranked.stats.totalTripleKills.ToString(); }
+            get { return _summonerData.TripleKills; }
         }
 
         public String QuadraKills
         {
-            get { return _summonerData.Ranked.stats.totalQuadraKills.ToString(); }
+            get { return _summonerData.QuadraKills; }
         }
 
         public String PentaKills
         {
-            get { return _summonerData.Ranked.stats.totalPentaKills.ToString(); }
+            get { return _summonerData.PentaKills; }
         }
 
         public String WinsRanked
         {
-            get { return _summonerData.Ranked.stats.totalSessionsWon.ToString(); }
+            get { return _summonerData.Solo5v5Wins; }
         }
 
         public String LossesRanked
         {
-            get { return _summonerData.Ranked.stats.totalSessionsLost.ToString(); }
+            get { return _summonerData.Solo5v5Losses; }
         }
-
-
+        
         public String WLRanked
         {
             get { return WinsRanked + "/" + LossesRanked; }
@@ -566,19 +572,19 @@ namespace LoL
                 
         public String AverageKills
         {
-            get { return (_summonerData.Ranked.stats.totalChampionKills / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+            get { return (double.Parse(KillsRanked) / double.Parse(TotalGames)).ToString("N0"); }
         }
 
         public String AverageDeaths
         {
-            get { return (_summonerData.Ranked.stats.totalDeathsPerSession / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+            get { return (double.Parse(DeathsRanked) / double.Parse(TotalGames)).ToString("N0"); }
         }
 
         public String AverageAssist
         {
-            get { return (_summonerData.Ranked.stats.totalAssists / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+            get { return (double.Parse(AssistsRanked) / double.Parse(TotalGames)).ToString("N0"); }
         }
-
+        
         public string AverageKDA
         {
             get { return AverageKills + "/" + AverageDeaths + "/" + AverageAssist; }
@@ -586,16 +592,16 @@ namespace LoL
 
         public String AverageGold
         {
-            get { return ((int)(_summonerData.Ranked.stats.totalGoldEarned / _summonerData.Ranked.stats.totalSessionsPlayed)).ToString("N0"); }
+            get { return ((int)(int.Parse(_summonerData.GoldEarned)/ double.Parse(TotalGames))).ToString("N0"); }
         }
 
         public String AverageFarm
         {
-            get { return (_summonerData.Ranked.stats.totalMinionKills / _summonerData.Ranked.stats.totalSessionsPlayed).ToString(); }
+            get { return (int.Parse(_summonerData.MinionKills)/ double.Parse(TotalGames)).ToString("N0"); }
         }
         public String TotalGames
         {
-            get { return _summonerData.Ranked.stats.totalSessionsPlayed.ToString(); }
+            get { return (int.Parse(_summonerData.Solo5v5Wins) + int.Parse(_summonerData.Solo5v5Losses)).ToString(); }
         }
 
         public String TotalHoursPlayed
@@ -664,7 +670,7 @@ namespace LoL
         }
         public String Team3v3Looses
         {
-            get { return _summonerData.Team3v3Looses; }
+            get { return _summonerData.Team3v3Losses; }
         }
         public ImageSource Solo5v5Image
         {
@@ -684,7 +690,7 @@ namespace LoL
         }
         public String Solo5v5Looses
         {
-            get { return _summonerData.Solo5v5Looses; }
+            get { return _summonerData.Solo5v5Losses; }
         }
         public ImageSource Team5v5Image 
         {
@@ -704,7 +710,7 @@ namespace LoL
         }
         public String Team5v5Looses
         {
-            get { return _summonerData.Team5v5Looses; }
+            get { return _summonerData.Team5v5Losses; }
         }
         /// <summary>
         /// View model constructor
@@ -817,6 +823,17 @@ namespace LoL
                         _summonerData.WinsNormal = vals[0].InnerText;
                         _summonerData.AssistsNormal = vals[2].InnerText;
                     }
+                    else if (node.InnerText == "Ranked")
+                    {
+                        var vals = node.NextSibling.NextSibling.SelectNodes("tbody/tr/td[@class='lifetime_stats_val']");
+                        _summonerData.PentaKills = vals[0].InnerText;
+                        _summonerData.QuadraKills = vals[1].InnerText;
+                        _summonerData.TripleKills = vals[2].InnerText;
+                        _summonerData.DoubleKills = vals[3].InnerText;
+                        _summonerData.KillsRanked = vals[4].InnerText;
+                        _summonerData.AssistsRanked = vals[6].InnerText;
+
+                    }
                 }
 
                 String ss = "";
@@ -908,7 +925,7 @@ namespace LoL
 
                             var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
                             _summonerData.Team3v3Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Team3v3Looses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Team3v3Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     }
                     else if (node.InnerText == "Solo 5v5")
@@ -923,7 +940,7 @@ namespace LoL
 
                             var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
                             _summonerData.Solo5v5Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Solo5v5Looses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Solo5v5Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     }
                     else if (node.InnerText == "Team 5v5")
@@ -938,7 +955,7 @@ namespace LoL
 
                             var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
                             _summonerData.Team5v5Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Team5v5Looses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Team5v5Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     } 
 
@@ -948,6 +965,28 @@ namespace LoL
             {
                 int t = 4;
                 t = 4;
+            }
+        }
+
+        
+        public async Task QueryApi()
+        {
+            try
+            {
+                var api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
+                _summonerData.Summoner = await api.RetrieveSummoner(SelectedRegion.Code, _summoner_name);
+                _summonerData.RankedStats = await _summonerData.Summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
+
+                 ChampionStats aggs = (from x in _summonerData.RankedStats.champions
+                                        where x.id == 0
+                                        select x).First();
+
+                _summonerData.DeathsRanked = aggs.stats.totalDeathsPerSession.ToString();
+                _summonerData.GoldEarned = aggs.stats.totalGoldEarned.ToString();
+                _summonerData.MinionKills = aggs.stats.totalMinionKills.ToString();                 
+            }
+            catch(Exception)
+            {
             }
         }
 
@@ -1024,18 +1063,38 @@ namespace LoL
             QueryLolking();
             QueryTotalTime();
             QueryWardScore();
+            await QueryApi();
+
           //  QueryChampionImages();
          
-           
-
             SummonerName = "Summoner Name...";
 
             OnPropertyChanged("SummonerInfoVisibility");
             OnPropertyChanged("SummonerTitle");
             OnPropertyChanged("SummonerLevel");
             OnPropertyChanged("TabPagesEnabled");
+         
+
+            for (int i = 1; i < 6; i++ )
+            {
+                String s = "Champ" + i.ToString() + "Name";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Image";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Kills";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Deaths";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Assists";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "WL";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "KDA";
+                OnPropertyChanged(s);
+            }
+
             
-            OnPropertyChanged("Champ1Name");
+           /* OnPropertyChanged("Champ1Name");
             OnPropertyChanged("Champ2Name");
             OnPropertyChanged("Champ3Name");
             OnPropertyChanged("Champ4Name");
@@ -1069,7 +1128,7 @@ namespace LoL
             OnPropertyChanged("Champ2Assists");
             OnPropertyChanged("Champ3Assists");
             OnPropertyChanged("Champ4Assists");
-            OnPropertyChanged("Champ5Assists");
+            OnPropertyChanged("Champ5Assists");*/
 
             OnPropertyChanged("KillsRanked");
             OnPropertyChanged("DeathsRanked");
