@@ -712,6 +712,7 @@ namespace LoL
         {
             get { return _summonerData.Team5v5Losses; }
         }
+
         /// <summary>
         /// View model constructor
         /// </summary>
