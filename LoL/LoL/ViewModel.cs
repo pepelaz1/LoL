@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -32,7 +33,10 @@ namespace LoL
        
         // My key
         //private const String _apiKey = "1502847e-8f39-4fe7-a338-1c0895692085";
-        
+
+
+        NumberFormatInfo _nfi = null;
+
         // Pat's key
         private const String _apiKey = "84185186-2f61-402e-a832-126172fd0234";
         private const int _limit_per_10s = 10;
@@ -329,30 +333,80 @@ namespace LoL
             get { return Champ1Kills +"/"+Champ1Deaths+"/"+ Champ1Assists; }
         }
 
+        public String Champ1Wins
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Wins : ""; }
+        }
+
+        public String Champ2Wins
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Wins : ""; }
+        }
+
+        public String Champ3Wins
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Wins : ""; }
+        }
+
+        public String Champ4Wins
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Wins : ""; }
+        }
+
+        public String Champ5Wins
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Wins : ""; }
+        }
+        
+        public String Champ1Losses
+        {
+            get { return _champData.Count() > 0 ? _champData[0].Losses : ""; }
+        }
+
+        public String Champ2Losses
+        {
+            get { return _champData.Count() > 1 ? _champData[1].Losses : ""; }
+        }
+
+        public String Champ3Losses
+        {
+            get { return _champData.Count() > 2 ? _champData[2].Losses : ""; }
+        }
+
+        public String Champ4Losses
+        {
+            get { return _champData.Count() > 3 ? _champData[3].Losses : ""; }
+        }
+
+        public String Champ5Losses
+        {
+            get { return _champData.Count() > 4 ? _champData[4].Losses : ""; }
+        }
+
 
         public String Champ1WL
         {
-            get { return _champData.Count() > 0 ? _champData[0].Wins + "/" + _champData[0].Looses : ""; }
+            get { return _champData.Count() > 0 ? _champData[0].Wins + "/" + Champ1Losses : ""; }
         }
 
         public String Champ2WL
         {
-            get { return _champData.Count() > 1 ? _champData[1].Wins + "/" + _champData[1].Looses : ""; }
+            get { return _champData.Count() > 1 ? _champData[1].Wins + "/" + Champ2Losses : ""; }
         }
 
         public String Champ3WL
         {
-            get { return _champData.Count() > 2 ? _champData[2].Wins + "/" + _champData[2].Looses : ""; }
+            get { return _champData.Count() > 2 ? _champData[2].Wins + "/" + Champ3Losses : ""; }
         }
 
         public String Champ4WL
         {
-            get { return _champData.Count() > 3 ? _champData[3].Wins + "/" + _champData[3].Looses : ""; }
+            get { return _champData.Count() > 3 ? _champData[3].Wins + "/" + Champ4Losses : ""; }
         }
 
         public String Champ5WL
         {
-            get { return _champData.Count() > 4 ? _champData[4].Wins + "/" + _champData[4].Looses : ""; }
+            get { return _champData.Count() > 4 ? _champData[4].Wins + "/" + Champ5Losses : ""; }
         }
         #endregion
 
@@ -461,24 +515,70 @@ namespace LoL
             get { return _rchampData.Count() > 3 ? _rchampData[3].Assists : ""; }
         }
 
+
+
+        public String RChamp1Wins
+        {
+            get { return _rchampData.Count() > 0 ? _rchampData[0].Wins : ""; }
+        }
+
+        public String RChamp2Wins
+        {
+            get { return _rchampData.Count() > 1 ? _rchampData[1].Wins : ""; }
+        }
+
+        public String RChamp3Wins
+        {
+            get { return _rchampData.Count() > 2 ? _rchampData[2].Wins : ""; }
+        }
+
+        public String RChamp4Wins
+        {
+            get { return _rchampData.Count() > 3 ? _rchampData[3].Wins : ""; }
+        }
+
+
+        public String RChamp1Losses
+        {
+            get { return _rchampData.Count() > 0 ? _rchampData[0].Losses : ""; }
+        }
+
+        public String RChamp2Losses
+        {
+            get { return _rchampData.Count() > 1 ? _rchampData[1].Losses : ""; }
+        }
+
+        public String RChamp3Losses
+        {
+            get { return _rchampData.Count() > 2 ? _rchampData[2].Losses : ""; }
+        }
+
+        public String RChamp4Losses
+        {
+            get { return _rchampData.Count() > 3 ? _rchampData[3].Losses : ""; }
+        }
+
+       
+
+
         public String RChamp1WL
         {
-            get { return _rchampData.Count() > 0 ? _rchampData[0].Wins + "/" + _rchampData[0].Looses : ""; }
+            get { return RChamp1Wins + "/" + RChamp1Losses; }
         }
 
         public String RChamp2WL
         {
-            get { return _rchampData.Count() > 1 ? _rchampData[1].Wins + "/" + _rchampData[1].Looses : ""; }
+            get { return RChamp2Wins + "/" + RChamp2Losses; }
         }
 
         public String RChamp3WL
         {
-            get { return _rchampData.Count() > 2 ? _rchampData[2].Wins + "/" + _rchampData[2].Looses : ""; }
+            get { return RChamp3Wins + "/" + RChamp3Losses; }
         }
 
         public String RChamp4WL
         {
-            get { return _rchampData.Count() > 3 ? _rchampData[3].Wins + "/" + _rchampData[3].Looses : ""; }
+            get { return RChamp4Wins + "/" + RChamp4Losses; }
         }
         #endregion
 
@@ -569,25 +669,27 @@ namespace LoL
         /// Career averages
         /// 
 
-                
+        
         public String AverageKills
         {
-            get { return (double.Parse(KillsRanked) / double.Parse(TotalGames)).ToString("N0"); }
+            get { 
+                return (double.Parse(KillsRanked, NumberStyles.Integer | NumberStyles.AllowThousands, _nfi) / double.Parse(TotalGames)).ToString("N0"); 
+            }
         }
 
         public String AverageDeaths
         {
-            get { return (double.Parse(DeathsRanked) / double.Parse(TotalGames)).ToString("N0"); }
+            get { return (double.Parse(DeathsRanked, NumberStyles.Integer | NumberStyles.AllowThousands, _nfi) / double.Parse(TotalGames)).ToString("N0"); }
         }
 
-        public String AverageAssist
+        public String AverageAssists
         {
-            get { return (double.Parse(AssistsRanked) / double.Parse(TotalGames)).ToString("N0"); }
+            get { return (double.Parse(AssistsRanked, NumberStyles.Integer | NumberStyles.AllowThousands, _nfi) / double.Parse(TotalGames)).ToString("N0"); }
         }
         
         public string AverageKDA
         {
-            get { return AverageKills + "/" + AverageDeaths + "/" + AverageAssist; }
+            get { return AverageKills + "/" + AverageDeaths + "/" + AverageAssists; }
         }
 
         public String AverageGold
@@ -719,6 +821,14 @@ namespace LoL
         public ViewModel()
         {
             // _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
+             _nfi = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
+             _nfi.NumberGroupSeparator = ",";
+           
+
+          
+           //  double n = double.Parse(s, NumberStyles.Integer | NumberStyles.AllowThousands, _nfi);
+            // int t = 5;
+
         }
 
         private void QueryTotalTime()
@@ -866,7 +976,7 @@ namespace LoL
                          Assists = node.ChildNodes[15].InnerText.Split("/".ToCharArray())[0],
                          Name = node.ChildNodes[1].InnerText.TrimStart("\n ".ToCharArray()).TrimEnd("\n ".ToCharArray()),
                          Wins = node.ChildNodes[3].InnerText,
-                         Looses = node.ChildNodes[5].InnerText };
+                         Losses = node.ChildNodes[5].InnerText };
                     Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
                     if (match.Success)
                     {
@@ -902,7 +1012,7 @@ namespace LoL
 		                    Deaths = node.SelectNodes("div")[2].SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
 		                    Assists = node.SelectNodes("div")[2].SelectNodes("div")[2].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
                             Wins = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[0].ChildNodes[0].InnerText,
-                            Looses = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[1].ChildNodes[0].InnerText
+                            Losses = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[1].ChildNodes[0].InnerText
 
                         };
                         cd.Picture = LoadImageFromURL(val);
@@ -1088,48 +1198,33 @@ namespace LoL
                 OnPropertyChanged(s);
                 s = "Champ" + i.ToString() + "Assists";
                 OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Wins";
+                OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Losses";
+                OnPropertyChanged(s);
                 s = "Champ" + i.ToString() + "WL";
                 OnPropertyChanged(s);
                 s = "Champ" + i.ToString() + "KDA";
                 OnPropertyChanged(s);
+
+                s = "RChamp" + i.ToString() + "Name";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Image";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Wins";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Losses";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "WL";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Kills";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Deaths";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Assists";
+                OnPropertyChanged(s);
             }
-
-            
-           /* OnPropertyChanged("Champ1Name");
-            OnPropertyChanged("Champ2Name");
-            OnPropertyChanged("Champ3Name");
-            OnPropertyChanged("Champ4Name");
-            OnPropertyChanged("Champ5Name");
-
-            OnPropertyChanged("Champ1Image");
-            OnPropertyChanged("Champ2Image");
-            OnPropertyChanged("Champ3Image");
-            OnPropertyChanged("Champ4Image");
-            OnPropertyChanged("Champ5Image");
-
-            OnPropertyChanged("Champ1WL");
-            OnPropertyChanged("Champ2WL");
-            OnPropertyChanged("Champ3WL");
-            OnPropertyChanged("Champ4WL");
-            OnPropertyChanged("Champ5WL");
-
-            OnPropertyChanged("Champ1Kills");
-            OnPropertyChanged("Champ2Kills");
-            OnPropertyChanged("Champ3Kills");
-            OnPropertyChanged("Champ4Kills");
-            OnPropertyChanged("Champ5Kills");
-
-            OnPropertyChanged("Champ1Deaths");
-            OnPropertyChanged("Champ2Deaths");
-            OnPropertyChanged("Champ3Deaths");
-            OnPropertyChanged("Champ4Deaths");
-            OnPropertyChanged("Champ5Deaths");
-
-            OnPropertyChanged("Champ1Assists");
-            OnPropertyChanged("Champ2Assists");
-            OnPropertyChanged("Champ3Assists");
-            OnPropertyChanged("Champ4Assists");
-            OnPropertyChanged("Champ5Assists");*/
+                      
 
             OnPropertyChanged("KillsRanked");
             OnPropertyChanged("DeathsRanked");
@@ -1152,6 +1247,7 @@ namespace LoL
 
             OnPropertyChanged("AverageKills");
             OnPropertyChanged("AverageDeaths");
+            OnPropertyChanged("AverageAssists");
             OnPropertyChanged("AverageGold");
             OnPropertyChanged("AverageFarm");
             OnPropertyChanged("AverageKDA");
@@ -1167,42 +1263,7 @@ namespace LoL
             OnPropertyChanged("WardFighter");
             OnPropertyChanged("WardTank");
             OnPropertyChanged("WardSupport");
-
-            OnPropertyChanged("RChamp1Name");
-            OnPropertyChanged("RChamp2Name");
-            OnPropertyChanged("RChamp3Name");
-            OnPropertyChanged("RChamp4Name");
-            OnPropertyChanged("RChamp5Name");
-
-            OnPropertyChanged("RChamp1Image");
-            OnPropertyChanged("RChamp2Image");
-            OnPropertyChanged("RChamp3Image");
-            OnPropertyChanged("RChamp4Image");
-            OnPropertyChanged("RChamp5Image");
-
-            OnPropertyChanged("RChamp1WL");
-            OnPropertyChanged("RChamp2WL");
-            OnPropertyChanged("RChamp3WL");
-            OnPropertyChanged("RChamp4WL");
-            OnPropertyChanged("RChamp5WL");
-
-            OnPropertyChanged("RChamp1Kills");
-            OnPropertyChanged("RChamp2Kills");
-            OnPropertyChanged("RChamp3Kills");
-            OnPropertyChanged("RChamp4Kills");
-            OnPropertyChanged("RChamp5Kills");
-
-            OnPropertyChanged("RChamp1Deaths");
-            OnPropertyChanged("RChamp2Deaths");
-            OnPropertyChanged("RChamp3Deaths");
-            OnPropertyChanged("RChamp4Deaths");
-            OnPropertyChanged("RChamp5Deaths");
-
-            OnPropertyChanged("RChamp1Assists");
-            OnPropertyChanged("RChamp2Assists");
-            OnPropertyChanged("RChamp3Assists");
-            OnPropertyChanged("RChamp4Assists");
-            OnPropertyChanged("RChamp5Assists");
+                     
 
             OnPropertyChanged("Team3v3Image");
             OnPropertyChanged("Solo5v5Image");

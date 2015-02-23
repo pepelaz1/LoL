@@ -139,7 +139,7 @@ namespace LoL
             canvas.Children.Insert(0, exampleRectangle);*/
 
 
-            if (pnlValues.ActualHeight > 0)
+          /*  if (pnlValues.ActualHeight > 0)
             {
                 canvas.Children.Clear();
                 Rectangle exampleRectangle = new Rectangle();
@@ -148,7 +148,7 @@ namespace LoL
                 SolidColorBrush myBrush = new SolidColorBrush(Color.FromRgb(0x1b, 0x1b, 0x1b));
                 exampleRectangle.Fill = myBrush;
                 canvas.Children.Insert(0, exampleRectangle);
-            }
+            }*/
         }
 
        

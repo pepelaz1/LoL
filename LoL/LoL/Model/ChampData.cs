@@ -18,6 +18,6 @@ namespace LoL.Model
         public String Deaths { get; set; }
         public String Assists { get; set; }
         public String Wins { get; set; }
-        public String Looses { get; set; }        
+        public String Losses { get; set; }        
     }
 }
