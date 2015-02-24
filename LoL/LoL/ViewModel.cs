@@ -60,7 +60,7 @@ namespace LoL
         }
 
         // Current summoner
-        private Summoner _summoner = null;
+        //private Summoner _summoner = null;
 
    
         // List of regions
@@ -133,7 +133,7 @@ namespace LoL
         {
             get
             {
-                return (_summoner == null) ? Visibility.Hidden : Visibility.Visible;
+                return (_summonerData.Summoner == null) ? Visibility.Hidden : Visibility.Visible;
             }
         }
 
@@ -144,7 +144,16 @@ namespace LoL
         {
             get
             {
-                return (_summoner == null) ? "" : _summoner.name;
+                return (_summonerData.Summoner == null) ? "" : "Summoner: " + _summonerData.Summoner.name;
+            }
+        }
+
+
+        public Visibility SummonerTitleVisibility
+        {
+            get
+            {
+                return (_summonerData.Summoner == null) ? Visibility.Hidden : Visibility.Visible;
             }
         }
 
@@ -726,6 +735,19 @@ namespace LoL
             get { return _summonerData.WardScore; }
         }
 
+        public Brush WardScoreColor
+        {
+            get {
+                int n = int.Parse(WardScore);
+                if (n < 500)
+                    return new SolidColorBrush(Colors.Red);
+                else if (n >= 500 && n < 900)
+                    return new SolidColorBrush(Colors.Yellow);
+                else
+                    return new SolidColorBrush(Colors.Green);
+            }
+        }
+
         public String WardMage
         {
             get { return _summonerData.WardMage; }
@@ -1224,7 +1246,9 @@ namespace LoL
                 s = "RChamp" + i.ToString() + "Assists";
                 OnPropertyChanged(s);
             }
-                      
+
+            OnPropertyChanged("SummonerTitle");
+            OnPropertyChanged("SummonerTitleVisibility");
 
             OnPropertyChanged("KillsRanked");
             OnPropertyChanged("DeathsRanked");
@@ -1257,6 +1281,7 @@ namespace LoL
 
             OnPropertyChanged("Warding");
             OnPropertyChanged("WardScore");
+            OnPropertyChanged("WardScoreColor");
             OnPropertyChanged("WardMage");
             OnPropertyChanged("WardAssasin");
             OnPropertyChanged("WardMarksman");
