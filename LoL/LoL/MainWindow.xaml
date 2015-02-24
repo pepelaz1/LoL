@@ -4,7 +4,7 @@
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="LoL.MainWindow"
         Title="League Scanner" Height="768" Width="1024" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
         MinWidth="800"
-        MinHeight="600" SizeChanged="Window_SizeChanged">
+        MinHeight="600" >
     <Window.Resources>
         <LinearGradientBrush x:Key="ContentBack">
             <LinearGradientBrush.GradientStops>
@@ -56,7 +56,7 @@
                     <Grid x:Name="gridMain" Background="#000066" Margin="-2 -2 -2 -2">
                         <TextBlock FontSize="60" Margin="0,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontFamily="DengXian" Grid.Column="1"><Run Text="LOL Scanner"/></TextBlock>
                         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" >
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" >
                                 <!--<ComboBox  x:Name="cmbLookups" ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding SelectedRegion, Mode=TwoWay}" Margin="0 0 10 0" Height="30" Width="180" VerticalAlignment="Center" VerticalContentAlignment="Center" >
                                     <ComboBox.Resources>
                                         <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#8AD3F3" />
@@ -72,7 +72,7 @@
                                     </ToggleButton.Content>
                                 </ToggleButton>
 
-                                <TextBox Background="White" x:Name="tbSummonerName"  FontSize="16" Text="{Binding SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0 0 10 0" Height="30" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox Background="White" x:Name="tbSummonerName"  FontSize="16" Text="{Binding SummonerName, Mode=TwoWay}" GotMouseCapture="tbSummonerName_GotMouseCapture" Margin="0 0 10 0" Height="30" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="tbSummonerName_KeyDown"/>
                                 <Button x:Name="btnSearch"  FontSize="16" Click="Button_Click" KeyDown="Button_KeyDown" Foreground="White" Height="30" Width="60" VerticalAlignment="Center" Content="Search">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">

@@ -122,35 +122,18 @@ namespace LoL
             tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+     
+
+        private void tbSummonerName_KeyDown(object sender, KeyEventArgs e)
         {
-          /*  double d = Canvas.GetLeft(tbRecentChamps);
-            Canvas.SetBottom(rect13, 2000);
-
-            Rectangle exampleRectangle = new Rectangle();
-            exampleRectangle.Width = 150;
-            exampleRectangle.Height = 150;
-            // Create a SolidColorBrush and use it to
-            // paint the rectangle.
-            SolidColorBrush myBrush = new SolidColorBrush(Colors.Green);
-            exampleRectangle.Stroke = Brushes.Red;
-            exampleRectangle.StrokeThickness = 4;
-            exampleRectangle.Fill = myBrush;
-            canvas.Children.Insert(0, exampleRectangle);*/
-
-
-          /*  if (pnlValues.ActualHeight > 0)
+            if (e.Key == Key.Enter)
             {
-                canvas.Children.Clear();
-                Rectangle exampleRectangle = new Rectangle();
-                exampleRectangle.Width = pnlValues.ActualWidth-3;
-                exampleRectangle.Height = pnlValues.ActualHeight - 293;
-                SolidColorBrush myBrush = new SolidColorBrush(Color.FromRgb(0x1b, 0x1b, 0x1b));
-                exampleRectangle.Fill = myBrush;
-                canvas.Children.Insert(0, exampleRectangle);
-            }*/
+                _vm.SummonerName = tbSummonerName.Text;
+                QueryData();
+                e.Handled = true;
+            }
         }
 
-       
+      
     }
 }

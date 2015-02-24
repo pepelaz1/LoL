@@ -1054,11 +1054,10 @@ namespace LoL
                             _summonerData.Team3v3Image = LoadImageFromURL("http:" + match.Value);
                             var node2 =  node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Team3v3Rating = node2.InnerText;
-                            _summonerData.Team3v3LeaguePoints = node2.NextSibling.NextSibling.InnerText;
+                            _summonerData.Team3v3LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText; 
 
-                            var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-                            _summonerData.Team3v3Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Team3v3Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Team3v3Wins = node.ParentNode.SelectNodes("div/span[@class='personal_ratings_wins']")[0].InnerText;
+                            _summonerData.Team3v3Losses = node.ParentNode.SelectNodes("div/span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     }
                     else if (node.InnerText == "Solo 5v5")
@@ -1069,11 +1068,10 @@ namespace LoL
                             _summonerData.Solo5v5Image = LoadImageFromURL("http:" + match.Value);
                             var node2 = node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Solo5v5Rating = node2.InnerText;
-                            _summonerData.Solo5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText;
+                            _summonerData.Solo5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText;
 
-                            var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-                            _summonerData.Solo5v5Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Solo5v5Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Solo5v5Wins =  node.ParentNode.SelectNodes("div/span[@class='personal_ratings_wins']")[0].InnerText;
+                            _summonerData.Solo5v5Losses =  node.ParentNode.SelectNodes("div/span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     }
                     else if (node.InnerText == "Team 5v5")
@@ -1084,11 +1082,10 @@ namespace LoL
                             _summonerData.Team5v5Image = LoadImageFromURL("http:" + match.Value);
                             var node2 = node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Team5v5Rating = node2.InnerText;
-                            _summonerData.Team5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText;
+                            _summonerData.Team5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText; ;
 
-                            var node3 = node.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-                            _summonerData.Team5v5Wins = node3.SelectNodes("span[@class='personal_ratings_wins']")[0].InnerText;
-                            _summonerData.Team5v5Losses = node3.NextSibling.NextSibling.SelectNodes("span[@class='personal_ratings_losses']")[0].InnerText;
+                            _summonerData.Team5v5Wins = node.ParentNode.SelectNodes("div/span[@class='personal_ratings_wins']")[0].InnerText;
+                            _summonerData.Team5v5Losses = node.ParentNode.SelectNodes("div/span[@class='personal_ratings_losses']")[0].InnerText;
                         }
                     } 
 
@@ -1153,46 +1150,7 @@ namespace LoL
         }
 
         public async Task QueryData()
-        {                  
-          //  _summoner = null;
-          //  _summoner = await _api.RetrieveSummoner(SelectedRegion.Code, SummonerName);
-          //  if (_summoner == null)
-          //  {
-           //     _last_error = _api.ErrorString;
-           //     throw new Exception("");
-           // }
-
-           // _rankedStats = await _summoner.RetrieveRankedStats(CreepScore.Season.Season2015);
-          //  _champData.Clear();
-            
-     
-           /* foreach (var o in (from x in _rankedStats.champions
-                               where x.id != 0
-                               orderby x.stats.totalSessionsWon descending, x.stats.totalSessionsPlayed descending
-                               select x).Take(5))
-            {
-                var static1 = await _api.RetrieveChampionData(SelectedRegion.Code, o.id, StaticDataConstants.ChampData.All);
-                ChampData cd = new ChampData() { Static = static1, Stats = o };
-                _champData.Add(cd);
-            }*/
-
-          /*  _summonerData = new SummonerData();         
-            /*foreach (var o in (from x in _rankedStats.champions
-                               where x.id == 0
-                               select x))
-            {
-                _summonerData.Ranked = o;
-            }*/
-
-           /* var a = await _summoner.RetrievePlayerStatsSummaries(CreepScore.Season.Season2015);
-            foreach (var o in (from x in a.playerStatSummaries
-                               where x.playerStatSummaryTypeString == "Unranked"
-                               select x))
-            {
-                _summonerData.Normal = o;
-            }*/
-
-
+        {                
             QueryLolking();
             QueryTotalTime();
             QueryWardScore();
