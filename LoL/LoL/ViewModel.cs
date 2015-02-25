@@ -1008,7 +1008,8 @@ namespace LoL
                     _champData.Add(cd);
                 }
                 
-                // Recent champs            
+                // Recent champs          
+                _rchampData.Clear();
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
                 {
                     String s = node.Attributes["style"].Value;
