@@ -1034,7 +1034,9 @@ namespace LoL
                     }
                 }
                 
+
                 // Recent champs    
+
                 _rchampData.Clear();
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
                 {
