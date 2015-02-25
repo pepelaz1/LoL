@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using CreepScoreAPI;
 using CreepScoreAPI.Constants;
 using HtmlAgilityPack;
@@ -59,8 +60,13 @@ namespace LoL
             }
         }
 
-        // Current summoner
-        //private Summoner _summoner = null;
+     
+        // Banner's uri
+        public String _banner_uri;
+        public String BannerUri
+        {
+            get { return _banner_uri;  }
+        }
 
    
         // List of regions
@@ -986,29 +992,50 @@ namespace LoL
             
                 // Top 5 champs
                  _champData.Clear();
-                foreach( var node in (from x in doc.DocumentNode.SelectNodes("//table[@class='clientsort season_5_ranked_stats']//tbody//tr")
-                                      orderby int.Parse(x.ChildNodes[3].InnerText) descending
-                                      select x).Take(5))
-                {
-
-                     ChampData cd = new ChampData() 
+                 try
+                 {
+                     foreach (var node in (from x in doc.DocumentNode.SelectNodes("//table[@class='clientsort season_5_ranked_stats']//tbody//tr")
+                                           orderby int.Parse(x.ChildNodes[3].InnerText) descending
+                                           select x).Take(5))
                      {
-                         Kills = node.ChildNodes[11].InnerText.Split("/".ToCharArray())[0],
-                         Deaths = node.ChildNodes[13].InnerText.Split("/".ToCharArray())[0],
-                         Assists = node.ChildNodes[15].InnerText.Split("/".ToCharArray())[0],
-                         Name = node.ChildNodes[1].InnerText.TrimStart("\n ".ToCharArray()).TrimEnd("\n ".ToCharArray()),
-                         Wins = node.ChildNodes[3].InnerText,
-                         Losses = node.ChildNodes[5].InnerText };
-                    Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
-                    if (match.Success)
+
+                         ChampData cd = new ChampData()
+                         {
+                             Kills = node.ChildNodes[11].InnerText.Split("/".ToCharArray())[0],
+                             Deaths = node.ChildNodes[13].InnerText.Split("/".ToCharArray())[0],
+                             Assists = node.ChildNodes[15].InnerText.Split("/".ToCharArray())[0],
+                             Name = node.ChildNodes[1].InnerText.TrimStart("\n ".ToCharArray()).TrimEnd("\n ".ToCharArray()),
+                             Wins = node.ChildNodes[3].InnerText,
+                             Losses = node.ChildNodes[5].InnerText
+                         };
+                         Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
+                         if (match.Success)
+                         {
+                             String val = "http:" + match.Value;
+                             cd.Picture = LoadImageFromURL(val);
+                         }
+                         _champData.Add(cd);
+                     }
+                 }
+                catch(Exception ex)
+                {
+                    for (int i = 0; i < 5 - _champData.Count(); i++)
                     {
-                        String val = "http:" + match.Value;
-                        cd.Picture = LoadImageFromURL(val);
+                        ChampData cd = new ChampData()
+                        {
+                            Kills = "?",
+                            Deaths = "?",
+                            Assists = "?",
+                            Name = "?",
+                            Wins = "?",
+                            Losses = "?"
+                        };
+                        _champData.Add(cd);
                     }
-                    _champData.Add(cd);
                 }
                 
-                // Recent champs            
+                // Recent champs    
+                _rchampData.Clear();
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
                 {
                     String s = node.Attributes["style"].Value;
@@ -1268,6 +1295,61 @@ namespace LoL
             OnPropertyChanged("Solo5v5Looses");
             OnPropertyChanged("Team5v5Looses");
        }
+
+        System.Windows.Forms.WebBrowser _wb = new System.Windows.Forms.WebBrowser();
+        public async Task QueryBanner()
+        {
+            try
+            {
+                _wb.DocumentCompleted += _wb_DocumentCompleted;
+                _wb.ScriptErrorsSuppressed = true;
+                _wb.Navigate("http://firekickz.com/");
+              //  _banner_uri = "http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA";
+
+               // var web = new HtmlWeb();
+             //   var doc = web.Load("http://firekickz.com/");
+
+
+                 
+          //      String docText = wb.Document.ToString();
+                
+                 //wc.Get("http://firekickz.com/");
+
+                 int t = 4;
+                
+               /* foreach (var node in doc.DocumentNode.SelectNodes("//body/div[@id='google_flash_inline_div']"))
+                {
+                    _banner_uri = node.Attributes["data"].Value;
+                    break;
+                }*/             
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        private void _wb_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+        {
+            //This line is so you only do the event once   
+            if (e.Url != _wb.Url)
+                return;
+
+
+            //do you actual code        
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            // code goes here
+            int t = 4;
+            t = 4;            
+        }
     }
 
 

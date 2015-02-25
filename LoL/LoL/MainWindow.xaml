@@ -4,7 +4,7 @@
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="LoL.MainWindow"
         Title="League Scanner" Height="768" Width="1024" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None"
         MinWidth="800"
-        MinHeight="600" >
+        MinHeight="600" SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <LinearGradientBrush x:Key="ContentBack">
             <LinearGradientBrush.GradientStops>
@@ -16,16 +16,18 @@
     </Window.Resources>
 
     <Border BorderThickness="4" Background="{StaticResource ContentBack}" BorderBrush="#1b1b1b">
-        <Grid Background="#1b1b1b" >
-            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Margin="5" Foreground="White" FontWeight="Bold"></TextBlock>
-
+        <Grid Background="#1b1b1b" x:Name="grdMain">
+            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Margin="5" Foreground="White" FontWeight="Bold">
+          	</TextBlock>
+       
+            <Border DockPanel.Dock="Top" Width="728" Height="90" HorizontalAlignment="Center"  VerticalAlignment="Top"   Name="_webBrowserPlacementTarget" BorderBrush="Blue" BorderThickness="0" Margin="283,25,5,0"  />
             <Button Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top"  Foreground="#000066" Width="20" Margin="2,2,5,2" Click="Form_Close">x</Button>
             <Button x:Name="btnMinimize"  Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#000066" Width="20" Margin="2,2,27,2" Click="Form_max_restore">har)0x221A</Button>
             <Button  Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#000066" Width="20" Margin="2,2,50,2" Click="Form_Min">_</Button>
             <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="pack://application:,,,/LoL;component/Logo.png"  Width ="279" Stretch="Uniform" Height="315" Margin="0,-57,0,0"   />
             <!--<Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="pack://application:,,,/LoL;component/bg.png" Height="134" Width="1016" Stretch="Fill" /> -->
-            <TextBlock Foreground="Gold" HorizontalAlignment="Right" Margin="0 105 5 0" FontSize="14" Text="{Binding SummonerTitle}" Visibility="{Binding SummonerTitleVisibility}"/> 
-            <TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,97,0,0" VerticalAlignment="Stretch" Padding="0"  >
+            <TextBlock Foreground="Gold" HorizontalAlignment="Right" Margin="0 120 5 0" FontSize="14" Text="{Binding SummonerTitle}" Visibility="{Binding SummonerTitleVisibility}"/> 
+            <TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,107,0,0" VerticalAlignment="Stretch" Padding="0"  >
                 <TabItem Header="Home" FontSize="16" Padding="0,0,0,0"  >
                     <TabItem.Style>
                         <Style TargetType="{x:Type TabItem}">

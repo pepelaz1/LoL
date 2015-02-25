@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LoL.Model;
+using mshtml;
 
 
 namespace LoL
@@ -27,6 +28,7 @@ namespace LoL
     {
 
         private ViewModel _vm = new ViewModel();
+        private WebBrowserOverlayWF _wbo;
 
         public MainWindow()
         {
@@ -45,10 +47,12 @@ namespace LoL
 
                 btnMinimize.Content = (char)0x25A1;
                 _vm.SelectedRegion = lbRegions.SelectedItem as Region;
+
+                QueryBanner();
             }
-            catch (Exception )
+            catch (Exception)
             {
-  
+
             }
         }
 
@@ -56,7 +60,7 @@ namespace LoL
         {
             QueryData();
         }
-      
+
         private async void QueryData()
         {
             Cursor = Cursors.Wait;
@@ -76,7 +80,7 @@ namespace LoL
         private void tbSummonerName_GotMouseCapture(object sender, MouseEventArgs e)
         {
             if (_vm.SummonerName == "Summoner Name...")
-                _vm.SummonerName = "";        
+                _vm.SummonerName = "";
         }
 
         private void Button_KeyDown(object sender, KeyEventArgs e)
@@ -100,7 +104,7 @@ namespace LoL
         {
             WindowState = WindowState.Minimized;
         }
-       
+
         private void Form_max_restore(object sender, RoutedEventArgs e)
         {
             WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
@@ -122,7 +126,7 @@ namespace LoL
             tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
         }
 
-     
+
 
         private void tbSummonerName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -134,6 +138,82 @@ namespace LoL
             }
         }
 
-      
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            _wbo.OnSizeLocationChanged();
+        }
+
+        WebBrowser wb1 = new WebBrowser();
+         private const string DisableScriptError = @"function noError() { return true; } window.onerror = noError;";
+        private async void QueryBanner()
+        {
+
+            try
+            {
+                  await _vm.QueryBanner();
+                _wbo = new WebBrowserOverlayWF(_webBrowserPlacementTarget);
+                System.Windows.Forms.WebBrowser wb = _wbo.WebBrowser;
+                wb.ScriptErrorsSuppressed = true;
+                wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        void wb_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            InjectDisableErrorScript();
+        }
+
+        private void InjectDisableErrorScript()
+        {
+            var doc = wb1.Document as HTMLDocument;
+            if (doc != null)
+            {
+                //Create the sctipt element
+                var scriptErrorSuppressed = (IHTMLScriptElement)doc.createElement("SCRIPT");
+                scriptErrorSuppressed.type = "text/javascript";
+                scriptErrorSuppressed.text = DisableScriptError;
+                //Inject it to the head of the page
+                IHTMLElementCollection nodes = doc.getElementsByTagName("head");
+                foreach (IHTMLElement elem in nodes)
+                {
+                    var head = (HTMLHeadElement)elem;
+                    head.appendChild((IHTMLDOMNode)scriptErrorSuppressed);
+                }
+            }
+
+        }
+        private void wb_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            
+            int t = 4;
+            t = 4;
+
+
+         /*   try
+            {
+                HTMLDocument doc = wb1.Document as HTMLDocument;
+               // wb1.InvokeScript("adsbygoogle");
+                foreach (var s in doc.scripts)
+                {
+                    HTMLScriptElement se = s as HTMLScriptElement;
+                    //wb1.InvokeScript(se.src);
+                    int tt = 4;
+                }
+
+                int t = 4;
+                t = 4;
+            }
+            catch(Exception ex)
+            { }*/
+
+        }
+
     }
+
 }
