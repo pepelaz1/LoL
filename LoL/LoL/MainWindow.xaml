@@ -158,7 +158,8 @@
                             </Grid.ColumnDefinitions>
                             <Rectangle Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="5" Fill="#1b1b1b"  />                        
                             <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
-                            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
+                            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>                            
                             <TextBlock Grid.Column="0" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ1Name}"/>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ1Name}"/> -->
@@ -173,7 +174,7 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ1Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
@@ -189,7 +190,8 @@
                                      </StackPanel>
                                 </Grid>
                             </StackPanel>
-                            <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>  
+                            <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding Champ2Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ2Name}"/> 
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -221,7 +223,8 @@
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
-                            <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1" Source="{Binding Champ3Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ3Name}"/> 
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -253,7 +256,8 @@
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
-                            <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ4Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="3" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ4Name}"/>
                             <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -285,7 +289,8 @@
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
-                            <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ5Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="4" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ5Name}"/> 
                             <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -535,6 +540,7 @@
                             </Grid.ColumnDefinitions>
                             <Rectangle Grid.Row="3" Grid.Column="0"  Fill="#1b1b1b" Margin="0 0 0 0"/>
                             <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp1Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="0" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp1Name}"/>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -567,7 +573,8 @@
                                 </Grid>
                             </StackPanel>
                             <Rectangle Grid.Row="3" Grid.Column="1"  Fill="#1b1b1b" Margin="0 0 0 0"/>
-                            <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp2Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp2Name}"/> 
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -600,7 +607,8 @@
                                 </Grid>
                             </StackPanel>
                             <Rectangle Grid.Row="3" Grid.Column="2"  Fill="#1b1b1b" Margin="0 0 0 0"/>
-                            <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp3Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp3Name}"/> 
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
@@ -633,7 +641,8 @@
                                 </Grid>
                             </StackPanel>
                             <Rectangle Grid.Row="3" Grid.Column="4"  Fill="#1b1b1b" Margin="0 0 0 0"/>
-                            <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="0" Grid.Column="3" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp4Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="4" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp4Name}"/>
                             <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" >

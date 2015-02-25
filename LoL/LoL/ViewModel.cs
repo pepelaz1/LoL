@@ -423,6 +423,55 @@ namespace LoL
         {
             get { return _champData.Count() > 4 ? _champData[4].Wins + "/" + Champ5Losses : ""; }
         }
+
+        public Visibility Champ1Found
+        {
+            get {
+                if (_champData.Count() <= 0)
+                    return Visibility.Hidden;
+                return  _champData[0].Found ? Visibility.Visible : Visibility.Hidden; 
+            }
+        }
+
+        public Visibility Champ2Found
+        {
+            get
+            {
+                if (_champData.Count() <= 1)
+                    return Visibility.Hidden;
+                return _champData[1].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility Champ3Found
+        {
+            get
+            {
+                if (_champData.Count() <= 2)
+                    return Visibility.Hidden;
+                return _champData[2].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility Champ4Found
+        {
+            get
+            {
+                if (_champData.Count() <= 3)
+                    return Visibility.Hidden;
+                return _champData[3].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility Champ5Found
+        {
+            get
+            {
+                if (_champData.Count() <= 4)
+                    return Visibility.Hidden;
+                return _champData[4].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
         #endregion
 
         #region Recent champs
@@ -571,9 +620,7 @@ namespace LoL
         public String RChamp4Losses
         {
             get { return _rchampData.Count() > 3 ? _rchampData[3].Losses : ""; }
-        }
-
-       
+        }      
 
 
         public String RChamp1WL
@@ -595,6 +642,47 @@ namespace LoL
         {
             get { return RChamp4Wins + "/" + RChamp4Losses; }
         }
+
+        public Visibility RChamp1Found
+        {
+            get
+            {
+                if (_rchampData.Count() <= 0)
+                    return Visibility.Hidden;
+                return _rchampData[0].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility RChamp2Found
+        {
+            get
+            {
+                if (_rchampData.Count() <= 1)
+                    return Visibility.Hidden;
+                return _rchampData[1].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility RChamp3Found
+        {
+            get
+            {
+                if (_rchampData.Count() <= 2)
+                    return Visibility.Hidden;
+                return _rchampData[2].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility RChamp4Found
+        {
+            get
+            {
+                if (_rchampData.Count() <= 3)
+                    return Visibility.Hidden;
+                return _rchampData[3].Found ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
         #endregion
 
         ///
@@ -1006,7 +1094,9 @@ namespace LoL
                              Assists = node.ChildNodes[15].InnerText.Split("/".ToCharArray())[0],
                              Name = node.ChildNodes[1].InnerText.TrimStart("\n ".ToCharArray()).TrimEnd("\n ".ToCharArray()),
                              Wins = node.ChildNodes[3].InnerText,
-                             Losses = node.ChildNodes[5].InnerText
+                             Losses = node.ChildNodes[5].InnerText,
+                             Found = true
+
                          };
                          Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
                          if (match.Success)
@@ -1019,16 +1109,12 @@ namespace LoL
                  }
                 catch(Exception ex)
                 {
-                    for (int i = 0; i < 5 - _champData.Count(); i++)
+                    int already = _champData.Count();
+                    for (int i = 0; i < 5 - already; i++)
                     {
                         ChampData cd = new ChampData()
                         {
-                            Kills = "?",
-                            Deaths = "?",
-                            Assists = "?",
-                            Name = "?",
-                            Wins = "?",
-                            Losses = "?"
+                            Found = false
                         };
                         _champData.Add(cd);
                     }
@@ -1038,39 +1124,54 @@ namespace LoL
                 // Recent champs    
 
                 _rchampData.Clear();
-                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
+                try
                 {
-                    String s = node.Attributes["style"].Value;
-                    Match match = regex.Match(s);
-                    if (match.Success)
+                    foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='recent_statistics_champion_icon']"))
                     {
-                        Match m2 = rgnums.Match(match.Value);
-                        String id = m2.Value;
-                        String name = "";
-                        foreach (var l in (from x in dictionary.Values
-                                           where x["champion_id"].ToString() == id
-                                           select x))
+                        String s = node.Attributes["style"].Value;
+                        Match match = regex.Match(s);
+                        if (match.Success)
                         {
-                           name = l["name"].ToString();
-                           break;
-                        }
+                            Match m2 = rgnums.Match(match.Value);
+                            String id = m2.Value;
+                            String name = "";
+                            foreach (var l in (from x in dictionary.Values
+                                               where x["champion_id"].ToString() == id
+                                               select x))
+                            {
+                                name = l["name"].ToString();
+                                break;
+                            }
 
-                        String val = "http:" + match.Value;
+                            String val = "http:" + match.Value;
+                            ChampData cd = new ChampData()
+                            {
+                                Name = name,
+                                Kills = node.SelectNodes("div")[2].SelectNodes("div")[0].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
+                                Deaths = node.SelectNodes("div")[2].SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
+                                Assists = node.SelectNodes("div")[2].SelectNodes("div")[2].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
+                                Wins = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[0].ChildNodes[0].InnerText,
+                                Losses = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[1].ChildNodes[0].InnerText,
+                                Found = true
+
+                            };
+                            cd.Picture = LoadImageFromURL(val);
+                            _rchampData.Add(cd);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    int already = _rchampData.Count();
+                    for (int i = 0; i < 5 - already; i++)
+                    {
                         ChampData cd = new ChampData()
                         {
-                            Name = name,
-                            Kills = node.SelectNodes("div")[2].SelectNodes("div")[0].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
-		                    Deaths = node.SelectNodes("div")[2].SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
-		                    Assists = node.SelectNodes("div")[2].SelectNodes("div")[2].SelectNodes("div")[0].SelectNodes("div")[0].InnerText,
-                            Wins = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[0].ChildNodes[0].InnerText,
-                            Losses = node.SelectNodes("div")[1].SelectNodes("div")[0].SelectNodes("span")[1].ChildNodes[0].InnerText
-
+                            Found = false
                         };
-                        cd.Picture = LoadImageFromURL(val);
                         _rchampData.Add(cd);
                     }
                 }
-
 
                 // Personal ratings
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='personal_ratings_heading']"))
@@ -1215,6 +1316,8 @@ namespace LoL
                 OnPropertyChanged(s);
                 s = "Champ" + i.ToString() + "KDA";
                 OnPropertyChanged(s);
+                s = "Champ" + i.ToString() + "Found";
+                OnPropertyChanged(s);
 
                 s = "RChamp" + i.ToString() + "Name";
                 OnPropertyChanged(s);
@@ -1231,6 +1334,8 @@ namespace LoL
                 s = "RChamp" + i.ToString() + "Deaths";
                 OnPropertyChanged(s);
                 s = "RChamp" + i.ToString() + "Assists";
+                OnPropertyChanged(s);
+                s = "RChamp" + i.ToString() + "Found";
                 OnPropertyChanged(s);
             }
 
