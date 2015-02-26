@@ -48,7 +48,7 @@ namespace LoL
                 btnMinimize.Content = (char)0x25A1;
                 _vm.SelectedRegion = lbRegions.SelectedItem as Region;
 
-                QueryBanner();
+              //  QueryBanner();
             }
             catch (Exception)
             {
@@ -140,7 +140,8 @@ namespace LoL
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            _wbo.OnSizeLocationChanged();
+            if (_wbo != null)
+                _wbo.OnSizeLocationChanged();
         }
 
         WebBrowser wb1 = new WebBrowser();

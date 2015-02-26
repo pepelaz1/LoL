@@ -13,8 +13,9 @@ namespace LoL.Model
 
         public Summoner Summoner { get; set; }
         public RankedStats RankedStats { get; set; }
-
         public ChampionStats Ranked { get; set; }
+        public bool RankedFound { get; set; }
+        public bool NormalFound { get; set; }
         public String KillsRanked { get; set; }
         public String KillsNormal { get; set; }
         public String AssistsRanked { get; set; }

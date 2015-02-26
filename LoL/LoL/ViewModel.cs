@@ -758,21 +758,9 @@ namespace LoL
             get { return _summonerData.WinsNormal; }
         }
 
-       /* public String LossesNormal
-        {
-            get { return _summonerData.Normal.losses.ToString(); }
-        }
-
-  
-        public String WLNormal
-        {
-            get { return WinsNormal + "/" + LossesNormal; }
-        }*/
         ///
         /// Career averages
         /// 
-
-        
         public String AverageKills
         {
             get { 
@@ -832,13 +820,20 @@ namespace LoL
         public Brush WardScoreColor
         {
             get {
-                int n = int.Parse(WardScore);
-                if (n < 500)
+                try
+                {
+                    int n = int.Parse(WardScore);
+                    if (n < 500)
+                        return new SolidColorBrush(Colors.Red);
+                    else if (n >= 500 && n < 900)
+                        return new SolidColorBrush(Colors.Yellow);
+                    else
+                        return new SolidColorBrush(Colors.Green);
+                }
+                catch(Exception)
+                {
                     return new SolidColorBrush(Colors.Red);
-                else if (n >= 500 && n < 900)
-                    return new SolidColorBrush(Colors.Yellow);
-                else
-                    return new SolidColorBrush(Colors.Green);
+                }
             }
         }
 
@@ -931,21 +926,31 @@ namespace LoL
             get { return _summonerData.Team5v5Losses; }
         }
 
+
+        public Visibility NormalVisibility
+        {
+            get
+            {
+                return _summonerData.NormalFound ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility RankedVisibility
+        {
+            get
+            {
+                return _summonerData.RankedFound ? Visibility.Visible : Visibility.Hidden;
+            }
+
+        }
         /// <summary>
         /// View model constructor
         /// </summary>
         public ViewModel()
         {
-            // _api = new CreepScore(_apiKey, _limit_per_10s, _limit_per_10m);
              _nfi = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
              _nfi.NumberGroupSeparator = ",";
-           
-
-          
-           //  double n = double.Parse(s, NumberStyles.Integer | NumberStyles.AllowThousands, _nfi);
-            // int t = 5;
-
-        }
+         }
 
         private void QueryTotalTime()
         {
@@ -988,13 +993,13 @@ namespace LoL
             }
             catch (Exception ex)
             {
-                _summonerData.WardScore = "N/A";
+              /*  _summonerData.WardScore = "N/A";
                 _summonerData.WardMage = "N/A";
                 _summonerData.WardAssasin = "N/A";
                 _summonerData.WardMarksman = "N/A";
                 _summonerData.WardFighter = "N/A";
                 _summonerData.WardTank = "N/A";
-                _summonerData.WardSupport = "N/A";
+                _summonerData.WardSupport = "N/A";*/
             }
         }
 
@@ -1041,6 +1046,8 @@ namespace LoL
                 var doc = web.Load(url);              
 
                 // Ranked stat
+                _summonerData.RankedFound = false;
+                _summonerData.NormalFound = false;
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='lifetime_stats_header']"))
                 {
                     if (node.InnerText == "Normal 5v5")
@@ -1049,6 +1056,7 @@ namespace LoL
                         _summonerData.KillsNormal = vals[1].InnerText;
                         _summonerData.WinsNormal = vals[0].InnerText;
                         _summonerData.AssistsNormal = vals[2].InnerText;
+                        _summonerData.NormalFound = true;
                     }
                     else if (node.InnerText == "Ranked")
                     {
@@ -1059,6 +1067,7 @@ namespace LoL
                         _summonerData.DoubleKills = vals[3].InnerText;
                         _summonerData.KillsRanked = vals[4].InnerText;
                         _summonerData.AssistsRanked = vals[6].InnerText;
+                        _summonerData.RankedFound = true;
 
                     }
                 }
@@ -1122,7 +1131,6 @@ namespace LoL
                 
 
                 // Recent champs    
-
                 _rchampData.Clear();
                 try
                 {
@@ -1352,8 +1360,7 @@ namespace LoL
             OnPropertyChanged("WinsRanked");
             OnPropertyChanged("LossesRanked");
             OnPropertyChanged("WLRanked");
-
-
+            
             OnPropertyChanged("KillsNormal");
             OnPropertyChanged("DeathsNormal");
             OnPropertyChanged("AssistsNormal");
@@ -1401,6 +1408,9 @@ namespace LoL
             OnPropertyChanged("Team3v3Looses");
             OnPropertyChanged("Solo5v5Looses");
             OnPropertyChanged("Team5v5Looses");
+
+            OnPropertyChanged("RankedVisibility");
+            OnPropertyChanged("NormalVisibility");
        }
 
         System.Windows.Forms.WebBrowser _wb = new System.Windows.Forms.WebBrowser();

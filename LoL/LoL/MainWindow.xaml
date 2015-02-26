@@ -177,15 +177,15 @@
                                      <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ1Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"  Visibility="{Binding Champ1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ1Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ1Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                      </StackPanel>
                                 </Grid>
@@ -207,18 +207,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ2Found}" ><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ2Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ2Found}"  />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ2Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ2Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ2Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ2Found}" ><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Text="{Binding Champ2Wins}"  Foreground="#22b14c" FontWeight="Bold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ2Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Text="{Binding Champ2Losses}" Foreground="#ed1c24" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Grid>
@@ -240,18 +240,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ3Found}" ><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ3Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ3Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ3Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ3Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ3Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ3Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -273,18 +273,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ4Found}" ><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ4Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ4Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ4Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ4Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ4Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ4Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ4Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ4Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ4Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -306,18 +306,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ5Found}" ><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ5Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ5Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ5Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ5Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ5Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ5Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ5Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ5Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ5Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -439,12 +439,12 @@
                                             <TextBlock Grid.Row="6" Grid.Column="1"  FontSize="14" Text="{Binding QuadraKills}" Foreground="#22b14c"/>
                                             <TextBlock Grid.Row="7" Grid.Column="0"  FontSize="14" Margin="5 0 10 0" ><Run Text="Penta kills:"/></TextBlock>
                                             <TextBlock Grid.Row="7" Grid.Column="1"  FontSize="14" Text="{Binding PentaKills}" Foreground="#22b14c"/>
-                                            <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5" ><Run Text="W/L:"/></TextBlock>
+                                            <TextBlock Grid.Row="8" Grid.Column="0"  FontSize="14" Margin="5 0 10 5"><Run Text="W/L:"/></TextBlock>
 
                                             <StackPanel Grid.Row="8" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                <TextBlock FontSize="14" Text="{Binding WinsRanked}" Foreground="#22b14c" Margin="0 0 0 1"/>
-                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"/>
-                                                <TextBlock FontSize="14" Text="{Binding LossesRanked}" Foreground="#ed1c24"/>
+                                                <TextBlock FontSize="14" Text="{Binding WinsRanked}" Foreground="#22b14c" Margin="0 0 0 1" Visibility="{Binding RankedVisibility}"/>
+                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"  Visibility="{Binding RankedVisibility}"/>
+                                                <TextBlock FontSize="14" Text="{Binding LossesRanked}" Foreground="#ed1c24" Visibility="{Binding RankedVisibility}"/>
                                             </StackPanel>
 
 
@@ -459,9 +459,9 @@
                                             <TextBlock Grid.Row="10" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Average KDA:"/></TextBlock>
                                             <StackPanel Grid.Row="10" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                                                 <TextBlock FontSize="14" Text="{Binding AverageKills}" Foreground="#22b14c" Margin="0 0 0 1"/>
-                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"/>
+                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"  Visibility="{Binding RankedVisibility}"/>
                                                 <TextBlock FontSize="14" Text="{Binding AverageDeaths}" Foreground="#ed1c24"/>
-                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"/>
+                                                <TextBlock FontSize="14" Text="/" Foreground="White" Margin="0 0 0 1"  Visibility="{Binding RankedVisibility}"/>
                                                 <TextBlock FontSize="14" Text="{Binding AverageAssists}" Foreground="#fffe00"/>
                                             </StackPanel>
                                             <TextBlock x:Name="tb11"  Grid.Row="11" Grid.Column="0" FontSize="14" Margin="5 0 0 0" ><Run Text="Average Gold:"/></TextBlock>
@@ -556,18 +556,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp1Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp1Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp1Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp1Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp1Found}" ><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp1Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp1Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -590,18 +590,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp2Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp2Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp2Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp2Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp2Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp2Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp2Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp2Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp2Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp2Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -624,18 +624,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp3Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp3Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp3Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp3Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp3Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp3Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp3Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp3Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
@@ -658,18 +658,18 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp4Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp4Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp4Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp4Deaths}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp4Found}" />
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp4Assists}" Foreground="#fffe00" FontWeight="SemiBold"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" ><Run Text="W/L:"/></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding RChamp4Found}"><Run Text="W/L:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp4Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding RChamp4Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding RChamp4Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
                                     </StackPanel>
                                 </Grid>
