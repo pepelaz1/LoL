@@ -157,7 +157,8 @@ namespace LoL
                 _wbo = new WebBrowserOverlayWF(_webBrowserPlacementTarget);
                 _wbo.WebBrowser.Visible = false;
                 System.Windows.Forms.WebBrowser wb = _wbo.WebBrowser;
-                wb.DocumentCompleted +=  new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(PrintDocument);
+                wb.DocumentCompleted +=  new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(DocumentReady);
+                wb.NewWindow += WebBrowser1_NewWindow;
                 wb.ScriptErrorsSuppressed = true;
                 //  wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
                 wb.ScrollBarsEnabled = false;
@@ -170,7 +171,14 @@ namespace LoL
             }
         }
 
-        private void PrintDocument(object sender,   System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+        private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+        }
+        
+
+        private void DocumentReady(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
             // Print the document now that it is fully loaded.
             /*((WebBrowser)sender).Print();
@@ -183,8 +191,63 @@ namespace LoL
             _wbo.WebBrowser.Visible = true;
             _wbo.WebBrowser.Document.Window.ScrollTo(0, 171);
             _webBrowserPlacementTarget.Visibility = Visibility.Visible;
+
+            foreach (System.Windows.Forms.HtmlElement tag in _wbo.WebBrowser.Document.All)
+            {
+                switch (tag.TagName.ToUpper())
+                {
+                    case "A":
+                        {
+                            tag.MouseUp += new System.Windows.Forms.HtmlElementEventHandler(link_MouseUp);
+                            break;
+                        }
+                }
+            }
+
+           // _wbo.WebBrowser.Navigating += webBrowser1_Navigating;
         }
 
+       /* private void webBrowser1_Navigating(object sender, System.Windows.Forms.WebBrowserNavigatingEventArgs e)
+        {
+            // Redirect expertsexchange to stackoverflow
+          //  if (e.Url.ToString().Contains("experts-exchange"))
+          //  {
+            //    e.Cancel = true;
+            //    _wbo.WebBrowser.Navigate("http://stackoverflow.com");
+           // }
+            e.Cancel = true;
+            _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+        }*/
+
+
+        void link_MouseUp(object sender, System.Windows.Forms.HtmlElementEventArgs e)
+        {
+            System.Windows.Forms.HtmlElement link = (System.Windows.Forms.HtmlElement)sender;
+            HTMLAnchorElementClass a = (HTMLAnchorElementClass)link.DomElement;
+            switch (e.MouseButtonsPressed)
+            {
+                case System.Windows.Forms.MouseButtons.Left:
+                    {
+                        _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+                        /*if ((a.target != null && a.target.ToLower() == "_blank") ||
+                            e.ShiftKeyPressed ||
+                            e.MouseButtonsPressed == System.Windows.Forms.MouseButtons.Middle)
+                        {
+                            // add new tab
+                        }
+                        else
+                        {
+                            // open in current tab
+                        }*/
+                        break;
+                    }
+                case System.Windows.Forms.MouseButtons.Right:
+                    {
+                        // show context menu
+                        break;
+                    }
+            }
+        }
 
         void wb_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
