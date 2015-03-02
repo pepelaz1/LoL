@@ -48,7 +48,7 @@ namespace LoL
                 btnMinimize.Content = (char)0x25A1;
                 _vm.SelectedRegion = lbRegions.SelectedItem as Region;
 
-              //  QueryBanner();
+                QueryBanner();
             }
             catch (Exception)
             {
@@ -145,23 +145,44 @@ namespace LoL
         }
 
         WebBrowser wb1 = new WebBrowser();
+
+
          private const string DisableScriptError = @"function noError() { return true; } window.onerror = noError;";
         private async void QueryBanner()
         {
 
             try
             {
-                  await _vm.QueryBanner();
+               //  await _vm.QueryBanner();
                 _wbo = new WebBrowserOverlayWF(_webBrowserPlacementTarget);
+                _wbo.WebBrowser.Visible = false;
                 System.Windows.Forms.WebBrowser wb = _wbo.WebBrowser;
+                wb.DocumentCompleted +=  new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(PrintDocument);
                 wb.ScriptErrorsSuppressed = true;
-                wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
+                //  wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
+                wb.ScrollBarsEnabled = false;
+                wb.Navigate(new Uri("http://firekickz.com/"));
 
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        private void PrintDocument(object sender,   System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+        {
+            // Print the document now that it is fully loaded.
+            /*((WebBrowser)sender).Print();
+
+            // Dispose the WebBrowser now that the task is complete. 
+            ((WebBrowser)sender).Dispose();*/
+            if (e.Url != _wbo.WebBrowser.Url)
+                return;
+
+            _wbo.WebBrowser.Visible = true;
+            _wbo.WebBrowser.Document.Window.ScrollTo(0, 171);
+            _webBrowserPlacementTarget.Visibility = Visibility.Visible;
         }
 
 
