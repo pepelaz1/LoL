@@ -946,16 +946,42 @@ namespace LoL
         //
         // Game
         //
-        public String GameSummonerError
+        private List<TeamItem> _ourTeam = new List<TeamItem>();
+        public List<TeamItem> OurTeam
         {
-            get { return _summonerData.GameError; }
+            get { return _ourTeam; }
         }
 
-        public Visibility GameErrorVisiblity
+        private List<TeamItem> _enemyTeam = new List<TeamItem>();
+        public List<TeamItem> EnemyTeam
+        {
+            get { return _enemyTeam; }
+        }
+
+        private bool _nexusLoaded;
+
+        public String GameSummonerError
+        {
+            get {
+                if (_summonerData == null)
+                    return null;
+                return _summonerData.GameError; 
+            }
+        }
+
+        public Visibility GameErrorVisibility
         {
             get
             {
                 return String.IsNullOrEmpty(GameSummonerError) == false ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility GameVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(GameSummonerError) == true ? Visibility.Visible : Visibility.Hidden;
             }
         }
 
@@ -966,6 +992,10 @@ namespace LoL
         {
              _nfi = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
              _nfi.NumberGroupSeparator = ",";
+
+             OnPropertyChanged("GameSummonerError");
+             OnPropertyChanged("GameErrorVisibility");
+             OnPropertyChanged("GameVisibility");
          }
 
         private void QueryTotalTime()
@@ -1251,8 +1281,7 @@ namespace LoL
                 t = 4;
             }
         }
-
-        
+                
         public async Task QueryApi()
         {
             try
@@ -1309,13 +1338,12 @@ namespace LoL
         {
             try
             {
+                _nexusLoaded = false;
                 String url = "http://www.lolnexus.com/NA/search?name=" + _summoner_name + "&region=" + SelectedRegion.Code;
                 _wbNexus.AllowNavigation = true;
                  _wbNexus.ScriptErrorsSuppressed = true;
                  _wbNexus.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(_wbNexus_DocumentCompleted);
-                _wbNexus.Navigate(url);
-
- 
+                _wbNexus.Navigate(url); 
             }
             catch(Exception ex)
             {
@@ -1325,36 +1353,58 @@ namespace LoL
 
         private void _wbNexus_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
+            if (_nexusLoaded == true)
+                return;
+
             if (e.Url != _wbNexus.Url)
                 return;
 
+
+
+            var doc = new HtmlDocument();
             try
             {
-                var doc = new HtmlDocument();
+                _ourTeam.Clear();
+                _enemyTeam.Clear();
+                
                 doc.LoadHtml(_wbNexus.DocumentText);
                 _summonerData.GameError = "";
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
                 {
+                    _nexusLoaded = true;
                     _summonerData.GameError = node.InnerText;
                 }
-                //if (String.IsNullOrEmpty(_summonerData.GameError))
-                //{
-
-                //    int t = 4;
-                //    t = 4;
-                //}
             }
             catch(Exception ex)
             {
+                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-1']/table/tbody/tr"))
+                {
+                    _nexusLoaded = true;
+                    var ti = new TeamItem()
+                    {
+                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                    };
+                    _ourTeam.Add(ti);
+                }
 
-
-                int t = 4;
-                t = 4;
+                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-2']/table/tbody/tr"))
+                {
+                    _nexusLoaded = true;
+                    var ti = new TeamItem()
+                    {
+                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                    };
+                    _enemyTeam.Add(ti);
+                }   
             }
             finally
             {
                 OnPropertyChanged("GameSummonerError");
-                OnPropertyChanged("GameErrorVisiblity");
+                OnPropertyChanged("GameErrorVisibility");
+                OnPropertyChanged("GameVisibility");
+
+                OnPropertyChanged("OurTeam");
+                OnPropertyChanged("EnemyTeam");
             }
 
             //               var web = new HtmlWeb();
@@ -1373,12 +1423,13 @@ namespace LoL
         }
 
         public async Task QueryData()
-        {                
+        {
+            QueryNexus();
             QueryLolking();
             QueryTotalTime();
             QueryWardScore();
             await QueryApi();
-            QueryNexus();
+       
 
           //  QueryChampionImages();
          
@@ -1388,6 +1439,7 @@ namespace LoL
             OnPropertyChanged("SummonerTitle");
             OnPropertyChanged("SummonerLevel");
             OnPropertyChanged("TabPagesEnabled");
+
          
 
             for (int i = 1; i < 6; i++ )
