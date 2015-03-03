@@ -704,8 +704,66 @@
                             </Setter>
                         </Style>
                     </TabItem.Style>
-                    <Grid  Margin="-1 -1 -1 -1" Background="#1b1b1b">
+                    <Grid  Margin="-1 -1 -1 -1" Background="#1b1b1b" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="2" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="3" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="4" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="5" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="6" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="7" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="8" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="9" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="10" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="11" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="12" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="13" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="14" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                         <TextBlock Visibility="{Binding GameErrorVisibility}" Text="{Binding GameSummonerError}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 50 0 0" FontSize="20"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0"  Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1"  Text="Champion" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2"  Text="Current Season" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3"  Text="Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="4"  Text="Ranked Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="5"  Text="KDA" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="6"  Text="Runes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="7"  Text="Masteries" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="0"  Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="1"  Text="Champion" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="2"  Text="Current Season" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="3"  Text="Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="4"  Text="Ranked Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="5"  Text="KDA" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="6"  Text="Runes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="8" Grid.Column="7"  Text="Masteries" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </TabItem>
             </TabControl>

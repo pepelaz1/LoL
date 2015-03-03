@@ -1337,13 +1337,17 @@ namespace LoL
                 {
                     _summonerData.GameError = node.InnerText;
                 }
-                if (String.IsNullOrEmpty(_summonerData.GameError))
-                {
+                //if (String.IsNullOrEmpty(_summonerData.GameError))
+                //{
 
-                }
+                //    int t = 4;
+                //    t = 4;
+                //}
             }
             catch(Exception ex)
             {
+
+
                 int t = 4;
                 t = 4;
             }
@@ -1493,8 +1497,6 @@ namespace LoL
 
             OnPropertyChanged("RankedVisibility");
             OnPropertyChanged("NormalVisibility");
-
-
        }
     }
 }

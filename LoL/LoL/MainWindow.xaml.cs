@@ -147,7 +147,7 @@ namespace LoL
         WebBrowser wb1 = new WebBrowser();
 
 
-         private const string DisableScriptError = @"function noError() { return true; } window.onerror = noError;";
+        private const string DisableScriptError = @"function noError() { return true; } window.onerror = noError;";
         private async void QueryBanner()
         {
 
