@@ -941,8 +941,24 @@ namespace LoL
             {
                 return _summonerData.RankedFound ? Visibility.Visible : Visibility.Hidden;
             }
-
         }
+
+        //
+        // Game
+        //
+        public String GameSummonerError
+        {
+            get { return _summonerData.GameError; }
+        }
+
+        public Visibility GameErrorVisiblity
+        {
+            get
+            {
+                return String.IsNullOrEmpty(GameSummonerError) == false ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
         /// <summary>
         /// View model constructor
         /// </summary>
@@ -1287,12 +1303,78 @@ namespace LoL
             return image;
         }
 
+        System.Windows.Forms.WebBrowser _wbNexus = new System.Windows.Forms.WebBrowser();
+        
+        private void QueryNexus()
+        {
+            try
+            {
+                String url = "http://www.lolnexus.com/NA/search?name=" + _summoner_name + "&region=" + SelectedRegion.Code;
+                _wbNexus.AllowNavigation = true;
+                 _wbNexus.ScriptErrorsSuppressed = true;
+                 _wbNexus.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(_wbNexus_DocumentCompleted);
+                _wbNexus.Navigate(url);
+
+ 
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void _wbNexus_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (e.Url != _wbNexus.Url)
+                return;
+
+            try
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(_wbNexus.DocumentText);
+                _summonerData.GameError = "";
+                foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
+                {
+                    _summonerData.GameError = node.InnerText;
+                }
+                if (String.IsNullOrEmpty(_summonerData.GameError))
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+                int t = 4;
+                t = 4;
+            }
+            finally
+            {
+                OnPropertyChanged("GameSummonerError");
+                OnPropertyChanged("GameErrorVisiblity");
+            }
+
+            //               var web = new HtmlWeb();
+            //    var doc = web.Load(url);
+            //    foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
+            //    {
+            //        int t = 4;
+            //        t = 4;                        
+            //    }
+            //HtmlElementCollection divs = webBrowserControl.Document.GetElementsByTagName("div");
+
+            //foreach (HtmlElement div in divs)
+            //{
+            //    //do something
+            //}
+        }
+
         public async Task QueryData()
         {                
             QueryLolking();
             QueryTotalTime();
             QueryWardScore();
             await QueryApi();
+            QueryNexus();
 
           //  QueryChampionImages();
          
@@ -1411,63 +1493,8 @@ namespace LoL
 
             OnPropertyChanged("RankedVisibility");
             OnPropertyChanged("NormalVisibility");
+
+
        }
-
-        System.Windows.Forms.WebBrowser _wb = new System.Windows.Forms.WebBrowser();
-        public async Task QueryBanner()
-        {
-            try
-            {
-                _wb.DocumentCompleted += _wb_DocumentCompleted;
-                _wb.ScriptErrorsSuppressed = true;
-                _wb.Navigate("http://firekickz.com/");
-              //  _banner_uri = "http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA";
-
-               // var web = new HtmlWeb();
-             //   var doc = web.Load("http://firekickz.com/");
-
-
-                 
-          //      String docText = wb.Document.ToString();
-                
-                 //wc.Get("http://firekickz.com/");
-
-                 int t = 4;
-                
-               /* foreach (var node in doc.DocumentNode.SelectNodes("//body/div[@id='google_flash_inline_div']"))
-                {
-                    _banner_uri = node.Attributes["data"].Value;
-                    break;
-                }*/             
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-
-        private void _wb_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
-        {
-            //This line is so you only do the event once   
-            if (e.Url != _wb.Url)
-                return;
-
-
-            //do you actual code        
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
-            dispatcherTimer.Start();
-        }
-
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            // code goes here
-            int t = 4;
-            t = 4;            
-        }
     }
-
-
 }

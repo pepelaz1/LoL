@@ -10,7 +10,6 @@ namespace LoL.Model
 {
     public class SummonerData
     {
-
         public Summoner Summoner { get; set; }
         public RankedStats RankedStats { get; set; }
         public ChampionStats Ranked { get; set; }
@@ -48,11 +47,11 @@ namespace LoL.Model
         public String Solo5v5LeaguePoints { get; set; }
         public String Solo5v5Wins { get; set; }
         public String Solo5v5Losses { get; set; }
-         public ImageSource Team5v5Image { get; set; }
+        public ImageSource Team5v5Image { get; set; }
         public String Team5v5Rating { get; set; }
         public String Team5v5LeaguePoints { get; set; }
         public String Team5v5Wins { get; set; }
         public String Team5v5Losses { get; set; }
-
+        public String GameError { get; set; }
     }
 }

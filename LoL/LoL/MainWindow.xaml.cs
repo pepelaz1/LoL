@@ -173,8 +173,20 @@ namespace LoL
 
         private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
-            _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+         //   e.Cancel = true;
+         //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+
+            //foreach (System.Windows.Forms.HtmlElement tag in _wbo.WebBrowser.Document.All)
+            //{
+            //    switch (tag.TagName.ToUpper())
+            //    {
+            //        case "A":
+            //            {
+            //                tag.MouseUp += new System.Windows.Forms.HtmlElementEventHandler(link_MouseUp);
+            //                break;
+            //            }
+            //    }
+            //}
         }
         
 
