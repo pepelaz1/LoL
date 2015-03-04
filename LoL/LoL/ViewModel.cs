@@ -163,15 +163,7 @@ namespace LoL
             }
         }
 
-        /// Property returning received summoner level
-        //public String SummonerLevel
-        //{
-        //    get
-        //    {
-        //        return (_summoner == null) ? "" : _summoner.summonerLevel.ToString();
-        //    }
-        //}
-
+     
         public bool TabPagesEnabled 
         {
             get {
@@ -960,6 +952,8 @@ namespace LoL
 
         private bool _nexusLoaded;
 
+        private NexusCss _nexusCss = new NexusCss();
+
         public String GameSummonerError
         {
             get {
@@ -992,6 +986,8 @@ namespace LoL
         {
              _nfi = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
              _nfi.NumberGroupSeparator = ",";
+
+             ReadNexusCss();
 
              OnPropertyChanged("GameSummonerError");
              OnPropertyChanged("GameErrorVisibility");
@@ -1065,7 +1061,7 @@ namespace LoL
                                          select x.ChildNodes[0]))
                     {
 
-                        _champData[i].Picture = LoadImageFromURL(img.Attributes[6].Value);
+                        _champData[i].Picture = Utils.LoadImageFromURL(img.Attributes[6].Value);
                     }
                 }
              
@@ -1157,7 +1153,7 @@ namespace LoL
                          if (match.Success)
                          {
                              String val = "http:" + match.Value;
-                             cd.Picture = LoadImageFromURL(val);
+                             cd.Picture = Utils.LoadImageFromURL(val);
                          }
                          _champData.Add(cd);
                      }
@@ -1209,7 +1205,7 @@ namespace LoL
                                 Found = true
 
                             };
-                            cd.Picture = LoadImageFromURL(val);
+                            cd.Picture = Utils.LoadImageFromURL(val);
                             _rchampData.Add(cd);
                         }
                     }
@@ -1235,7 +1231,7 @@ namespace LoL
                         Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
                         if (match.Success)
                         {
-                            _summonerData.Team3v3Image = LoadImageFromURL("http:" + match.Value);
+                            _summonerData.Team3v3Image = Utils.LoadImageFromURL("http:" + match.Value);
                             var node2 =  node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Team3v3Rating = node2.InnerText;
                             _summonerData.Team3v3LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText; 
@@ -1249,7 +1245,7 @@ namespace LoL
                         Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
                         if (match.Success)
                         {
-                            _summonerData.Solo5v5Image = LoadImageFromURL("http:" + match.Value);
+                            _summonerData.Solo5v5Image = Utils.LoadImageFromURL("http:" + match.Value);
                             var node2 = node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Solo5v5Rating = node2.InnerText;
                             _summonerData.Solo5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText;
@@ -1263,7 +1259,7 @@ namespace LoL
                         Match match = regex.Match(node.NextSibling.NextSibling.Attributes["style"].Value);
                         if (match.Success)
                         {
-                            _summonerData.Team5v5Image = LoadImageFromURL("http:" + match.Value);
+                            _summonerData.Team5v5Image = Utils.LoadImageFromURL("http:" + match.Value);
                             var node2 = node.NextSibling.NextSibling.NextSibling.NextSibling.SelectNodes("div[@class='personal_ratings_rating']")[0];
                             _summonerData.Team5v5Rating = node2.InnerText;
                             _summonerData.Team5v5LeaguePoints = node2.NextSibling.NextSibling.InnerText == "&nbsp;" ? "" : node2.NextSibling.NextSibling.InnerText; ;
@@ -1303,34 +1299,7 @@ namespace LoL
             }
         }
 
-        public BitmapImage LoadImageFromURL(String url)
-        {
-            var image = new BitmapImage();
-            int BytesToRead = 100;
-
-            WebRequest request = WebRequest.Create(new Uri(url, UriKind.Absolute));
-            request.Timeout = -1;
-            WebResponse response = request.GetResponse();
-            Stream responseStream = response.GetResponseStream();
-            BinaryReader reader = new BinaryReader(responseStream);
-            MemoryStream memoryStream = new MemoryStream();
-
-            byte[] bytebuffer = new byte[BytesToRead];
-            int bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
-
-            while (bytesRead > 0)
-            {
-                memoryStream.Write(bytebuffer, 0, bytesRead);
-                bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
-            }
-
-            image.BeginInit();
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            image.StreamSource = memoryStream;
-            image.EndInit();
-            return image;
-        }
+        
 
         System.Windows.Forms.WebBrowser _wbNexus = new System.Windows.Forms.WebBrowser();
         
@@ -1369,6 +1338,10 @@ namespace LoL
                 
                 doc.LoadHtml(_wbNexus.DocumentText);
                 _summonerData.GameError = "";
+
+             
+
+
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
                 {
                     _nexusLoaded = true;
@@ -1382,7 +1355,8 @@ namespace LoL
                     _nexusLoaded = true;
                     var ti = new TeamItem()
                     {
-                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", ""),
+                        ChampImage = _nexusCss.GetChampImage("")
                     };
                     _ourTeam.Add(ti);
                 }
@@ -1405,21 +1379,13 @@ namespace LoL
 
                 OnPropertyChanged("OurTeam");
                 OnPropertyChanged("EnemyTeam");
-            }
-
-            //               var web = new HtmlWeb();
-            //    var doc = web.Load(url);
-            //    foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
-            //    {
-            //        int t = 4;
-            //        t = 4;                        
-            //    }
-            //HtmlElementCollection divs = webBrowserControl.Document.GetElementsByTagName("div");
-
-            //foreach (HtmlElement div in divs)
-            //{
-            //    //do something
-            //}
+            }           
+        }
+        
+        private void ReadNexusCss()
+        {
+            _nexusCss.Load();
+           
         }
 
         public async Task QueryData()

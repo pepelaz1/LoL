@@ -148,9 +148,11 @@
       <DependentUpon>Banner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\ChampData.cs" />
+    <Compile Include="Model\NexusCss.cs" />
     <Compile Include="Model\Region.cs" />
     <Compile Include="Model\SummonerData.cs" />
     <Compile Include="Model\TeamItem.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="WebBrowserOverlayWF.cs" />
     <Compile Include="Win32.cs" />

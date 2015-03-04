@@ -708,8 +708,8 @@
                         <TextBlock Visibility="{Binding GameErrorVisibility}" Text="{Binding GameSummonerError}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 50 0 0" FontSize="20"/>
                         <Grid Visibility="{Binding GameVisibility}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="18*"/>
+                                <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
@@ -771,13 +771,16 @@
                             <TextBlock Grid.Row="3" Grid.Column="0"  Text="{Binding Path=OurTeam[2].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="4" Grid.Column="0"  Text="{Binding Path=OurTeam[3].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="5" Grid.Column="0"  Text="{Binding Path=OurTeam[4].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
-
                             <TextBlock Grid.Row="9" Grid.Column="0"  Text="{Binding Path=EnemyTeam[0].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="10" Grid.Column="0"  Text="{Binding Path=EnemyTeam[1].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="11" Grid.Column="0"  Text="{Binding Path=EnemyTeam[2].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="12" Grid.Column="0"  Text="{Binding Path=EnemyTeam[3].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
                             <TextBlock Grid.Row="13" Grid.Column="0"  Text="{Binding Path=EnemyTeam[4].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
 
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" >
+                                <TextBlock Text="123"/>
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[0].ChampImage}" />
+                            </StackPanel>                            
                         </Grid>
                     </Grid>
                 </TabItem>

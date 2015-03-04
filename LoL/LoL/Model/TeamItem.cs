@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace LoL.Model
 {
@@ -26,6 +27,8 @@ namespace LoL.Model
                 OnPropertyChanged("Name");
             }
         }
+
+        public ImageSource ChampImage { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public virtual void OnPropertyChanged(string propertyName)
