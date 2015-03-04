@@ -29,6 +29,9 @@ namespace LoL.Model
         }
 
         public ImageSource ChampImage { get; set; }
+        public ImageSource SpellImageTop { get; set; }
+        public ImageSource SpellImageBottom { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public virtual void OnPropertyChanged(string propertyName)

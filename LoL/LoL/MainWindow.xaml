@@ -778,9 +778,76 @@
                             <TextBlock Grid.Row="13" Grid.Column="0"  Text="{Binding Path=EnemyTeam[4].Name}" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
 
                             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" >
-                                <TextBlock Text="123"/>
-                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[0].ChampImage}" />
-                            </StackPanel>                            
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[0].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[0].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[0].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>    
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[1].ChampImage}" Stretch="None" />
+                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel> 
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[2].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[2].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[2].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[3].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[3].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[3].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[4].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[4].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[4].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[0].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[0].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[0].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[1].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[1].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[1].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[2].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[2].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[2].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[3].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[3].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[3].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="1" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[4].ChampImage}" Stretch="None" />
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[4].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
+                                    <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[4].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                            </StackPanel>
                         </Grid>
                     </Grid>
                 </TabItem>

@@ -1339,8 +1339,6 @@ namespace LoL
                 doc.LoadHtml(_wbNexus.DocumentText);
                 _summonerData.GameError = "";
 
-             
-
 
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
                 {
@@ -1355,8 +1353,13 @@ namespace LoL
                     _nexusLoaded = true;
                     var ti = new TeamItem()
                     {
-                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", ""),
-                        ChampImage = _nexusCss.GetChampImage("")
+                        Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                        ,
+                        ChampImage = _nexusCss.GetChampImage(node.SelectSingleNode("td[@class='champion']/i").Attributes[0].Value.Replace("icon champions-lol-28 ", ""))
+                        ,
+                        SpellImageTop = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[0].Attributes["src"].Value)
+                        ,
+                        SpellImageBottom = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[2].Attributes["src"].Value)
                     };
                     _ourTeam.Add(ti);
                 }
@@ -1367,6 +1370,13 @@ namespace LoL
                     var ti = new TeamItem()
                     {
                         Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                        ,
+                        ChampImage = _nexusCss.GetChampImage(node.SelectSingleNode("td[@class='champion']/i").Attributes[0].Value.Replace("icon champions-lol-28 ", ""))
+                        ,
+                        SpellImageTop = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[0].Attributes["src"].Value)
+                        ,
+                        SpellImageBottom = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[2].Attributes["src"].Value)
+
                     };
                     _enemyTeam.Add(ti);
                 }   
@@ -1384,8 +1394,7 @@ namespace LoL
         
         private void ReadNexusCss()
         {
-            _nexusCss.Load();
-           
+            _nexusCss.Load();           
         }
 
         public async Task QueryData()
