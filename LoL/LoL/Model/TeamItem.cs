@@ -32,6 +32,21 @@ namespace LoL.Model
         public ImageSource SpellImageTop { get; set; }
         public ImageSource SpellImageBottom { get; set; }
 
+        public String ChampName { get; set; }
+        public String ChampGamesNum { get; set; }
+        public ImageSource RankImage { get; set; }
+        public String RankName { get; set; }
+        public String RankScore { get; set; }
+        public String Wins { get; set; }
+        public String RankedWins { get; set; }
+        public String RankedLosses { get; set; }
+        public String Kills { get; set; }
+        public String Deaths { get; set; }
+        public String Assists { get; set; }
+        public String Runes { get; set; }
+        public String Offense { get; set; }
+        public String Defense { get; set; }
+        public String Utility { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public virtual void OnPropertyChanged(string propertyName)

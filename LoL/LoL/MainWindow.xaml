@@ -17,7 +17,7 @@
 
     <Border BorderThickness="4" Background="{StaticResource ContentBack}" BorderBrush="#1b1b1b">
         <Grid Background="#1b1b1b" x:Name="grdMain">
-            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Margin="5" Foreground="White" FontWeight="Bold">
+            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Foreground="White" FontWeight="Bold">
           	</TextBlock>
        
             <Border Visibility="Collapsed"  DockPanel.Dock="Top" Width="728" Height="90" HorizontalAlignment="Center"  VerticalAlignment="Top"   Name="_webBrowserPlacementTarget" BorderBrush="Blue" BorderThickness="0" Margin="283,25,5,0"  />
@@ -709,12 +709,12 @@
                         <Grid Visibility="{Binding GameVisibility}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="18*"/>
-                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition Width="14*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="8*"/>
                                 <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="8*"/>
                                 <ColumnDefinition Width="10*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -751,7 +751,7 @@
                             <Border Grid.Row="14" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="8" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Row="0" Grid.Column="0"  Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="0" Grid.Column="1"  Text="Champion" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Grid.Column="2"  Text="Current Season" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2"  Text="Current Season" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,10,0,9"/>
                             <TextBlock Grid.Row="0" Grid.Column="3"  Text="Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="0" Grid.Column="4"  Text="Ranked Wins" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="0" Grid.Column="5"  Text="KDA" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -782,20 +782,38 @@
                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[0].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[0].SpellImageBottom}" Stretch="Fill" />
-                                </StackPanel>    
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[0].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[1].ChampImage}" Stretch="None" />
                                  <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageBottom}" Stretch="Fill" />
-                                </StackPanel> 
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[1].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[2].ChampImage}" Stretch="None" />
                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[2].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[2].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[2].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" >
@@ -804,12 +822,24 @@
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[3].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[3].SpellImageBottom}" Stretch="Fill" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[3].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[4].ChampImage}" Stretch="None" />
                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[4].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[4].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[4].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
                                 </StackPanel>
                             </StackPanel>
 
@@ -819,12 +849,24 @@
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[0].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[0].SpellImageBottom}" Stretch="Fill" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[0].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[1].ChampImage}" Stretch="None" />
                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[1].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[1].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[1].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="1" >
@@ -833,12 +875,24 @@
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[2].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[2].SpellImageBottom}" Stretch="Fill" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[2].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[3].ChampImage}" Stretch="None" />
                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[3].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[3].SpellImageBottom}" Stretch="Fill" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[3].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="1" >
@@ -847,6 +901,320 @@
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[4].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=EnemyTeam[4].SpellImageBottom}" Stretch="Fill" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].ChampName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[4].ChampGamesNum}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[0].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[0].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[1].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[1].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[2].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[2].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[3].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[3].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[4].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=OurTeam[4].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[0].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[0].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[1].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[1].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[2].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[2].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[3].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[3].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="2" >
+                                <Image VerticalAlignment="Center"  Source="{Binding Path=EnemyTeam[4].RankImage}" Stretch="None" />
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].RankName}" />
+                                    <TextBlock FontSize="14" Text=" ("/>
+                                    <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Path=EnemyTeam[4].RankScore}"/>
+                                    <TextBlock FontSize="14" Text=")"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[0].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[1].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[2].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[3].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[4].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="9" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[0].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="10" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[1].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="11" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[2].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="12" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[3].Wins}" FontSize="14" Foreground="#22b14c"/>
+                            <TextBlock Grid.Row="13" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[4].Wins}" FontSize="14" Foreground="#22b14c"/>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankedLosses}" Foreground="#ed1c24" />       
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].RankedWins}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].RankedLosses}" Foreground="#ed1c24" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Kills}"  Foreground="#22b14c"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Deaths}" Foreground="#ed1c24" />
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Assists}" Foreground="#fffe00" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="1" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[0].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[1].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="3" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[2].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="4" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[3].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="5" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=OurTeam[4].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="9" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[0].Runes}" FontSize="14" />
+                            <TextBlock Grid.Row="10" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[1].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="11" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[2].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="12" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[3].Runes}" FontSize="14"/>
+                            <TextBlock Grid.Row="13" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=EnemyTeam[4].Runes}" FontSize="14"/>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Utility}"/>
+                            </StackPanel>
+                             <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[4].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[0].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[1].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[2].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[3].Utility}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Offense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Defense}"/>
+                                <TextBlock FontSize="14" Text=" / "/>
+                                <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Utility}"/>
                             </StackPanel>
                         </Grid>
                     </Grid>

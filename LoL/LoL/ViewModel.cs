@@ -1320,6 +1320,51 @@ namespace LoL
             }
         }
 
+        private TeamItem ParseTeamItem(HtmlNode node)
+        {
+            var ti = new TeamItem()
+            {
+                Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
+                ,
+                ChampImage = _nexusCss.GetChampImage(node.SelectSingleNode("td[@class='champion']/i").Attributes[0].Value.Replace("icon champions-lol-28 ", ""))
+                ,
+                ChampName = node.SelectSingleNode("td[@class='champion']/span").ChildNodes[0].InnerText.TrimEnd(" (".ToCharArray())
+                ,
+                ChampGamesNum = node.SelectSingleNode("td[@class='champion']/span/b").InnerText
+                ,
+                SpellImageTop = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[0].Attributes["src"].Value)
+                ,
+                SpellImageBottom = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[2].Attributes["src"].Value)
+                ,
+                RankImage = _nexusCss.GetRankImage(node.SelectSingleNode("td[@class='current-season']/div/span").Attributes[0].Value.Replace("champion-ranks ", ""))
+                ,
+                RankName = node.SelectSingleNode("td[@class='current-season']/div/span").ChildNodes[0].InnerText.TrimEnd(" (".ToCharArray()).Replace("\r\n      ", " ")
+                ,
+                RankScore = node.SelectSingleNode("td[@class='current-season']/div/span/b").InnerText
+                ,
+                Wins = node.SelectSingleNode("td[@class='normal-wins']").InnerText
+                ,
+                RankedWins = node.SelectSingleNode("td[@class='ranked-wins-losses']/div/span[@class='ranked-wins']").InnerText
+                ,
+                RankedLosses = node.SelectSingleNode("td[@class='ranked-wins-losses']/div/span[@class='ranked-losses']").InnerText
+                ,
+                Kills = node.SelectSingleNode("td[@class='champion-kda']/span[@class='kills']").InnerText
+                ,
+                Deaths = node.SelectSingleNode("td[@class='champion-kda']/span[@class='deaths']").InnerText
+                ,
+                Assists = node.SelectSingleNode("td[@class='champion-kda']/span[@class='assists']").InnerText
+                ,
+                Runes = node.SelectSingleNode("td[@class='runes']/span[@class='tip']").ChildNodes[0].InnerText.TrimEnd("\r\n ".ToCharArray())
+                ,
+                Offense = node.SelectSingleNode("td[@class='masteries j-masteries-modal-link']/a/span[@class='offense']").InnerText
+                ,
+                Defense = node.SelectSingleNode("td[@class='masteries j-masteries-modal-link']/a/span[@class='defense']").InnerText
+                ,
+                Utility = node.SelectSingleNode("td[@class='masteries j-masteries-modal-link']/a/span[@class='utility']").InnerText
+            };
+            return ti;
+        }
+
         private void _wbNexus_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
             if (_nexusLoaded == true)
@@ -1352,35 +1397,14 @@ namespace LoL
                 {
                     foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-1']/table/tbody/tr"))
                     {
-                        _nexusLoaded = true;
-                        var ti = new TeamItem()
-                        {
-                            Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
-                            ,
-                            ChampImage = _nexusCss.GetChampImage(node.SelectSingleNode("td[@class='champion']/i").Attributes[0].Value.Replace("icon champions-lol-28 ", ""))
-                            ,
-                            SpellImageTop = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[0].Attributes["src"].Value)
-                            ,
-                            SpellImageBottom = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[2].Attributes["src"].Value)
-                        };
-                        _ourTeam.Add(ti);
+                        _nexusLoaded = true;                      
+                        _ourTeam.Add( ParseTeamItem(node) );
                     }
 
                     foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-2']/table/tbody/tr"))
                     {
                         _nexusLoaded = true;
-                        var ti = new TeamItem()
-                        {
-                            Name = node.SelectSingleNode("td[@class='name']").InnerText.Replace("\r\n      ", "")
-                            ,
-                            ChampImage = _nexusCss.GetChampImage(node.SelectSingleNode("td[@class='champion']/i").Attributes[0].Value.Replace("icon champions-lol-28 ", ""))
-                            ,
-                            SpellImageTop = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[0].Attributes["src"].Value)
-                            ,
-                            SpellImageBottom = Utils.LoadImageFromURL(node.SelectSingleNode("td[@class='champion']/div").ChildNodes[2].Attributes["src"].Value)
-
-                        };
-                        _enemyTeam.Add(ti);
+                        _enemyTeam.Add( ParseTeamItem(node));
                     }
                 }
                 catch (Exception ex1)
