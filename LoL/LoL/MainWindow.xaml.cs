@@ -311,6 +311,11 @@ namespace LoL
 
         }
 
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.RefreshGame();
+        }
+
     }
 
 }

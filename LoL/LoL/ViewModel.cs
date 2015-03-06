@@ -950,35 +950,50 @@ namespace LoL
             get { return _enemyTeam; }
         }
 
-        private bool _nexusLoaded;
+   //     private bool _nexusLoaded;
 
         private NexusCss _nexusCss = new NexusCss();
 
-        public String GameSummonerError
-        {
-            get {
-                if (_summonerData == null)
-                    return null;
-                return _summonerData.GameError; 
-            }
-        }
+ 
 
-        public Visibility GameErrorVisibility
+        public Visibility GameGridVisibility
         {
             get
             {
-                return String.IsNullOrEmpty(GameSummonerError) == false ? Visibility.Visible : Visibility.Hidden;
+                return _gameInfoMessage == "ok" ? Visibility.Visible : Visibility.Collapsed;            
             }
         }
 
-        public Visibility GameVisibility
+        public Visibility GameInfoVisibility
+        {
+            get
+            {              
+                if (_gameInfoMessage == "ok" || _gameInfoMessage == "")
+                    return Visibility.Hidden;
+                return Visibility.Visible; 
+            }
+        }
+
+        private String _gameInfoMessage = "";
+        public String GameInfoMessage
         {
             get
             {
-                return String.IsNullOrEmpty(GameSummonerError) == true ? Visibility.Visible : Visibility.Hidden;
+                return _gameInfoMessage;
+            }
+            set
+            {
+                _gameInfoMessage = value;
+
+                OnPropertyChanged("GameInfoMessage");
+                OnPropertyChanged("GameInfoVisibility");
+                OnPropertyChanged("GameGridVisibility");
+              
+              
             }
         }
 
+     
         /// <summary>
         /// View model constructor
         /// </summary>
@@ -988,10 +1003,8 @@ namespace LoL
              _nfi.NumberGroupSeparator = ",";
 
              ReadNexusCss();
+             GameInfoMessage = "";
 
-             OnPropertyChanged("GameSummonerError");
-             OnPropertyChanged("GameErrorVisibility");
-             OnPropertyChanged("GameVisibility");
          }
 
         private void QueryTotalTime()
@@ -1307,7 +1320,13 @@ namespace LoL
         {
             try
             {
-                _nexusLoaded = false;
+                GameInfoMessage = "Loading ...";
+          
+                OnPropertyChanged("GameInfoMessage");
+                OnPropertyChanged("GameGridVisibility");
+                OnPropertyChanged("GameInfoVisibility");
+              
+            
                 String url = "http://www.lolnexus.com/" + SelectedRegion.Code + "/search?name=" + _summonerData.Summoner.name + "&region=" + SelectedRegion.Code;
                 _wbNexus.AllowNavigation = true;
                  _wbNexus.ScriptErrorsSuppressed = true;
@@ -1338,9 +1357,9 @@ namespace LoL
                 ,
                 RankImage = _nexusCss.GetRankImage(node.SelectSingleNode("td[@class='current-season']/div/span").Attributes[0].Value.Replace("champion-ranks ", ""))
                 ,
-                RankName = node.SelectSingleNode("td[@class='current-season']/div/span").ChildNodes[0].InnerText.TrimEnd(" (".ToCharArray()).Replace("\r\n      ", " ")
+                RankName = Regex.Replace(node.SelectSingleNode("td[@class='current-season']/div/span").ChildNodes[0].InnerText.TrimEnd("\r\n (".ToCharArray()), @"\s+", " ")
                 ,
-                RankScore = node.SelectSingleNode("td[@class='current-season']/div/span/b").InnerText
+                RankScore = node.SelectSingleNode("td[@class='current-season']/div/span/b").InnerText.TrimEnd("\r\n LP".ToCharArray()) + " LP"
                 ,
                 Wins = node.SelectSingleNode("td[@class='normal-wins']").InnerText
                 ,
@@ -1367,8 +1386,8 @@ namespace LoL
 
         private void _wbNexus_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
-            if (_nexusLoaded == true)
-                return;
+           // if (_nexusLoaded == true)
+           //     return;
 
             if (e.Url != _wbNexus.Url)
                 return;
@@ -1382,13 +1401,15 @@ namespace LoL
                 _enemyTeam.Clear();
                 
                 doc.LoadHtml(_wbNexus.DocumentText);
-                _summonerData.GameError = "";
-
+               
 
                 foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='error']"))
                 {
-                    _nexusLoaded = true;
-                    _summonerData.GameError = node.InnerText;
+                    GameInfoMessage = node.InnerText;
+                    OnPropertyChanged("GameInfoMessage");
+                    OnPropertyChanged("GameGridVisibility");
+                    OnPropertyChanged("GameInfoVisibility");
+              
                 }
             }
             catch(Exception ex)
@@ -1397,15 +1418,20 @@ namespace LoL
                 {
                     foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-1']/table/tbody/tr"))
                     {
-                        _nexusLoaded = true;                      
+                       // _nexusLoaded = true;                      
                         _ourTeam.Add( ParseTeamItem(node) );
                     }
 
                     foreach (var node in doc.DocumentNode.SelectNodes("//div[@class='team-2']/table/tbody/tr"))
                     {
-                        _nexusLoaded = true;
+                      //  _nexusLoaded = true;
                         _enemyTeam.Add( ParseTeamItem(node));
                     }
+                    GameInfoMessage = "ok";
+                    OnPropertyChanged("GameInfoMessage");
+                    OnPropertyChanged("GameGridVisibility");
+                    OnPropertyChanged("GameInfoVisibility");
+              
                 }
                 catch (Exception ex1)
                 {
@@ -1415,9 +1441,16 @@ namespace LoL
             }
             finally
             {
-                OnPropertyChanged("GameSummonerError");
-                OnPropertyChanged("GameErrorVisibility");
-                OnPropertyChanged("GameVisibility");
+             //   OnPropertyChanged("GameSummonerError");
+             //   OnPropertyChanged("GameErrorVisibility");
+              //  OnPropertyChanged("GameGridVisibility");
+              //  OnPropertyChanged("GameInfoVisibility");
+
+                OnPropertyChanged("GameInfoMessage");
+                OnPropertyChanged("GameGridVisibility");
+                OnPropertyChanged("GameInfoVisibility");
+              
+
 
                 OnPropertyChanged("OurTeam");
                 OnPropertyChanged("EnemyTeam");
@@ -1427,6 +1460,12 @@ namespace LoL
         private void ReadNexusCss()
         {
             _nexusCss.Load();           
+        }
+
+        public void RefreshGame()
+        {
+            GameInfoMessage = "Loading ...";
+            QueryNexus();
         }
 
         public async Task QueryData()

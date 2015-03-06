@@ -345,18 +345,18 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>CreepScore.dll</td><td>{C9DB8A90-ACE2-4698-AF5B-2C80399A4752}</td><td>AppDataFolder</td><td>2</td><td/><td>creepscore.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Flurl.dll</td><td>{6ADAD2F7-2E0E-4DAB-A45A-EF5FBC22F17A}</td><td>AppDataFolder</td><td>2</td><td/><td>flurl.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HtmlAgilityPack.dll</td><td>{741726CC-D292-4BDF-8826-E15364E7C032}</td><td>AppDataFolder</td><td>2</td><td/><td>htmlagilitypack.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CreepScore.dll</td><td>{34C3722B-C24A-430B-AA88-2CA6A5664B94}</td><td>INSTALLDIR</td><td>2</td><td/><td>creepscore.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Flurl.dll</td><td>{BA7DB2DA-43D1-4532-A108-3B52DF9F4562}</td><td>INSTALLDIR</td><td>2</td><td/><td>flurl.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HtmlAgilityPack.dll</td><td>{46DF56CD-D3AC-49C7-917A-BA05DEEAA482}</td><td>INSTALLDIR</td><td>2</td><td/><td>htmlagilitypack.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{C85F6D85-CAC1-45BB-B5C4-24DF530022E5}</td><td>ProgramFilesFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{A9532B01-99D0-43B3-843C-44874AD7DD7F}</td><td>AppDataFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{2E02E881-4D71-40FC-B208-A02C89336886}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>LoL.exe</td><td>{821D7E56-DC63-4C85-A4B0-B7C8B9DF85B5}</td><td>AppDataFolder</td><td>2</td><td/><td>lol.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>LoL.vshost.exe</td><td>{462549E6-71B0-4218-968B-8199E70E76E8}</td><td>AppDataFolder</td><td>2</td><td/><td>lol.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Newtonsoft.Json.dll</td><td>{FD3DB51C-3E05-4E35-B66A-B2A878A0F689}</td><td>AppDataFolder</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NodaTime.dll</td><td>{FB2D54FD-18C2-4ABC-AF29-1622BFE19D30}</td><td>AppDataFolder</td><td>2</td><td/><td>nodatime.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Net.Http.Extensions.dll</td><td>{A613B581-D8CF-4438-8CC4-D3E4F7B7A0A5}</td><td>AppDataFolder</td><td>2</td><td/><td>system.net.http.extensions.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Net.Http.Primitives.dll</td><td>{601303CE-E14C-4D41-A055-9142B038312C}</td><td>AppDataFolder</td><td>2</td><td/><td>system.net.http.primitives.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>LoL.exe</td><td>{2DE12E4A-71FF-48B3-BAA5-02065D658DE8}</td><td>INSTALLDIR</td><td>2</td><td/><td>lol.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>LoL.vshost.exe</td><td>{E2E1BA73-6EEF-4F25-8E93-91E0388D0828}</td><td>INSTALLDIR</td><td>2</td><td/><td>lol.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{CF14081D-BA0A-482C-8FFE-C91C28E3394F}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NodaTime.dll</td><td>{BF365BBF-8E8A-4CC3-94A2-DDF24DCD824B}</td><td>INSTALLDIR</td><td>2</td><td/><td>nodatime.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Net.Http.Extensions.dll</td><td>{A06B010C-4F4F-4E69-BD36-44487A99DFFB}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.net.http.extensions.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Net.Http.Primitives.dll</td><td>{FEFBDC61-9D6D-479C-9045-9FB12E61571F}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.net.http.primitives.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1067,7 +1067,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
-		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT2</td></row>
+		<row><td>AppDataFolder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>ProgramFilesFolder</td><td>ISX_DEFAULTCOMPONENT</td></row>
 	</table>
 
@@ -1165,7 +1165,7 @@
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
-		<row><td>LEAGUE_SCANNER</td><td>PAT_MARIS</td><td>LEAGUE~1|League Scanner</td><td/><td>0</td><td/></row>
+		<row><td>LEAGUE_SCANNER</td><td>ProgramFilesFolder</td><td>LEAGUE~1|League Scanner</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MY_PRODUCT_NAME</td><td>PAT_MARIS</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
@@ -1190,6 +1190,7 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
+		<row><td>league_1_league_scanner</td><td>patmar_1_pat_maris</td><td>LEAGUE~1|League Scanner</td><td/><td>1</td><td/></row>
 		<row><td>patmar_1_pat_maris</td><td>ProgramMenuFolder</td><td>PATMAR~1|Pat Maris</td><td/><td>1</td><td/></row>
 		<row><td>setup</td><td>patmar_1_pat_maris</td><td>Setup</td><td/><td>1</td><td/></row>
 	</table>
@@ -1910,23 +1911,23 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>creepscore.dll</td><td>CreepScore.dll</td><td>CREEPS~1.DLL|CreepScore.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\CreepScore.dll</td><td>1</td><td/></row>
-		<row><td>creepscore.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>CREEPS~1.XML|CreepScore.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\CreepScore.xml</td><td>1</td><td/></row>
+		<row><td>creepscore.xml</td><td>ISX_DEFAULTCOMPONENT2</td><td>CREEPS~1.XML|CreepScore.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\CreepScore.xml</td><td>1</td><td/></row>
 		<row><td>flurl.dll</td><td>Flurl.dll</td><td>Flurl.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\Flurl.dll</td><td>1</td><td/></row>
 		<row><td>htmlagilitypack.dll</td><td>HtmlAgilityPack.dll</td><td>HTMLAG~1.DLL|HtmlAgilityPack.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\HtmlAgilityPack.dll</td><td>1</td><td/></row>
-		<row><td>htmlagilitypack.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>HTMLAG~1.XML|HtmlAgilityPack.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\HtmlAgilityPack.xml</td><td>1</td><td/></row>
+		<row><td>htmlagilitypack.xml</td><td>ISX_DEFAULTCOMPONENT2</td><td>HTMLAG~1.XML|HtmlAgilityPack.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\HtmlAgilityPack.xml</td><td>1</td><td/></row>
 		<row><td>lol.exe</td><td>LoL.exe</td><td>LoL.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.exe</td><td>1</td><td/></row>
-		<row><td>lol.exe.config</td><td>ISX_DEFAULTCOMPONENT1</td><td>LOLEXE~1.CON|LoL.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.exe.config</td><td>1</td><td/></row>
+		<row><td>lol.exe.config</td><td>ISX_DEFAULTCOMPONENT2</td><td>LOLEXE~1.CON|LoL.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.exe.config</td><td>1</td><td/></row>
 		<row><td>lol.vshost.exe</td><td>LoL.vshost.exe</td><td>LOLVSH~1.EXE|LoL.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.vshost.exe</td><td>1</td><td/></row>
-		<row><td>lol.vshost.exe.config</td><td>ISX_DEFAULTCOMPONENT1</td><td>LOLVSH~1.CON|LoL.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>lol.vshost.exe.manifest</td><td>ISX_DEFAULTCOMPONENT1</td><td>LOLVSH~1.MAN|LoL.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>lol.vshost.exe.config</td><td>ISX_DEFAULTCOMPONENT2</td><td>LOLVSH~1.CON|LoL.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.vshost.exe.config</td><td>1</td><td/></row>
+		<row><td>lol.vshost.exe.manifest</td><td>ISX_DEFAULTCOMPONENT2</td><td>LOLVSH~1.MAN|LoL.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.vshost.exe.manifest</td><td>1</td><td/></row>
 		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>NEWTON~1.DLL|Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\Newtonsoft.Json.dll</td><td>1</td><td/></row>
-		<row><td>newtonsoft.json.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>NEWTON~1.XML|Newtonsoft.Json.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\Newtonsoft.Json.xml</td><td>1</td><td/></row>
+		<row><td>newtonsoft.json.xml</td><td>ISX_DEFAULTCOMPONENT2</td><td>NEWTON~1.XML|Newtonsoft.Json.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\Newtonsoft.Json.xml</td><td>1</td><td/></row>
 		<row><td>nodatime.dll</td><td>NodaTime.dll</td><td>NodaTime.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\NodaTime.dll</td><td>1</td><td/></row>
-		<row><td>nodatime.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>NodaTime.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\NodaTime.xml</td><td>1</td><td/></row>
+		<row><td>nodatime.xml</td><td>ISX_DEFAULTCOMPONENT2</td><td>NodaTime.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\NodaTime.xml</td><td>1</td><td/></row>
 		<row><td>system.net.http.extensions.d</td><td>System.Net.Http.Extensions.dll</td><td>SYSTEM~1.DLL|System.Net.Http.Extensions.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Extensions.dll</td><td>1</td><td/></row>
-		<row><td>system.net.http.extensions.x</td><td>ISX_DEFAULTCOMPONENT1</td><td>SYSTEM~1.XML|System.Net.Http.Extensions.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Extensions.xml</td><td>1</td><td/></row>
+		<row><td>system.net.http.extensions.x</td><td>ISX_DEFAULTCOMPONENT2</td><td>SYSTEM~1.XML|System.Net.Http.Extensions.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Extensions.xml</td><td>1</td><td/></row>
 		<row><td>system.net.http.primitives.d</td><td>System.Net.Http.Primitives.dll</td><td>SYSTEM~1.DLL|System.Net.Http.Primitives.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Primitives.dll</td><td>1</td><td/></row>
-		<row><td>system.net.http.primitives.x</td><td>ISX_DEFAULTCOMPONENT1</td><td>SYSTEM~1.XML|System.Net.Http.Primitives.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Primitives.xml</td><td>1</td><td/></row>
+		<row><td>system.net.http.primitives.x</td><td>ISX_DEFAULTCOMPONENT2</td><td>SYSTEM~1.XML|System.Net.Http.Primitives.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\System.Net.Http.Primitives.xml</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2070,18 +2071,18 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>CreepScore.dll</td><td/><td/><td>_1FE33303_0D5D_4316_ABEA_347A2FF3B3DC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Flurl.dll</td><td/><td/><td>_03B8017E_299C_4E0C_A686_758C3DE4C05D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HtmlAgilityPack.dll</td><td/><td/><td>_A7D5F274_7CAC_48B8_84F7_A667041BEDA8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CreepScore.dll</td><td/><td/><td>_B578D3B7_24F5_4A11_9ADC_3538360B0F5D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Flurl.dll</td><td/><td/><td>_99C18ABD_F742_4896_B55E_DC61E2BC0FD0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HtmlAgilityPack.dll</td><td/><td/><td>_4AE9BDB6_199E_4AE2_85A8_184D69D7C531_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_A2318840_0482_43CE_972A_F7CC0F7D1B95_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_D5546E81_1B75_4383_AD34_FEC397AAF124_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_EFAA3DA6_EA54_4B89_913B_BD03A15583B9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>LoL.exe</td><td/><td/><td>_CD3504DB_F621_4DF7_8ADA_BCCFE384ECD6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>LoL.vshost.exe</td><td/><td/><td>_AE6FEB49_FC62_4EF6_B346_4D4E10FB1845_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_5FBF8166_9FE4_4FAE_9F94_0CEF6E59F13C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NodaTime.dll</td><td/><td/><td>_9631B6B8_1251_4CCC_B2F7_C0245366F3E0_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Net.Http.Extensions.dll</td><td/><td/><td>_B327970B_8755_403C_9E79_B936319F7A91_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Net.Http.Primitives.dll</td><td/><td/><td>_5C770239_8188_4DBB_9DD0_1D68B3049356_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>LoL.exe</td><td/><td/><td>_4901CEFB_55F7_4560_968C_C2F70B9524B0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>LoL.vshost.exe</td><td/><td/><td>_612AB3B4_2C35_4822_BD8E_D2084E4E5D72_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_9E613E7A_702D_4760_AAB6_ED6E04D4FFDA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NodaTime.dll</td><td/><td/><td>_BA6D58A5_B130_40DA_8F7F_7C1ED1308216_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Net.Http.Extensions.dll</td><td/><td/><td>_1BEAE2E0_C9AD_43BC_87D3_102783394D25_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Net.Http.Primitives.dll</td><td/><td/><td>_F4F1CB8E_B015_42AE_9DED_51B5D6AF107C_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -3516,6 +3517,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.vshost.exe</td><td>0</td><td/><td>-1054627283</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.exe</td><td>0</td><td/><td>-1054649747</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.vshost.exe</td><td>0</td><td/><td>-1054649747</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LoL Scanner</td><td>0</td><td/><td>832807183</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.exe</td><td>0</td><td/><td>832805744</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.vshost.exe</td><td>0</td><td/><td>832805744</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>Lol Scanner</td><td>0</td><td/><td>832824304</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-1054639667</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-1054639667</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1054639667</td></row>
@@ -3809,6 +3814,8 @@
 		<row><td>ID_STRING3</td><td>1033</td><td>http://lolscanner.com</td><td>0</td><td/><td>-786221463</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Pat Maris</td><td>0</td><td/><td>-1054610963</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.exe</td><td>0</td><td/><td>-1054614995</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>LAUNCH~1.EXE|Launch LoL.exe</td><td>0</td><td/><td>832786703</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>Lol Scanner</td><td>0</td><td/><td>832826352</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1054639667</td></row>
 	</table>
 
@@ -3918,6 +3925,8 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\LoL\lolicon.ico</td><td>0</td></row>
 		<row><td>LoL.exe1_622E404E1E2649C2898197CDA368E3D9.exe</td><td/><td>C:\work\paraskos-maris\LoL\LoL\bin\Release\LoL.exe</td><td>0</td></row>
+		<row><td>LoL.exe1_7CA06EC293104D519A45E868279C462E.exe</td><td/><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.exe</td><td>0</td></row>
+		<row><td>LoL.exe1_A87B4ED1CB144CABB70870B6DF98044F.exe</td><td/><td>C:\work\paraskos-maris\LoL\LoL\bin\x86\Release\LoL.exe</td><td>0</td></row>
 		<row><td>LoL.exe_1A4E4DE226F34E10858326ECD331E583.exe</td><td/><td>C:\work\paraskos-maris\LoL\LoL\bin\Release\LoL.exe</td><td>0</td></row>
 		<row><td>LoL.exe_CC8A2FBD6B034CDAA0AD14A95BA4B35D.exe</td><td/><td>C:\work\paraskos-maris\LoL\LoL\bin\Release\LoL.exe</td><td>0</td></row>
 		<row><td>LoL.vshost.exe_01479CD5C9DE4869ACF59AD15DAA2535.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
@@ -4432,9 +4441,9 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[AppDataFolder]LoL.exe</td><td/></row>
-		<row><td>ProductCode</td><td>{EC5B66C4-8423-4F4D-A4BE-3108A7D722D0}</td><td/></row>
+		<row><td>ProductCode</td><td>{3899C8B8-B13D-4358-86A8-CE605DF2DC59}</td><td/></row>
 		<row><td>ProductName</td><td>League Scanner</td><td/></row>
-		<row><td>ProductVersion</td><td>1.00.0007</td><td/></row>
+		<row><td>ProductVersion</td><td>1.00.0009</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4596,6 +4605,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>LoL.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>LoL.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>LoL.exe1_7CA06EC293104D519A45E868279C462E.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

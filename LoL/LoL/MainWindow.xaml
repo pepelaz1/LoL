@@ -18,15 +18,15 @@
     <Border BorderThickness="4" Background="{StaticResource ContentBack}" BorderBrush="#1b1b1b">
         <Grid Background="#1b1b1b" x:Name="grdMain">
             <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Foreground="White" FontWeight="Bold">
-          	</TextBlock>
-       
+            </TextBlock>
+
             <Border Visibility="Collapsed"  DockPanel.Dock="Top" Width="728" Height="90" HorizontalAlignment="Center"  VerticalAlignment="Top"   Name="_webBrowserPlacementTarget" BorderBrush="Blue" BorderThickness="0" Margin="283,25,5,0"  />
             <Button Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top"  Foreground="#000066" Width="20" Margin="2,2,5,2" Click="Form_Close">x</Button>
             <Button x:Name="btnMinimize"  Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#000066" Width="20" Margin="2,2,27,2" Click="Form_max_restore">har)0x221A</Button>
             <Button  Background="Gold" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#000066" Width="20" Margin="2,2,50,2" Click="Form_Min">_</Button>
             <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="pack://application:,,,/LoL;component/Logo.png"  Width ="279" Stretch="Uniform" Height="315" Margin="0,-57,0,0"   />
             <!--<Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="pack://application:,,,/LoL;component/bg.png" Height="134" Width="1016" Stretch="Fill" /> -->
-            <TextBlock Foreground="Gold" HorizontalAlignment="Right" Margin="0 120 5 0" FontSize="14" Text="{Binding SummonerTitle}" Visibility="{Binding SummonerTitleVisibility}"/> 
+            <TextBlock Foreground="Gold" HorizontalAlignment="Right" Margin="0 120 5 0" FontSize="14" Text="{Binding SummonerTitle}" Visibility="{Binding SummonerTitleVisibility}"/>
             <TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,107,0,0" VerticalAlignment="Stretch" Padding="0"  >
                 <TabItem Header="Home" FontSize="16" Padding="0,0,0,0"  >
                     <TabItem.Style>
@@ -146,7 +146,7 @@
                             <RowDefinition Height="100*"/>
                         </Grid.RowDefinitions>
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Fill="#0f0f0f"/>
-                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/> 
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0.3 0.3 0" SnapsToDevicePixels="True"/>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10 0 0 0"><Run Text="Top five champions"/></TextBlock>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#1b1b1b">
                             <Grid.ColumnDefinitions>
@@ -156,10 +156,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Rectangle Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="5" Fill="#1b1b1b"  />                        
+                            <Rectangle Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="5" Fill="#1b1b1b"  />
                             <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
-                            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>                            
+                            <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1"  Source="{Binding Champ1Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="0" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ1Name}"/>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ1Name}"/> -->
@@ -174,7 +174,7 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ1Found}"><Run Text="K/D/A:"/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="12" Margin="0 0 10 0" Visibility="{Binding Champ1Found}"><Run Text="K/D/A:"/></TextBlock>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Kills}"  Foreground="#22b14c" FontWeight="SemiBold"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12"  Visibility="{Binding Champ1Found}"/>
@@ -187,13 +187,13 @@
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Wins}"  Foreground="#22b14c" FontWeight="SemiBold"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="/" FontSize="12" Visibility="{Binding Champ1Found}"/>
                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding Champ1Losses}" Foreground="#ed1c24" FontWeight="SemiBold"/>
-                                     </StackPanel>
+                                    </StackPanel>
                                 </Grid>
                             </StackPanel>
                             <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding Champ2Image}" Opacity="0.7"/>
-                            <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ2Name}"/> 
+                            <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ2Name}"/>
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ2Name}"/> -->
                                 <Grid>
@@ -226,7 +226,7 @@
                             <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0.3 0.3 0 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1 1 1 1" Source="{Binding Champ3Image}" Opacity="0.7"/>
-                            <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ3Name}"/> 
+                            <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ3Name}"/>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ3Name}"/> -->
                                 <Grid>
@@ -261,7 +261,7 @@
                             <Image Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ4Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="3" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ4Name}"/>
                             <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-                               <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ4Name}"/> -->
+                                <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ4Name}"/> -->
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -292,7 +292,7 @@
                             <Border Grid.Row="0" Grid.Column="4" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1" Source="{Binding Champ5Image}" Opacity="0.7"/>
-                            <TextBlock Grid.Column="4" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ5Name}"/> 
+                            <TextBlock Grid.Column="4" FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ5Name}"/>
                             <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding Champ5Name}"/> -->
                                 <Grid>
@@ -342,7 +342,7 @@
                             <Rectangle Grid.Row="3" Grid.Column="2"  Fill="#1b1b1b" Margin="0 0 0 0"/> -->
                             <Border Grid.Row="0" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="3" BorderThickness="0.3 0 0.3 0" SnapsToDevicePixels="True"/>
                             <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="0"><Run Text="Ranked Ratings"/></TextBlock>
-                            <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="0.3 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock Margin="0 5 0 0" FontSize="18" HorizontalAlignment="Center"><Run Text="Team 3v3"/></TextBlock>
                                 <Image  Margin="0 0 0 0" Source="{Binding Team3v3Image}"/>
@@ -357,7 +357,7 @@
                                     <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
-                            <Border Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <StackPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock  Margin="0 5 0 0"  FontSize="18" HorizontalAlignment="Center"><Run Text="Solo 5v5"/></TextBlock>
                                 <Image Margin="0 0 0 0" Source="{Binding Solo5v5Image}"/>
@@ -372,7 +372,7 @@
                                     <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
-                            <Border Grid.Row="1" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/> 
+                            <Border Grid.Row="1" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <StackPanel Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                 <TextBlock Margin="0 5 0 0"  FontSize="18" HorizontalAlignment="Center"><Run Text="Team 5v5"/></TextBlock>
                                 <Image  Margin="0 0 0 0" Source="{Binding Team5v5Image}"/>
@@ -387,7 +387,7 @@
                                     <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Losses"/>
                                 </StackPanel>
                             </StackPanel>
-                            <Border Grid.Row="1" Grid.Column="3" BorderBrush="White" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>  
+                            <Border Grid.Row="1" Grid.Column="3" BorderBrush="White" BorderThickness="0 0 0 0.3" SnapsToDevicePixels="True"/>
                             <Border Grid.Row="0" Grid.Column="5" BorderBrush="White"  Grid.RowSpan="6" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
                             <TextBlock Margin="10 0 0 0"  Grid.Column="4" VerticalAlignment="Center"><Run Text="Statistics"/></TextBlock>
                             <Grid Grid.Row="1" Grid.Column="3" VerticalAlignment="Stretch" >
@@ -412,7 +412,7 @@
                                                 <RowDefinition Height="22"/>
                                                 <RowDefinition Height="22"/>
                                                 <RowDefinition Height="100*"/>
-                                                
+
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="55*"/>
@@ -424,7 +424,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Fill="#0f0f0f" Margin="0 0 0 0"/>
                                             <Rectangle Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Fill="#0f0f0f" Margin="0 0 0 0"/>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Ranked 5v5:"/></TextBlock>                                            
+                                            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16"  Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Ranked 5v5:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Kills:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding KillsRanked}" Foreground="#22b14c"/>
                                             <TextBlock Grid.Row="2" Grid.Column="0" FontSize="14" Margin="5 0 10 0" ><Run Text="Deaths:"/></TextBlock>
@@ -477,48 +477,47 @@
                                             </StackPanel>
                                             <TextBlock Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,50,0" ><Run Text="Total:"/></TextBlock>
                                             <TextBlock Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" Text="{Binding TotalGames}" Margin="20,0,0,0" Foreground="White"/>
-                                             <TextBlock Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center"  ><Run Text="Ward score:"/></TextBlock>
+                                            <TextBlock Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center"  ><Run Text="Ward score:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="4"  Grid.ColumnSpan="2" FontSize="14" Margin="5 0 60 0" ><Run Text="Your ward score is:"/></TextBlock>
                                             <TextBlock Grid.Row="1" Grid.Column="5"  FontSize="14" Text="{Binding Warding}" Margin="10 0 0 0" Foreground="White"/>
-                                            <TextBlock Grid.Row="2" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Score:"/></TextBlock>
+                                            <TextBlock Grid.Row="2" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Foreground="{Binding WardScoreColor}" Text="Score:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="5" >
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardScore}" Foreground="{Binding WardScoreColor}"/>
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White" Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="3" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Mage:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardMage}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardMage}" />
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="4" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Assasin:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardAssasin}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardAssasin}" />
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="5" Grid.Column="4"  FontSize="14" Margin="5 0 10 0"  ><Run Text="Marskman:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardMarksman}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardMarksman}"/>
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="6" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Fighter:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardFighter}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardFighter}" />
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="7" Grid.Column="4"  FontSize="14" Margin="5 0 10 0" ><Run Text="Tank:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardTank}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardTank}" />
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <TextBlock Grid.Row="8" Grid.Column="4"  FontSize="14" Margin="5 0 10 5" ><Run Text="Support:"/></TextBlock>
                                             <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="5" >
-                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardSupport}" Foreground="{Binding WardScoreColor}"/>
+                                                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{Binding WardSupport}" />
                                                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="wpg" Foreground="White"  Margin="5 0 0 0"/>
                                             </StackPanel>
                                             <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                                             <Border Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6"  BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                                             <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
-                                            <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>  
+                                            <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="9"  BorderBrush="White" BorderThickness="0 0 0.3 0" SnapsToDevicePixels="True"/>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
@@ -527,8 +526,8 @@
                         </Grid>
                         <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Fill="#0f0f0f" Margin="0 0 0 0"/>
                         <Rectangle Grid.Row="4" Grid.Column="0"  Fill="#1b1b1b" Margin="0 0 0 0"/>
-                        <Border Grid.Row="3" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0 0.3 0" SnapsToDevicePixels="True"/> 
-                        
+                        <Border Grid.Row="3" Grid.Column="0" BorderBrush="White"  Grid.ColumnSpan="2" BorderThickness="0.3 0 0.3 0" SnapsToDevicePixels="True"/>
+
                         <TextBlock x:Name="tbRecentChamps"  Margin="10 0 0 0" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2"><Run Text="Recent Champs"/></TextBlock>
                         <Grid Grid.Row="4" Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
@@ -544,7 +543,7 @@
                             <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp1Image}" Opacity="0.7"/>
                             <TextBlock Grid.Column="0" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp1Name}"/>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-                               <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp1Name}"/> -->
+                                <!-- <TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp1Name}"/> -->
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -576,9 +575,9 @@
                             <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp2Image}" Opacity="0.7"/>
-                            <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp2Name}"/> 
+                            <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp2Name}"/>
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-                               <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp2Name}"/> -->
+                                <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp2Name}"/> -->
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -610,7 +609,7 @@
                             <Border Grid.Row="0" Grid.Column="2" BorderBrush="White" BorderThickness="0 0.3 0.3 0.3" SnapsToDevicePixels="True"/>
                             <TextBlock Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="Black" Text="?" FontFamily="Trebuchet MS" FontSize="36" FontWeight="Bold"/>
                             <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1 1 1 1"  Source="{Binding RChamp3Image}" Opacity="0.7"/>
-                            <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp3Name}"/> 
+                            <TextBlock Grid.Column="2" FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp3Name}"/>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
                                 <!--<TextBlock FontSize="16" HorizontalAlignment="Center" Text="{Binding RChamp3Name}"/> -->
                                 <Grid>
@@ -674,12 +673,12 @@
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
-                          
+
                         </Grid>
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Game" FontSize="16"  Padding="0,0,0,0" IsEnabled="{Binding TabPagesEnabled}">
+                <TabItem Header="Game" FontSize="16"  Padding="0,0,0,0" IsEnabled="{Binding TabPagesEnabled}" Height="33" VerticalAlignment="Bottom">
                     <TabItem.Style>
                         <Style TargetType="{x:Type TabItem}">
                             <Setter Property="Template">
@@ -705,8 +704,12 @@
                         </Style>
                     </TabItem.Style>
                     <Grid  Margin="-1 -1 -1 -1" Background="#1b1b1b" >
-                        <TextBlock Visibility="{Binding GameErrorVisibility}" Text="{Binding GameSummonerError}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 50 0 0" FontSize="20"/>
-                        <Grid Visibility="{Binding GameVisibility}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="985*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Visibility="{Binding GameInfoVisibility}" Text="{Binding GameInfoMessage}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0" FontSize="20" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Grid Visibility="{Binding GameGridVisibility}" Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="18*"/>
                                 <ColumnDefinition Width="14*"/>
@@ -792,7 +795,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
                                 <Image VerticalAlignment="Center"  Source="{Binding Path=OurTeam[1].ChampImage}" Stretch="None" />
-                                 <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
+                                <StackPanel Orientation="Vertical" Margin="2 0 0 0" VerticalAlignment="Center" >
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageTop}" Stretch="Fill" Margin="0 0 0 2"/>
                                     <Image Width="13" Height="13" VerticalAlignment="Center" Source="{Binding Path=OurTeam[1].SpellImageBottom}" Stretch="Fill" />
                                 </StackPanel>
@@ -1016,7 +1019,7 @@
                             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
                                 <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankedWins}"  Foreground="#22b14c"/>
                                 <TextBlock FontSize="14" Text=" / "/>
-                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankedLosses}" Foreground="#ed1c24" />       
+                                <TextBlock FontSize="14" Text="{Binding Path=OurTeam[0].RankedLosses}" Foreground="#ed1c24" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
                                 <TextBlock FontSize="14" Text="{Binding Path=OurTeam[1].RankedWins}"  Foreground="#22b14c"/>
@@ -1167,7 +1170,7 @@
                                 <TextBlock FontSize="14" Text=" / "/>
                                 <TextBlock FontSize="14" Text="{Binding Path=OurTeam[2].Utility}"/>
                             </StackPanel>
-                             <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Offense}"/>
                                 <TextBlock FontSize="14" Text=" / "/>
                                 <TextBlock FontSize="14" Text="{Binding Path=OurTeam[3].Defense}"/>
@@ -1216,6 +1219,32 @@
                                 <TextBlock FontSize="14" Text=" / "/>
                                 <TextBlock FontSize="14" Text="{Binding Path=EnemyTeam[4].Utility}"/>
                             </StackPanel>
+
+                            <Button x:Name="btnRefresh" Click="btnRefresh_Click" Grid.Row="14" Grid.Column="7" FontSize="16" Foreground="White" Height="30" Width="70" VerticalAlignment="Center" Content="Refresh">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Background" Value="Blue"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border Background="{TemplateBinding Background}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Blue"/>
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Background" Value="DarkBlue"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            
                         </Grid>
                     </Grid>
                 </TabItem>
