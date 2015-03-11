@@ -24,7 +24,7 @@ namespace LoL
         Form _form; // the top-level window holding the WebBrowser control
         WebBrowser _wb = new WebBrowser();
 
-        public WebBrowser WebBrowser { get { return _wb; } }
+        public WebBrowser WebBrowser { get { return _wb; } set { _wb = value; } }
 
         public WebBrowserOverlayWF(FrameworkElement placementTarget)
         {
@@ -95,6 +95,17 @@ namespace LoL
             Win32.MoveWindow(_form.Handle, screenLocation.X, screenLocation.Y, screenSize.X, screenSize.Y, true);
             //_form.SetBounds(screenLocation.X, screenLocation.Y, screenSize.X, screenSize.Y);
             //_form.Update();
+        }
+
+        internal void Dispose()
+        {
+            _placementTarget.SizeChanged -= delegate { OnSizeLocationChanged(); };
+            _owner.LocationChanged -= delegate { OnSizeLocationChanged(); };
+            _form.FormClosing -= delegate { _owner.Close(); };
+            _wb.Dispose();
+            _wb = null;
+            _form.Dispose();
+            _form = null;
         }
     };
 }

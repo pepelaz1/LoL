@@ -153,16 +153,28 @@ namespace LoL
 
             try
             {
-               //  await _vm.QueryBanner();
-                _wbo = new WebBrowserOverlayWF(_webBrowserPlacementTarget);
+                /*if (_wbo != null)
+                {
+                    _wbo.Dispose();
+                    _wbo = null;
+                }*/
+                if (_wbo == null)
+                {
+                    //  await _vm.QueryBanner();
+                    _wbo = new WebBrowserOverlayWF(_webBrowserPlacementTarget);
+                    _wbo.WebBrowser.Visible = false;
+                    //System.Windows.Forms.WebBrowser wb = _wbo.WebBrowser;
+                    _wbo.WebBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(DocumentReady);
+                    _wbo.WebBrowser.NewWindow += WebBrowser1_NewWindow;
+                    _wbo.WebBrowser.ScriptErrorsSuppressed = true;
+                    //  wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
+                    _wbo.WebBrowser.ScrollBarsEnabled = false;
+                    _wbo.WebBrowser.Navigating += WebBrowser_Navigating;                   
+                  
+                }
+                flag = false;
                 _wbo.WebBrowser.Visible = false;
-                System.Windows.Forms.WebBrowser wb = _wbo.WebBrowser;
-                wb.DocumentCompleted +=  new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(DocumentReady);
-                wb.NewWindow += WebBrowser1_NewWindow;
-                wb.ScriptErrorsSuppressed = true;
-                //  wb.Navigate(new Uri("http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDju5bCsAEQ2AUYWjIIw8F3bkbGHTA"));
-                wb.ScrollBarsEnabled = false;
-                wb.Navigate(new Uri("http://firekickz.com/"));
+                _wbo.WebBrowser.Navigate(new Uri("http://firekickz.com/"));
 
             }
             catch (Exception ex)
@@ -170,11 +182,25 @@ namespace LoL
 
             }
         }
+        bool flag = false;
+        void WebBrowser_Navigating(object sender, System.Windows.Forms.WebBrowserNavigatingEventArgs e)
+        {
+            if (flag)
+            {
+                e.Cancel = true;
+            }
+            //throw new NotImplementedException();
+        }
 
         private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-         //   e.Cancel = true;
-         //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+            if (_wbo.WebBrowser.StatusText.StartsWith("http"))
+            {
+                System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
+            }
+            e.Cancel = true;
+            //   e.Cancel = true;
+            //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
 
             //foreach (System.Windows.Forms.HtmlElement tag in _wbo.WebBrowser.Document.All)
             //{
@@ -188,7 +214,7 @@ namespace LoL
             //    }
             //}
         }
-        
+
 
         private void DocumentReady(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
         {
@@ -215,32 +241,40 @@ namespace LoL
                         }
                 }
             }
+            flag = true;
 
-           // _wbo.WebBrowser.Navigating += webBrowser1_Navigating;
+            // _wbo.WebBrowser.Navigating += webBrowser1_Navigating;
         }
 
-       /* private void webBrowser1_Navigating(object sender, System.Windows.Forms.WebBrowserNavigatingEventArgs e)
-        {
-            // Redirect expertsexchange to stackoverflow
-          //  if (e.Url.ToString().Contains("experts-exchange"))
-          //  {
-            //    e.Cancel = true;
-            //    _wbo.WebBrowser.Navigate("http://stackoverflow.com");
-           // }
-            e.Cancel = true;
-            _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
-        }*/
+        /* private void webBrowser1_Navigating(object sender, System.Windows.Forms.WebBrowserNavigatingEventArgs e)
+         {
+             // Redirect expertsexchange to stackoverflow
+           //  if (e.Url.ToString().Contains("experts-exchange"))
+           //  {
+             //    e.Cancel = true;
+             //    _wbo.WebBrowser.Navigate("http://stackoverflow.com");
+            // }
+             e.Cancel = true;
+             _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+         }*/
 
 
         void link_MouseUp(object sender, System.Windows.Forms.HtmlElementEventArgs e)
         {
-            System.Windows.Forms.HtmlElement link = (System.Windows.Forms.HtmlElement)sender;
-            HTMLAnchorElementClass a = (HTMLAnchorElementClass)link.DomElement;
+            //System.Windows.Forms.HtmlElement link = (System.Windows.Forms.HtmlElement)sender;
+            //HTMLAnchorElementClass a = (HTMLAnchorElementClass)link.DomElement;
+
             switch (e.MouseButtonsPressed)
             {
                 case System.Windows.Forms.MouseButtons.Left:
                     {
-                        _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+                        //_wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
+                        if (_wbo.WebBrowser.StatusText.StartsWith("http") && _wbo.WebBrowser.StatusText != "http://firekickz.com/")
+                        {
+                            System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
+                        }
+                        QueryBanner();
+
                         /*if ((a.target != null && a.target.ToLower() == "_blank") ||
                             e.ShiftKeyPressed ||
                             e.MouseButtonsPressed == System.Windows.Forms.MouseButtons.Middle)
@@ -287,27 +321,27 @@ namespace LoL
         }
         private void wb_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            
+
             int t = 4;
             t = 4;
 
 
-         /*   try
-            {
-                HTMLDocument doc = wb1.Document as HTMLDocument;
-               // wb1.InvokeScript("adsbygoogle");
-                foreach (var s in doc.scripts)
-                {
-                    HTMLScriptElement se = s as HTMLScriptElement;
-                    //wb1.InvokeScript(se.src);
-                    int tt = 4;
-                }
+            /*   try
+               {
+                   HTMLDocument doc = wb1.Document as HTMLDocument;
+                  // wb1.InvokeScript("adsbygoogle");
+                   foreach (var s in doc.scripts)
+                   {
+                       HTMLScriptElement se = s as HTMLScriptElement;
+                       //wb1.InvokeScript(se.src);
+                       int tt = 4;
+                   }
 
-                int t = 4;
-                t = 4;
-            }
-            catch(Exception ex)
-            { }*/
+                   int t = 4;
+                   t = 4;
+               }
+               catch(Exception ex)
+               { }*/
 
         }
 
