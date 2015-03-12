@@ -194,10 +194,10 @@ namespace LoL
 
         private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_wbo.WebBrowser.StatusText.StartsWith("http"))
-            {
+           // if (_wbo.WebBrowser.StatusText.StartsWith("http"))
+           // {
                 System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
-            }
+           // }
             e.Cancel = true;
             //   e.Cancel = true;
             //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
@@ -269,10 +269,10 @@ namespace LoL
                 case System.Windows.Forms.MouseButtons.Left:
                     {
                         //_wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
-                        if (_wbo.WebBrowser.StatusText.StartsWith("http") && _wbo.WebBrowser.StatusText != "http://firekickz.com/")
-                        {
+                 //       if (_wbo.WebBrowser.StatusText.StartsWith("http") && _wbo.WebBrowser.StatusText != "http://firekickz.com/")
+                //        {
                             System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
-                        }
+                //        }
                         QueryBanner();
 
                         /*if ((a.target != null && a.target.ToLower() == "_blank") ||
