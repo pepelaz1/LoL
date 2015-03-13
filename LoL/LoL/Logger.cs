@@ -11,6 +11,7 @@ namespace LoL
     {
         public static void Append(string text)
         {
+            return;
             using (StreamWriter sw = new StreamWriter("LoL.log", true))
             {
                 sw.WriteLine(text);

@@ -197,10 +197,10 @@ namespace LoL
         private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Logger.Append("WebBrowser1_NewWindow|" + _wbo.WebBrowser.StatusText);
-           // if (_wbo.WebBrowser.StatusText.StartsWith("http"))
-           // {
+            if (_wbo.WebBrowser.StatusText.StartsWith("http"))
+            {
                 System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
-           // }
+            }
             e.Cancel = true;
             //   e.Cancel = true;
             //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
@@ -239,6 +239,7 @@ namespace LoL
                 {
                     case "A":
                         {
+                            tag.OuterHtml = tag.OuterHtml.Replace("> </A>", " target=\"_blank\" > </A>").Replace("></A>", " target=\"_blank\" ></A>").Replace("> </a>", " target=\"_blank\" > </a>").Replace("></a>", " target=\"_blank\" ></a>");
                             tag.MouseUp += new System.Windows.Forms.HtmlElementEventHandler(link_MouseUp);
                             break;
                         }
