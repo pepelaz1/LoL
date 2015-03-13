@@ -147,6 +147,7 @@
     <Compile Include="Banner.xaml.cs">
       <DependentUpon>Banner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="Model\ChampData.cs" />
     <Compile Include="Model\NexusCss.cs" />
     <Compile Include="Model\Region.cs" />

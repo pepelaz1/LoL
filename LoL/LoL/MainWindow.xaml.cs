@@ -29,9 +29,11 @@ namespace LoL
 
         private ViewModel _vm = new ViewModel();
         private WebBrowserOverlayWF _wbo;
+      
 
         public MainWindow()
         {
+            Logger.Append("Application starting " + DateTime.Now.ToString());
             DataContext = _vm;
 
             InitializeComponent();
@@ -194,6 +196,7 @@ namespace LoL
 
         private void WebBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Logger.Append("WebBrowser1_NewWindow|" + _wbo.WebBrowser.StatusText);
            // if (_wbo.WebBrowser.StatusText.StartsWith("http"))
            // {
                 System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
@@ -263,11 +266,12 @@ namespace LoL
         {
             //System.Windows.Forms.HtmlElement link = (System.Windows.Forms.HtmlElement)sender;
             //HTMLAnchorElementClass a = (HTMLAnchorElementClass)link.DomElement;
-
+      
             switch (e.MouseButtonsPressed)
             {
                 case System.Windows.Forms.MouseButtons.Left:
                     {
+                        Logger.Append("link_MouseUp|" + _wbo.WebBrowser.StatusText);
                         //_wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
                  //       if (_wbo.WebBrowser.StatusText.StartsWith("http") && _wbo.WebBrowser.StatusText != "http://firekickz.com/")
                 //        {
