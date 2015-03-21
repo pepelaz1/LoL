@@ -1084,6 +1084,16 @@ namespace LoL
             }
         }
 
+        public String ConstructUrlForChampImg(HtmlNode node)
+        {
+            String s = node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["class"].Value;
+            s = s.Replace("zam-sprite-champions_32 ", "");
+            s = s.Replace("zam-sprite-champions_32-", "");
+            s = s.Replace("_32x32", "");
+            s = "http://lkimg.zamimg.com/shared/riot/images/champions/" + s + ".png";
+            return s;
+        }
+
         public void QueryLolking()
         {
             try
@@ -1159,15 +1169,16 @@ namespace LoL
                              Name = node.ChildNodes[1].InnerText.TrimStart("\n ".ToCharArray()).TrimEnd("\n ".ToCharArray()),
                              Wins = node.ChildNodes[3].InnerText,
                              Losses = node.ChildNodes[5].InnerText,
+                             Picture = Utils.LoadImageFromURL(ConstructUrlForChampImg(node)),
                              Found = true
 
                          };
-                         Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
-                         if (match.Success)
-                         {
-                             String val = "http:" + match.Value;
-                             cd.Picture = Utils.LoadImageFromURL(val);
-                         }
+                         //Match match = regex.Match(node.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes["style"].Value.Replace("_32", ""));
+                         //if (match.Success)
+                         //{
+                         //    String val = "http:" + match.Value;
+                         //    cd.Picture = Utils.LoadImageFromURL(val);
+                         //}
                          _champData.Add(cd);
                      }
                  }

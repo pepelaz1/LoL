@@ -189,7 +189,7 @@ namespace LoL
         {
             if (flag)
             {
-                e.Cancel = true;
+              //  e.Cancel = true;
             }
             //throw new NotImplementedException();
         }
@@ -201,7 +201,7 @@ namespace LoL
             {
                 System.Diagnostics.Process.Start(_wbo.WebBrowser.StatusText);
             }
-            e.Cancel = true;
+            //e.Cancel = true;
             //   e.Cancel = true;
             //  _wbo.WebBrowser.Navigate(_wbo.WebBrowser.StatusText, true);
 
