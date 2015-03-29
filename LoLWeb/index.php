@@ -29,9 +29,8 @@
 								<option value="LAN">Latin Ameria North</option>
 								<option value="LAS">Latin Ameria South</option>
 								<option value="OCE">Oceania</option>
-							</select> <input type="text" size="20" name="summonerName"
-								placeholder="Summoner Name..." /> <input type="submit"
-								value="Search" />
+							</select> <input type="text" size="20" name="summonerName" placeholder="Summoner Name..." /> 
+									  <input type="submit" value="Search" />
 						</div>
 						</p>
 					</form>

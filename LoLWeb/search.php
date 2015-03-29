@@ -25,8 +25,10 @@
 								<tr>
 									<td width="5%" align="left">Home</td>
 									<td width="5%" align="left">Summoner</td>
-									<td width="5%" align="left">Game</td>
-									<td width="85%" align="right">Summoner:</td>
+									<td width="5%" align="left">
+									<?php echo '<a href="game.php?summonerName='.htmlspecialchars($_REQUEST['summonerName']).'">Game</a>'?>
+									</td>
+									<td width="85%" align="right">Summoner:<?php echo htmlspecialchars($_REQUEST['summonerName'])?></td>
 								</TR>
 							</table>
 						</td>
