@@ -2666,6 +2666,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_93131675_9C08_449D_9439_57B533EEB529_</td><td>Microsoft .NET Framework 4.5 Web.prq</td><td/><td>2</td><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -4441,9 +4442,9 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[AppDataFolder]LoL.exe</td><td/></row>
-		<row><td>ProductCode</td><td>{3899C8B8-B13D-4358-86A8-CE605DF2DC59}</td><td/></row>
+		<row><td>ProductCode</td><td>{8A7840FD-348A-410F-B190-394E56303268}</td><td/></row>
 		<row><td>ProductName</td><td>League Scanner</td><td/></row>
-		<row><td>ProductVersion</td><td>1.00.0009</td><td/></row>
+		<row><td>ProductVersion</td><td>1.00.0010</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
