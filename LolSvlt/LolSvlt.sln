@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40302.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolSvlt", "LolSvlt\LolSvlt.csproj", "{F92A2C96-0F9D-40BB-9A7C-8AB13FD4C636}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LolSvlt.Web(4)", "http://localhost:1908", "{AE84444D-827A-471A-9A6A-9F113C4B1D1E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LolSvlt.Web", "http://localhost:1908", "{AE84444D-827A-471A-9A6A-9F113C4B1D1E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
@@ -26,6 +26,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LolSvlt.Web(4)", "http://lo
 		SlnRelativePath = "LolSvlt.Web\"
 		DefaultWebSiteLanguage = "Visual C#"
 		ProjOutputReferences = "{F92A2C96-0F9D-40BB-9A7C-8AB13FD4C636}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B568BA37-6BCA-4E46-95B6-F9494E295011}"
+	ProjectSection(SolutionItems) = preProject
+		ResTempl1.rct = ResTempl1.rct
 	EndProjectSection
 EndProject
 Global

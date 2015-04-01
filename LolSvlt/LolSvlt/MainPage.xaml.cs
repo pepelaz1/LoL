@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
@@ -19,16 +20,32 @@ namespace LolSvlt
         public MainPage()
         {
             InitializeComponent();
+
+            btnSearch.Focus();
+
+            try
+            {
+                ImageBrush myBrush = new ImageBrush();
+               /* myBrush.ImageSource = new BitmapImage
+                (new Uri("Images/HomeBackground.png"));*/
+
+                myBrush.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString("Images/HomeBackground.png");
+                gridMain.Background = myBrush;
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            //ToggleButton b = e.Source as ToggleButton;
-            //if (b.IsChecked == true)
-            //    lbRegions.Visibility = Visibility.Visible;
-            //else
-            //    lbRegions.Visibility = Visibility.Collapsed;
+            ToggleButton b = e.OriginalSource as ToggleButton;
+            if (b.IsChecked == true)
+                lbRegions.Visibility = Visibility.Visible;
+            else
+                lbRegions.Visibility = Visibility.Collapsed;
         }
 
         private void tbSummonerName_KeyDown(object sender, KeyEventArgs e)
@@ -45,7 +62,7 @@ namespace LolSvlt
         {
             HtmlDocument doc = HtmlPage.Document;
             HtmlElement el = doc.GetElementById("gameFrame");
-            el.SetAttribute("src", "http://www.lolnexus.com/NA/search?name=Theoria&region=NA");
+            //el.SetAttribute("src", "http://www.lolnexus.com/NA/search?name=Brrando&region=NA");
            // QueryData();
         }
 
@@ -59,9 +76,9 @@ namespace LolSvlt
 
         private void lbRegions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //lbRegions.Visibility = Visibility.Collapsed;
-            //btnRegions.IsChecked = false;
-            //tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
+            lbRegions.Visibility = Visibility.Collapsed;
+            btnRegions.IsChecked = false;
+           // tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
         }
     }
 }

@@ -6,8 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400"
-    Height="768" Width="1024">
+    Height="768" Width="1024" MinHeight="600" MinWidth="800">
     <UserControl.Resources>
         <LinearGradientBrush x:Key="ContentBack">
             <LinearGradientBrush.GradientStops>
@@ -19,12 +18,18 @@
     </UserControl.Resources>
     <Border BorderThickness="4" Background="{StaticResource ContentBack}" BorderBrush="#1b1b1b">
         <Grid Background="#1b1b1b" x:Name="grdMain">
+            <Image HorizontalAlignment="Left" Source="Images/Logo.png" VerticalAlignment="Top" Width ="279" Stretch="Uniform" Height="278" Margin="0,-57,0,0"/>
+            <TextBlock Foreground="Gold" HorizontalAlignment="Right" Margin="0 120 5 0" FontSize="14" Text="{Binding SummonerTitle}" Visibility="{Binding SummonerTitleVisibility}"/>
             <sdk:TabControl x:Name="tcMain" HorizontalAlignment="Stretch" Margin="0,107,0,0" VerticalAlignment="Stretch" Padding="0"  >
                 <sdk:TabItem Header="Home" FontSize="16" Padding="0,0,0,0"  >
-                    
+
                     <Grid x:Name="gridMain" Background="#000066" Margin="-2 -2 -2 -2">
-                        <TextBlock FontSize="60" Margin="0,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontFamily="DengXian" Grid.Column="1"><Run Text="LOL Scanner"/></TextBlock>
-                        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="21*"/>
+                            <ColumnDefinition Width="488*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="60" Margin="295.224,100,336,0" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontFamily="DengXian" Grid.Column="1"><Run Text="LOL Scanner"/></TextBlock>
+                        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="228.224,298,269,298" >
                             <StackPanel Orientation="Horizontal" >
                                 <!--<ComboBox  x:Name="cmbLookups" ItemsSource="{Binding Regions}"  DisplayMemberPath="Name"  SelectedValuePath="Code" SelectedItem="{Binding SelectedRegion, Mode=TwoWay}" Margin="0 0 10 0" Height="30" Width="180" VerticalAlignment="Center" VerticalContentAlignment="Center" >
                                     <ComboBox.Resources>
@@ -42,23 +47,24 @@
                                 </ToggleButton>
 
                                 <TextBox Background="White" x:Name="tbSummonerName"  FontSize="16" Text="{Binding SummonerName, Mode=TwoWay}" Margin="0 0 10 0" Height="30" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center" KeyDown="tbSummonerName_KeyDown"/>
-                                <Button x:Name="btnSearch"  FontSize="16" Click="Button_Click" KeyDown="Button_KeyDown" Foreground="White" Height="30" Width="60" VerticalAlignment="Center" Content="Search">
-                                  
+                                <Button x:Name="btnSearch"  FontSize="16" Click="Button_Click" KeyDown="Button_KeyDown" Foreground="Black" Height="30" Width="60" VerticalAlignment="Center" Content="Search">
+
                                 </Button>
                             </StackPanel>
 
                         </StackPanel>
-                        <ListBox  x:Name="lbRegions" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden"   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="270,332,580,71" Height="232" Width="170" ItemsSource="{Binding Regions}"  SelectedItem="{Binding SelectedRegion, Mode=TwoWay}" DisplayMemberPath="Name"  SelectedValuePath="Code" SelectionChanged="lbRegions_SelectionChanged">
+                        <ListBox  x:Name="lbRegions" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden"   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="227.224,328,579,66" Height="232" Width="170" ItemsSource="{Binding Regions}"  SelectedItem="{Binding SelectedRegion, Mode=TwoWay}" DisplayMemberPath="Name"  SelectedValuePath="Code" SelectionChanged="lbRegions_SelectionChanged" Grid.Column="1">
                         </ListBox>
                     </Grid>
 
                 </sdk:TabItem>
                 <sdk:TabItem Header="Summoner Lookup" FontSize="16"  Padding="0,0,0,0" IsEnabled="{Binding TabPagesEnabled}">
                 </sdk:TabItem>
-                <sdk:TabItem Header="Game" FontSize="16"  Padding="0,0,0,0" IsEnabled="{Binding TabPagesEnabled}" Height="33" VerticalAlignment="Bottom">
-             
+                <sdk:TabItem Header="Game" FontSize="16"  Padding="0,0,0,0" IsEnabled="{Binding TabPagesEnabled}" VerticalAlignment="Bottom">
+
                 </sdk:TabItem>
             </sdk:TabControl>
+
         </Grid>
     </Border>
 </UserControl>

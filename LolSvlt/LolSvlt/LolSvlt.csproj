@@ -78,6 +78,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\SummonerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +94,21 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bg.png" />
+    <Resource Include="Images\HomeBackground.png" />
+    <Resource Include="Images\HomeBackground1.png" />
+    <Resource Include="Images\homebutton1.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Logo1.png" />
+    <Resource Include="Images\Logo2.png" />
+    <Resource Include="Images\Logo4.png" />
+    <Resource Include="Images\Logo5.png" />
+    <Resource Include="Images\Logo6.png" />
+    <Resource Include="Images\OldLogo.png" />
+    <Resource Include="Images\summonerbutton1.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
