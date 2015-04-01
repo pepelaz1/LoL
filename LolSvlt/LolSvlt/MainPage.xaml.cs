@@ -12,13 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using LolSvlt.Model;
 
 namespace LolSvlt
 {
     public partial class MainPage : UserControl
     {
+
+        private ViewModel _vm = new ViewModel();
         public MainPage()
         {
+
+            DataContext = _vm;
+
             InitializeComponent();
 
             btnSearch.Focus();
@@ -31,6 +37,8 @@ namespace LolSvlt
 
                 myBrush.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString("Images/HomeBackground.png");
                 gridMain.Background = myBrush;
+
+                _vm.SelectedRegion = lbRegions.SelectedItem as Region;
             }
             catch (Exception)
             {
@@ -78,7 +86,7 @@ namespace LolSvlt
         {
             lbRegions.Visibility = Visibility.Collapsed;
             btnRegions.IsChecked = false;
-           // tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
+            tbRegion.Text = (lbRegions.SelectedItem as Region).Name;
         }
     }
 }

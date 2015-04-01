@@ -1,5 +1,6 @@
 ﻿using LolSvlt.Model;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows;
@@ -10,10 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace LolSvlt
 {
-    public class ViewModel
+    public class ViewModel :INotifyPropertyChanged
     {
         // List of regions
         private List<Region> _regions = null;
@@ -36,7 +38,7 @@ namespace LolSvlt
                     _regions.Add(new Region() { Name = "Latin Ameria North", Code = "LAN" });
                     _regions.Add(new Region() { Name = "Latin Ameria South", Code = "LAS" });
                     _regions.Add(new Region() { Name = "Oceania", Code = "OCE" });
-                  //  OnPropertyChanged("SelectedRegion");
+                    OnPropertyChanged("SelectedRegion");
 
                 }
                 return _regions;
@@ -54,6 +56,45 @@ namespace LolSvlt
             set
             {
                 _selectedRegion = value;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public virtual void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private String _summoner_name = "Summoner Name...";
+        public String SummonerName
+        {
+            get
+            {
+                return _summoner_name;
+            }
+            set
+            {
+                _summoner_name = value;
+                OnPropertyChanged("SummonerName");
+            }
+        }
+
+        /*public Visibility SummonerInfoVisibility
+        {
+            get
+            {
+                return (_summonerData.Summoner == null) ? Visibility.Hidden : Visibility.Visible;
+            }
+        }*/
+
+        public bool TabPagesEnabled
+        {
+            get
+            {
+
+                //return _summoner != null;
+                return true;
             }
         }
     }
