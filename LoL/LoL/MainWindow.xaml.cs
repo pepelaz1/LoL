@@ -50,7 +50,7 @@ namespace LoL
                 btnMinimize.Content = (char)0x25A1;
                 _vm.SelectedRegion = lbRegions.SelectedItem as Region;
 
-                QueryBanner();
+               /// QueryBanner();
             }
             catch (Exception)
             {
